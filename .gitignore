@@ -1,0 +1,20 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+
+# IDE
+.vscode
+.idea
+
+# Environment & secrets
+.env
+.env.*
+
+# Claude / MCP config
+.claude
+.mcp.json
+
+# OS files
+.DS_Store
