@@ -1,13 +1,15 @@
-import "./App.css";
+import { Outlet } from "react-router";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 
-function App() {
+export default function App() {
   return (
-    <div className="landing">
-      <h1>Hypocrisy</h1>
-      <p className="tagline">A game of deception and truth</p>
-      <p className="status">Coming soon</p>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   );
 }
-
-export default App;
