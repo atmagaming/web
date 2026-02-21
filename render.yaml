@@ -3,11 +3,7 @@ services:
     runtime: static
     name: atma-web
     buildCommand: bun install --frozen-lockfile && bun run build
-    staticPublishPath: dist
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+    staticPublishPath: out
     headers:
       - path: /assets/*
         name: Cache-Control
