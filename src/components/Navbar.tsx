@@ -21,7 +21,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [gamesOpen, setGamesOpen] = useState(false);
   const pathname = usePathname();
-  const isHypocrisy = pathname === "/games/hypocrisy";
+  const isHypocrisy = pathname === "/games/hypocrisy" || pathname === "/games/hypocrisy/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
