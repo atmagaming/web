@@ -1,5 +1,7 @@
-import gsap from "gsap";
+"use client";
+
 import { useEffect, useRef } from "react";
+import gsap from "@/lib/gsap";
 
 const team = [
   { name: "Vladyslav Yaremchuk", role: "Founder & Creative Director", initials: "VY" },

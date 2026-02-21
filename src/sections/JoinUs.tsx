@@ -1,6 +1,8 @@
-import gsap from "gsap";
+"use client";
+
 import { Briefcase } from "lucide-react";
 import { useEffect, useRef } from "react";
+import gsap from "@/lib/gsap";
 
 const roles = [
   { title: "Game Developer", type: "Full-time / Remote", description: "Build core gameplay systems in Unity/Godot." },

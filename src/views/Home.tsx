@@ -1,7 +1,9 @@
-import gsap from "gsap";
+"use client";
+
 import { ArrowRight, ChevronDown, Eye, Heart, Lightbulb, Mail, Shield, Sparkles, Users } from "lucide-react";
+import Link from "next/link";
 import { type RefObject, useEffect, useRef } from "react";
-import { Link } from "react-router";
+import gsap from "@/lib/gsap";
 
 const values = [
   { icon: Heart, label: "Love", description: "The foundation of everything we create" },
@@ -69,7 +71,7 @@ export default function Home() {
             Igniting light within hearts through games
           </p>
           <Link
-            to="/games/hypocrisy"
+            href="/games/hypocrisy"
             className="hero-cta inline-flex items-center gap-2 px-8 py-3.5 bg-accent-600 hover:bg-accent-500 text-white rounded-lg transition-colors text-sm font-medium hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]"
           >
             Explore Hypocrisy <ArrowRight className="w-4 h-4" />
@@ -125,7 +127,7 @@ export default function Home() {
             <div className="reveal-child lg:w-1/2 shrink-0">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-accent-600/10 border border-white/6">
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/images/game-icon.jpeg`}
+                  src="/assets/images/game-icon.jpeg"
                   alt="Hypocrisy"
                   className="w-full aspect-square object-cover"
                 />
@@ -141,7 +143,7 @@ export default function Home() {
                 world.
               </p>
               <Link
-                to="/games/hypocrisy"
+                href="/games/hypocrisy"
                 className="inline-flex items-center gap-2 px-8 py-3.5 border border-accent-500/50 text-accent-400 hover:bg-accent-600 hover:text-white hover:border-accent-600 rounded-lg transition-all text-sm font-medium"
               >
                 Learn More <ArrowRight className="w-4 h-4" />

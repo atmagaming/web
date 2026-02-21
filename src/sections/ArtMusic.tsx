@@ -1,6 +1,8 @@
-import gsap from "gsap";
+"use client";
+
 import { Music, Palette } from "lucide-react";
 import { useEffect, useRef } from "react";
+import gsap from "@/lib/gsap";
 
 export default function ArtMusic() {
   const ref = useRef<HTMLDivElement>(null);

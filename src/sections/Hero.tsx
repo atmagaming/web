@@ -1,5 +1,7 @@
-import gsap from "gsap";
+"use client";
+
 import { useEffect, useRef } from "react";
+import gsap from "@/lib/gsap";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -24,7 +26,7 @@ export default function Hero() {
         muted
         loop
         playsInline
-        src={`${import.meta.env.BASE_URL}assets/videos/hero-bg.mp4`}
+        src={`/assets/videos/hero-bg.mp4`}
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-dark-950/60" />
@@ -33,11 +35,7 @@ export default function Hero() {
       <div className="relative z-10 text-center px-6">
         {/* Game Icon */}
         <div className="hero-icon w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-2xl overflow-hidden shadow-2xl shadow-accent-600/20">
-          <img
-            src={`${import.meta.env.BASE_URL}assets/images/game-icon.jpeg`}
-            alt="Hypocrisy"
-            className="w-full h-full object-cover"
-          />
+          <img src={`/assets/images/game-icon.jpeg`} alt="Hypocrisy" className="w-full h-full object-cover" />
         </div>
 
         <h1 className="hero-game-title font-display text-7xl md:text-9xl font-bold tracking-[0.15em] text-white mb-4">

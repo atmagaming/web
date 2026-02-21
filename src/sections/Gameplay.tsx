@@ -1,6 +1,8 @@
-import gsap from "gsap";
+"use client";
+
 import { RotateCcw, Swords, Users, Zap } from "lucide-react";
 import { useEffect, useRef } from "react";
+import gsap from "@/lib/gsap";
 
 const features = [
   {

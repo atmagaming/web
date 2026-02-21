@@ -1,6 +1,9 @@
+"use client";
+
 import { ChevronDown, Menu, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router";
 import { cn } from "@/lib/utils";
 
 const gamesSections = [
@@ -17,8 +20,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [gamesOpen, setGamesOpen] = useState(false);
-  const location = useLocation();
-  const isHypocrisy = location.pathname === "/games/hypocrisy";
+  const pathname = usePathname();
+  const isHypocrisy = pathname === "/games/hypocrisy";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -44,7 +47,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link
-          to="/"
+          href="/"
           className="font-display text-xl font-semibold tracking-[0.2em] text-white hover:text-accent-400 transition-colors"
         >
           ATMA
@@ -64,15 +67,11 @@ export default function Navbar() {
             {gamesOpen && (
               <div className="absolute top-full left-0 mt-2 w-48 bg-dark-800/95 backdrop-blur-xl border border-white/10 rounded-lg py-2 shadow-2xl">
                 <Link
-                  to="/games/hypocrisy"
+                  href="/games/hypocrisy"
                   className="flex items-center gap-3 px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors"
                   onClick={() => setGamesOpen(false)}
                 >
-                  <img
-                    src={`${import.meta.env.BASE_URL}assets/images/game-icon.jpeg`}
-                    alt=""
-                    className="w-6 h-6 rounded"
-                  />
+                  <img src="/assets/images/game-icon.jpeg" alt="" className="w-6 h-6 rounded" />
                   Hypocrisy
                 </Link>
               </div>
@@ -93,10 +92,10 @@ export default function Navbar() {
 
           {!isHypocrisy && (
             <>
-              <Link to="/#about" className="text-sm text-white/70 hover:text-white transition-colors">
+              <Link href="/#about" className="text-sm text-white/70 hover:text-white transition-colors">
                 About
               </Link>
-              <Link to="/#contact" className="text-sm text-white/70 hover:text-white transition-colors">
+              <Link href="/#contact" className="text-sm text-white/70 hover:text-white transition-colors">
                 Contact
               </Link>
             </>
@@ -117,11 +116,11 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="md:hidden bg-dark-950/95 backdrop-blur-xl border-t border-white/5 px-6 py-4 space-y-3">
           <Link
-            to="/games/hypocrisy"
+            href="/games/hypocrisy"
             className="flex items-center gap-3 text-sm text-white/70 hover:text-white"
             onClick={() => setMobileOpen(false)}
           >
-            <img src={`${import.meta.env.BASE_URL}assets/images/game-icon.jpeg`} alt="" className="w-6 h-6 rounded" />
+            <img src="/assets/images/game-icon.jpeg" alt="" className="w-6 h-6 rounded" />
             Hypocrisy
           </Link>
           {isHypocrisy &&
