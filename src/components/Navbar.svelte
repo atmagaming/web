@@ -1,136 +1,40 @@
 <script lang="ts">
-import { ChevronDown, Menu, X } from "lucide-svelte";
-import { onMount } from "svelte";
 import { cn } from "@/lib/utils";
 import { page } from "$app/stores";
 
-const gamesSections = [
-  { label: "About", id: "about" },
-  { label: "Gameplay", id: "gameplay" },
-  { label: "Universe", id: "universe" },
-  { label: "Characters", id: "characters" },
-  { label: "Art & Music", id: "art-music" },
-  { label: "Roadmap", id: "roadmap" },
-  { label: "Team", id: "team" },
-];
-
-let scrolled = $state(false);
-let mobileOpen = $state(false);
-let gamesOpen = $state(false);
-
-let isHypocrisy = $derived($page.url.pathname === "/games/hypocrisy" || $page.url.pathname === "/games/hypocrisy/");
-
-onMount(() => {
-  const onScroll = () => {
-    scrolled = window.scrollY > 50;
-  };
-  window.addEventListener("scroll", onScroll, { passive: true });
-  return () => window.removeEventListener("scroll", onScroll);
-});
-
-function scrollToSection(id: string) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth" });
-    mobileOpen = false;
-  }
-}
+let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
 </script>
 
 <nav
   class={cn(
-    "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-    scrolled ? "bg-dark-950/80 backdrop-blur-xl border-b border-white/5" : "bg-transparent",
+    "fixed top-0 left-0 right-0 z-[500] flex items-center justify-between px-6 lg:px-12 h-[52px] backdrop-blur-sm",
+    isGamePage
+      ? "bg-[#050507]/80 border-b border-white/10"
+      : "bg-white/[0.96] border-b-[1.5px] border-dark-950",
   )}
 >
-  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="/" class="font-display text-xl font-semibold tracking-[0.2em] text-white hover:text-accent-400 transition-colors">
-      ATMA
-    </a>
+  <a
+    href="/"
+    class={cn(
+      "font-display text-[1.4rem] tracking-[0.18em] transition-colors",
+      isGamePage ? "text-white hover:text-gold" : "text-dark-950 hover:text-gold",
+    )}
+  >ATMA</a>
 
-    <!-- Desktop Nav -->
-    <div class="hidden md:flex items-center gap-8">
-      <!-- Games Dropdown -->
-      <!-- biome-ignore lint/a11y/noStaticElementInteractions: hover dropdown -->
-      <div
-        class="relative"
-        onmouseenter={() => (gamesOpen = true)}
-        onmouseleave={() => (gamesOpen = false)}
-      >
-        <button type="button" class="flex items-center gap-1 text-sm text-white/70 hover:text-white transition-colors">
-          Games <ChevronDown class="w-3 h-3" />
-        </button>
-        {#if gamesOpen}
-          <div
-            class="absolute top-full left-0 mt-2 w-48 bg-dark-800/95 backdrop-blur-xl border border-white/10 rounded-lg py-2 shadow-2xl"
-          >
-            <a
-              href="/games/hypocrisy"
-              class="flex items-center gap-3 px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors"
-              onclick={() => (gamesOpen = false)}
-            >
-              <img src="/assets/images/game-icon.jpeg" alt="" class="w-6 h-6 rounded" />
-              Hypocrisy
-            </a>
-          </div>
-        {/if}
-      </div>
-
-      {#if isHypocrisy}
-        {#each gamesSections as s (s.id)}
-          <button
-            type="button"
-            onclick={() => scrollToSection(s.id)}
-            class="text-sm text-white/50 hover:text-white transition-colors"
-          >
-            {s.label}
-          </button>
-        {/each}
-      {/if}
-
-      {#if !isHypocrisy}
-        <a href="/#about" class="text-sm text-white/70 hover:text-white transition-colors">About</a>
-        <a href="/#contact" class="text-sm text-white/70 hover:text-white transition-colors">Contact</a>
-      {/if}
-    </div>
-
-    <!-- Mobile Hamburger -->
-    <button
-      type="button"
-      class="md:hidden text-white/70 hover:text-white"
-      onclick={() => (mobileOpen = !mobileOpen)}
-    >
-      {#if mobileOpen}
-        <X class="w-6 h-6" />
-      {:else}
-        <Menu class="w-6 h-6" />
-      {/if}
-    </button>
+  <div class="hidden md:flex items-center gap-0.5">
+    {#if isGamePage}
+      <a href="/" class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white/50 px-3.5 py-1.5 hover:text-white transition-colors">&larr; Vision</a>
+    {:else}
+      <a href="/" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 rounded-sm transition-all", $page.url.pathname === '/' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>Vision</a>
+      <a href="/morality" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 rounded-sm transition-all", $page.url.pathname === '/morality' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>Morality</a>
+      <a href="/universalism" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 rounded-sm transition-all", $page.url.pathname === '/universalism' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>Universalism</a>
+      <a href="/philosophy" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 rounded-sm transition-all", $page.url.pathname === '/philosophy' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>Philosophy</a>
+    {/if}
+    <a
+      href="https://atmagaming.notion.site/Vision-dc4f14be61f741c38881701ac9c2ab74"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white bg-red px-4 py-1.5 ml-3 hover:bg-[#9e1400] transition-colors"
+    >Full Vision &nearr;</a>
   </div>
-
-  <!-- Mobile Menu -->
-  {#if mobileOpen}
-    <div class="md:hidden bg-dark-950/95 backdrop-blur-xl border-t border-white/5 px-6 py-4 space-y-3">
-      <a
-        href="/games/hypocrisy"
-        class="flex items-center gap-3 text-sm text-white/70 hover:text-white"
-        onclick={() => (mobileOpen = false)}
-      >
-        <img src="/assets/images/game-icon.jpeg" alt="" class="w-6 h-6 rounded" />
-        Hypocrisy
-      </a>
-      {#if isHypocrisy}
-        {#each gamesSections as s (s.id)}
-          <button
-            type="button"
-            onclick={() => scrollToSection(s.id)}
-            class="block text-sm text-white/50 hover:text-white"
-          >
-            {s.label}
-          </button>
-        {/each}
-      {/if}
-    </div>
-  {/if}
 </nav>

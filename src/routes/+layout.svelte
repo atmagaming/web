@@ -7,15 +7,15 @@ let { children } = $props();
 </script>
 
 <svelte:head>
-  <title>ATMA Gaming</title>
-  <meta name="description" content="ATMA Gaming — Igniting light within hearts through games" />
-  <meta property="og:title" content="ATMA Gaming" />
-  <meta property="og:description" content="Igniting light within hearts through games" />
+  <title>ATMA</title>
+  <meta name="description" content="ATMA — Facilitate social moral evolution to promote the welfare of all" />
+  <meta property="og:title" content="ATMA" />
+  <meta property="og:description" content="Facilitate social moral evolution to promote the welfare of all" />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@100..900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
     rel="stylesheet"
   />
 </svelte:head>
