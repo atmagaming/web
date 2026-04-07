@@ -1,19 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Cinzel", serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-mono: "DM Mono", monospace;
 
-  --color-dark-950: #050507;
-  --color-dark-900: #0a0a0f;
-  --color-dark-800: #12121a;
-  --color-dark-700: #1a1a25;
-  --color-dark-600: #252530;
+  --color-surface: #f0ede8;
+  --color-border: #e0dbd4;
+  --color-text: #6b6560;
 
+  --color-dark-950: #0a0a0a;
+  --color-dark-900: #141414;
+  --color-dark-800: #1c1c1c;
+
+  --color-red: #c01900;
+  --color-gold: #c9921f;
+
+  /* Game page palette */
   --color-accent-400: #a78bfa;
   --color-accent-500: #8b5cf6;
   --color-accent-600: #7c3aed;
-
   --color-gold-400: #fbbf24;
   --color-gold-500: #f59e0b;
 }
@@ -25,8 +31,10 @@
 
   body {
     font-family: var(--font-sans);
-    background-color: var(--color-dark-950);
-    color: rgba(255, 255, 255, 0.87);
+    background-color: #ffffff;
+    color: var(--color-dark-950);
+    font-size: 17px;
+    line-height: 1.65;
     min-width: 320px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -35,33 +43,6 @@
 }
 
 ::selection {
-  background-color: var(--color-accent-500);
+  background-color: var(--color-red);
   color: white;
-}
-
-/* Scroll reveal animations */
-.reveal-section {
-  opacity: 0;
-  transform: translateY(30px);
-  transition:
-    opacity 0.7s ease-out,
-    transform 0.7s ease-out;
-}
-
-.reveal-section.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-section .reveal-child {
-  opacity: 0;
-  transform: translateY(25px);
-  transition:
-    opacity 0.6s ease-out,
-    transform 0.6s ease-out;
-}
-
-.reveal-section.revealed .reveal-child {
-  opacity: 1;
-  transform: translateY(0);
 }

@@ -11,7 +11,7 @@ import Team from "@/sections/Team.svelte";
 import Universe from "@/sections/Universe.svelte";
 </script>
 
-<div>
+<div class="game-page">
   <Hero />
   <AboutGame />
   <Gameplay />
@@ -23,3 +23,20 @@ import Universe from "@/sections/Universe.svelte";
   <JoinUs />
   <CallToAction />
 </div>
+
+<style>
+  .game-page {
+    background-color: #050507;
+    color: rgba(255, 255, 255, 0.87);
+    --color-accent-400: #a78bfa;
+    --color-accent-500: #8b5cf6;
+    --color-accent-600: #7c3aed;
+    --color-gold-400: #fbbf24;
+    --color-gold-500: #f59e0b;
+    --color-dark-950: #050507;
+    --color-dark-900: #0a0a0f;
+    --color-dark-800: #12121a;
+    --color-dark-700: #1a1a25;
+    --color-dark-600: #252530;
+  }
+</style>
