@@ -1,8 +1,9 @@
 <script lang="ts">
 import SectionHeader from "@/components/ui/SectionHeader.svelte";
+import Tooltip from "@/components/ui/Tooltip.svelte";
 </script>
 
-<section class="snap-section min-h-screen flex items-center px-6 lg:px-16 py-24 border-t-[1.5px] border-dark-950 bg-surface">
+<section class="min-h-screen flex items-center px-6 lg:px-16 py-24 border-t-[1.5px] border-dark-950 bg-surface">
   <div class="how-inner w-full">
     <SectionHeader number="02" label="How &middot; The Approach" />
 
@@ -16,19 +17,16 @@ import SectionHeader from "@/components/ui/SectionHeader.svelte";
         <h3 class="font-display text-[1.8rem] tracking-[0.04em] text-dark-950 mb-4">Ideological Education</h3>
         <div class="text-[0.97rem] leading-[1.7] text-text space-y-4">
           <p>
-            Make <a href="/morality" class="font-mono text-[0.68rem] tracking-[0.1em] uppercase text-gold border-b-[1.5px] border-current pb-px hover:text-dark-950 transition-colors no-underline">morality principles &rarr;</a>
-            the standard norm. Non-harm, non-exploitation, truthfulness — leading to fair compensation,
-            equitable distribution, transparent governance.
+            Make <Tooltip label="morality principles" description="Non-harm, non-exploitation, non-accumulation, and truthfulness — leading to fair compensation, equitable distribution, and transparent governance." href="https://atmagaming.notion.site/Morality-Principles-33b26381fbfd80aebd6bf04a29f18d34" />
+            the standard norm for all human beings.
           </p>
           <p>
             Defeat groupism by extending moral consideration to all beings —
-            <a href="/universalism" class="font-mono text-[0.68rem] tracking-[0.1em] uppercase text-gold border-b-[1.5px] border-current pb-px hover:text-dark-950 transition-colors no-underline">universalism &rarr;</a>.
-            Everything in the universe treated with equal respect, not exploited.
+            <Tooltip label="universalism" description="Extending the humanistic approach to animals, nature, and the whole universe. Everything treated with equal respect, not exploited." href="https://atmagaming.notion.site/Universalism-Neohumanism-33b26381fbfd807e9de6d2d677ceedb6" />.
           </p>
           <p>
-            Educate on the
-            <a href="/philosophy" class="font-mono text-[0.68rem] tracking-[0.1em] uppercase text-gold border-b-[1.5px] border-current pb-px hover:text-dark-950 transition-colors no-underline">fundamental philosophy &rarr;</a>
-            — replacing dogmatic thinking with clear reasoning grounded in observable human experience.
+            Educate on the <Tooltip label="fundamental philosophy" description="The underlying nature of human desire, happiness, and suffering. Replacing dogmatic thinking with clear reasoning grounded in observable experience." href="https://atmagaming.notion.site/Fundamental-Philosophy-33926381fbfd80eaa2a2dabc1a2c57a0" />
+            — providing the intellectual foundation for lasting change.
           </p>
         </div>
       </div>

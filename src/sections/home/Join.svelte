@@ -2,7 +2,7 @@
 import SectionHeader from "@/components/ui/SectionHeader.svelte";
 </script>
 
-<section class="snap-section min-h-screen flex items-center px-6 lg:px-16 py-24 border-t-[1.5px] border-dark-950 bg-surface" id="join">
+<section class="min-h-screen flex items-center px-6 lg:px-16 py-24 border-t-[1.5px] border-dark-950 bg-surface" id="join">
   <div class="join-inner w-full">
     <SectionHeader number="04" label="Join &middot; Work With Us" />
 
