@@ -7,40 +7,15 @@ import How from "@/sections/home/How.svelte";
 import Join from "@/sections/home/Join.svelte";
 import { reasons } from "@/sections/home/reasons";
 import What from "@/sections/home/What.svelte";
-import WhatGame from "@/sections/home/WhatGame.svelte";
 import Why from "@/sections/home/Why.svelte";
 
-// Each section and how many scroll "steps" it occupies
-const sectionSteps = [1, 1, 1, reasons.length, 1, 1, 1] as const;
+const whatSteps = reasons.length + 1;
+const sectionSteps = [1, 1, 1, whatSteps, 1, 1];
 const totalSteps = sectionSteps.reduce((sum, s) => sum + s, 0);
 
 let container: HTMLDivElement;
 let currentStep = $state(0);
 
-// Compute the starting step index for a given section
-function sectionStartStep(sectionIndex: number) {
-  let step = 0;
-  for (let i = 0; i < sectionIndex; i++) step += sectionSteps[i];
-  return step;
-}
-
-// Section name → index mapping
-const sectionMap: Record<string, number> = { hero: 0, why: 1, how: 2, what: 3, game: 4, join: 5, closing: 6 };
-
-function scrollToSection(sectionIndex: number) {
-  const startStep = sectionStartStep(sectionIndex);
-  const progress = (startStep + 0.5) / totalSteps;
-  const scrollDistance = totalSteps * window.innerHeight;
-  const targetScroll = progress * scrollDistance;
-  window.scrollTo({ top: targetScroll, behavior: "smooth" });
-}
-
-function scrollToSectionByName(name: string) {
-  const index = sectionMap[name];
-  if (index !== undefined) scrollToSection(index);
-}
-
-// Derive which section is active and sub-step within it
 const activeSection = $derived.by(() => {
   let step = currentStep;
   for (let i = 0; i < sectionSteps.length; i++) {
@@ -56,8 +31,26 @@ function sectionClass(index: number) {
   return "opacity-0 translate-y-12 pointer-events-none";
 }
 
+function sectionStartStep(sectionIndex: number) {
+  let step = 0;
+  for (let i = 0; i < sectionIndex; i++) step += sectionSteps[i];
+  return step;
+}
+
+function scrollToStep(step: number) {
+  const progress = (step + 0.5) / totalSteps;
+  const scrollDistance = totalSteps * window.innerHeight;
+  window.scrollTo({ top: progress * scrollDistance, behavior: "smooth" });
+}
+
+function scrollToSectionByName(name: string) {
+  const map: Record<string, number> = { hero: 0, why: 1, how: 2, what: 3, join: 4, closing: 5 };
+  const index = map[name];
+  if (index !== undefined) scrollToStep(sectionStartStep(index));
+}
+
 onMount(() => {
-  // Hero entrance animations
+  // Hero entrance
   gsap.from(".hero-tag", { y: 18, opacity: 0, duration: 0.6, delay: 0.3, ease: "power3.out" });
   gsap.from(".hero-title", { y: 18, opacity: 0, duration: 0.7, delay: 0.45, ease: "expo.out" });
   gsap.from(".hero-mission", { y: 18, opacity: 0, duration: 0.6, delay: 0.65, ease: "power3.out" });
@@ -101,7 +94,10 @@ onMount(() => {
 
 <div bind:this={container} class="relative h-screen overflow-hidden">
   <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(0)}">
-    <Hero onScrollToWhy={() => scrollToSection(1)} onScrollToJoin={() => scrollToSection(5)} />
+    <Hero
+      onScrollToWhy={() => scrollToStep(sectionStartStep(1))}
+      onScrollToJoin={() => scrollToStep(sectionStartStep(4))}
+    />
   </div>
 
   <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(1)}">
@@ -113,18 +109,14 @@ onMount(() => {
   </div>
 
   <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(3)}">
-    <What reasonIndex={activeSection.subStep} />
+    <What slideIndex={activeSection.subStep} />
   </div>
 
   <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(4)}">
-    <WhatGame />
-  </div>
-
-  <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(5)}">
     <Join />
   </div>
 
-  <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(6)}">
+  <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(5)}">
     <Closing />
   </div>
 </div>
