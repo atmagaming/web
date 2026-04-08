@@ -20,10 +20,7 @@ let { children } = $props();
   />
 </svelte:head>
 
-<div class="min-h-screen flex flex-col">
-  <Navbar />
-  <main class="flex-1">
-    {@render children()}
-  </main>
-  <Footer />
-</div>
+<Navbar />
+<main>
+  {@render children()}
+</main>

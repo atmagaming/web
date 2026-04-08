@@ -1,14 +1,14 @@
 <script lang="ts">
-import AboutGame from "@/sections/AboutGame.svelte";
-import ArtMusic from "@/sections/ArtMusic.svelte";
-import CallToAction from "@/sections/CallToAction.svelte";
-import Characters from "@/sections/Characters.svelte";
-import Gameplay from "@/sections/Gameplay.svelte";
-import Hero from "@/sections/Hero.svelte";
-import JoinUs from "@/sections/JoinUs.svelte";
-import Roadmap from "@/sections/Roadmap.svelte";
-import Team from "@/sections/Team.svelte";
-import Universe from "@/sections/Universe.svelte";
+import AboutGame from "@/sections/hypocrisy/AboutGame.svelte";
+import ArtMusic from "@/sections/hypocrisy/ArtMusic.svelte";
+import CallToAction from "@/sections/hypocrisy/CallToAction.svelte";
+import Characters from "@/sections/hypocrisy/Characters.svelte";
+import Gameplay from "@/sections/hypocrisy/Gameplay.svelte";
+import Hero from "@/sections/hypocrisy/Hero.svelte";
+import JoinUs from "@/sections/hypocrisy/JoinUs.svelte";
+import Roadmap from "@/sections/hypocrisy/Roadmap.svelte";
+import Team from "@/sections/hypocrisy/Team.svelte";
+import Universe from "@/sections/hypocrisy/Universe.svelte";
 </script>
 
 <div class="game-page">
