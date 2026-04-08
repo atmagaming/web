@@ -10,11 +10,6 @@ export const reasons = [
     text: "The average gamer plays 6–8 hours per week and has been gaming for 18 years. Unlike passive video consumption, games sustain active, interactive engagement across all age groups.",
   },
   {
-    prefix: "have a ",
-    emphasis: "massive market.",
-    text: "$189B in 2025 — exceeding the global film box office ($33B) and recorded music ($32B) combined. Projected to surpass $200B by 2028.",
-  },
-  {
     prefix: "",
     emphasis: "show by example.",
     text: "Players make decisions, embody characters, and experience consequences. Research confirms that story absorption produces measurable change: increased empathy, reduced prejudice, greater prosocial concern — without the resistance that direct persuasion triggers.",
@@ -23,6 +18,11 @@ export const reasons = [
     prefix: "",
     emphasis: "simulate alternatives.",
     text: "Players inhabit and interact with alternative realities — different social structures, value systems, ways of resolving conflict. The player experiences it firsthand, makes decisions within it, and sees consequences.",
+  },
+  {
+    prefix: "have a ",
+    emphasis: "massive market.",
+    text: "$189B in 2025 — exceeding the global film box office ($33B) and recorded music ($32B) combined. Projected to surpass $200B by 2028.",
   },
   {
     prefix: "are ",
