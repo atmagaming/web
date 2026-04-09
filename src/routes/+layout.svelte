@@ -1,15 +1,16 @@
 <script lang="ts">
 import Navbar from "@/components/Navbar.svelte";
+import { t } from "@/lib/i18n/t";
 import "../app.css";
 
 let { children } = $props();
 </script>
 
 <svelte:head>
-  <title>ATMA</title>
-  <meta name="description" content="ATMA — Facilitate social moral evolution to promote the welfare of all" />
-  <meta property="og:title" content="ATMA" />
-  <meta property="og:description" content="Facilitate social moral evolution to promote the welfare of all" />
+  <title>{t("meta.title")}</title>
+  <meta name="description" content={t("meta.description")} />
+  <meta property="og:title" content={t("meta.title")} />
+  <meta property="og:description" content={t("meta.ogDescription")} />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />

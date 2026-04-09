@@ -1,6 +1,7 @@
 <script lang="ts">
 import { onMount } from "svelte";
 import gsap from "@/lib/gsap";
+import { t } from "@/lib/i18n/t";
 
 let el: HTMLElement;
 
@@ -33,9 +34,9 @@ onMount(() => {
     </div>
 
     <h1 class="hero-game-title font-display text-7xl md:text-9xl font-bold tracking-[0.15em] text-white mb-4">
-      HYPOCRISY
+      {t("hypocrisy.hero.title")}
     </h1>
-    <p class="hero-game-tagline text-xl md:text-2xl text-white/60 mb-12">Fight the regime. Confront your soul.</p>
+    <p class="hero-game-tagline text-xl md:text-2xl text-white/60 mb-12">{t("hypocrisy.hero.tagline")}</p>
 
     <div class="hero-buttons flex flex-col sm:flex-row gap-4 justify-center">
       <a
@@ -44,7 +45,7 @@ onMount(() => {
         rel="noopener noreferrer"
         class="px-8 py-3 bg-accent-600 hover:bg-accent-500 text-white rounded-lg transition-colors text-sm font-medium"
       >
-        Wishlist on Steam
+        {t("hypocrisy.hero.wishlist")}
       </a>
       <a
         href="https://discord.gg/atmagaming"
@@ -52,7 +53,7 @@ onMount(() => {
         rel="noopener noreferrer"
         class="px-8 py-3 border border-white/20 hover:border-white/40 text-white rounded-lg transition-colors text-sm font-medium"
       >
-        Join Discord
+        {t("hypocrisy.hero.discord")}
       </a>
     </div>
   </div>

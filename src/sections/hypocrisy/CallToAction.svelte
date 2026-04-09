@@ -1,6 +1,7 @@
 <script lang="ts">
 import { onMount } from "svelte";
 import gsap from "@/lib/gsap";
+import { t } from "@/lib/i18n/t";
 
 let el: HTMLElement;
 
@@ -26,9 +27,9 @@ onMount(() => {
   ></div>
 
   <div class="cta-content relative z-10 max-w-3xl mx-auto text-center">
-    <h2 class="font-display text-4xl md:text-6xl text-white mb-6">Begin Your Journey</h2>
+    <h2 class="font-display text-4xl md:text-6xl text-white mb-6">{t("hypocrisy.callToAction.title")}</h2>
     <p class="text-lg text-white/50 mb-10">
-      Wishlist Hypocrisy on Steam and join our community to stay updated on development.
+      {t("hypocrisy.callToAction.description")}
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -38,7 +39,7 @@ onMount(() => {
         rel="noopener noreferrer"
         class="px-8 py-3 bg-accent-600 hover:bg-accent-500 text-white rounded-lg transition-colors text-sm font-medium"
       >
-        Wishlist on Steam
+        {t("hypocrisy.callToAction.wishlist")}
       </a>
       <a
         href="https://discord.gg/atmagaming"
@@ -46,13 +47,13 @@ onMount(() => {
         rel="noopener noreferrer"
         class="px-8 py-3 border border-white/20 hover:border-white/40 text-white rounded-lg transition-colors text-sm font-medium"
       >
-        Join Discord
+        {t("hypocrisy.callToAction.discord")}
       </a>
       <a
         href="mailto:ceo@atmagaming.com"
         class="px-8 py-3 border border-white/10 hover:border-white/20 text-white/60 hover:text-white rounded-lg transition-all text-sm"
       >
-        Contact Us
+        {t("hypocrisy.callToAction.contact")}
       </a>
     </div>
   </div>

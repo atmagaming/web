@@ -1,4 +1,6 @@
 <script lang="ts">
+import { t } from "@/lib/i18n/t";
+
 let {
   label,
   description,
@@ -22,7 +24,7 @@ let {
           target="_blank"
           rel="noopener noreferrer"
           class="block mt-2 font-mono text-[0.6rem] tracking-[0.1em] uppercase text-gold hover:text-white transition-colors no-underline"
-        >Read more &nearr;</a>
+        >{t("tooltip.readMore")} &nearr;</a>
       {/if}
     </span>
   </span>

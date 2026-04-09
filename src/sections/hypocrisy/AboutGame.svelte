@@ -1,6 +1,9 @@
 <script lang="ts">
 import { onMount } from "svelte";
 import gsap from "@/lib/gsap";
+import { locale } from "@/lib/i18n";
+import { t } from "@/lib/i18n/t";
+import { translations } from "@/lib/i18n/translations";
 
 let el: HTMLElement;
 
@@ -19,27 +22,24 @@ onMount(() => {
   return () => ctx.revert();
 });
 
-const specs = [
-  { label: "Genre", value: "Action Rogue-lite" },
-  { label: "Setting", value: "Science Fantasy" },
-  { label: "Perspective", value: "2D Side-scroll" },
-  { label: "Platform", value: "PC (Steam)" },
-];
+const specKeys = ["specGenre", "specSetting", "specPerspective", "specPlatform"] as const;
+const specs = $derived(
+  specKeys.map((key) => ({
+    label: translations[locale.value].hypocrisy.about[`${key}Label`],
+    value: translations[locale.value].hypocrisy.about[`${key}Value`],
+  })),
+);
 </script>
 
 <section id="about" bind:this={el} class="py-24 px-6">
   <div class="about-content max-w-4xl mx-auto">
-    <p class="text-sm text-accent-400 uppercase tracking-widest mb-4">About the Game</p>
-    <h2 class="font-display text-4xl md:text-5xl text-white mb-8">A Dark Journey Within</h2>
+    <p class="text-sm text-accent-400 uppercase tracking-widest mb-4">{t("hypocrisy.about.sectionLabel")}</p>
+    <h2 class="font-display text-4xl md:text-5xl text-white mb-8">{t("hypocrisy.about.title")}</h2>
     <p class="text-lg text-white/60 leading-relaxed mb-6">
-      Hypocrisy is an action-adventure rogue-lite with deep RPG elements, set in a rich Science Fantasy universe.
-      Players take on the role of a rebel fighter navigating a dystopian world ruled by a corrupt regime that controls
-      humanity through suppression of the soul.
+      {t("hypocrisy.about.paragraph1")}
     </p>
     <p class="text-lg text-white/60 leading-relaxed mb-6">
-      As you battle through procedurally influenced environments, you'll face not only external enemies but also the
-      inner demons that mirror the very corruption you fight against. Every run brings new challenges, new revelations,
-      and new opportunities for growth.
+      {t("hypocrisy.about.paragraph2")}
     </p>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
       {#each specs as item (item.label)}
