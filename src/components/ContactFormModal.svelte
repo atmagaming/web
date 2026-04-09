@@ -80,7 +80,7 @@ function handleBackdropClick(e: MouseEvent) {
     )}
   >
     <!-- Header with close button -->
-    <div class="flex items-center justify-between px-8 py-6">
+    <div class="flex items-center justify-between px-8 py-4">
       <h2 class="font-display text-2xl tracking-[0.04em] text-dark-950">
         Get in Touch
       </h2>
@@ -95,7 +95,7 @@ function handleBackdropClick(e: MouseEvent) {
     </div>
 
     <!-- Contact Links -->
-    <div class="flex items-center gap-6 px-8 py-4 border-b-[1.5px] border-dark-950/20">
+    <div class="flex items-center gap-6 px-8 py-3 border-b-[1.5px] border-dark-950/20">
       <a
         href="mailto:ceo@atmagaming.com"
         class="flex items-center gap-2 text-dark-950/60 hover:text-gold transition-colors cursor-pointer"
@@ -110,8 +110,8 @@ function handleBackdropClick(e: MouseEvent) {
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-          <polyline points="22,6 12,13 2,6" />
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
         </svg>
         <span class="text-xs font-mono tracking-[0.1em] uppercase">Email</span>
       </a>
