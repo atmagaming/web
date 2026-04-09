@@ -2,31 +2,20 @@
 import { RotateCcw, Swords, Users, Zap } from "lucide-svelte";
 import { onMount } from "svelte";
 import gsap from "@/lib/gsap";
+import { locale } from "@/lib/i18n";
+import { t } from "@/lib/i18n/t";
+import { translations } from "@/lib/i18n/translations";
 
 let el: HTMLElement;
 
-const features = [
-  {
-    icon: Swords,
-    title: "Visceral 2D Combat",
-    description: "Fast-paced melee and ranged combat with fluid combo systems and dodging mechanics.",
-  },
-  {
-    icon: Zap,
-    title: "Skills & Abilities",
-    description: "Unlock and upgrade a diverse skill tree. Combine abilities for devastating synergies.",
-  },
-  {
-    icon: RotateCcw,
-    title: "Rogue-lite Progression",
-    description: "Each run is unique. Carry forward knowledge and key upgrades as you grow stronger.",
-  },
-  {
-    icon: Users,
-    title: "Companions",
-    description: "Recruit allies with unique abilities and stories. Build bonds that shape your journey.",
-  },
-];
+const featureKeys = ["combat", "skills", "roguelite", "companions"] as const;
+const icons = [Swords, Zap, RotateCcw, Users];
+const features = $derived(
+  featureKeys.map((key, i) => ({
+    icon: icons[i],
+    ...translations[locale.value].hypocrisy.gameplay[key],
+  })),
+);
 
 onMount(() => {
   const ctx = gsap.context(() => {
@@ -46,8 +35,8 @@ onMount(() => {
 
 <section id="gameplay" bind:this={el} class="py-24 px-6 bg-dark-900/50">
   <div class="max-w-6xl mx-auto">
-    <p class="text-sm text-accent-400 uppercase tracking-widest mb-4 text-center">Gameplay</p>
-    <h2 class="font-display text-4xl md:text-5xl text-white mb-16 text-center">Core Mechanics</h2>
+    <p class="text-sm text-accent-400 uppercase tracking-widest mb-4 text-center">{t("hypocrisy.gameplay.sectionLabel")}</p>
+    <h2 class="font-display text-4xl md:text-5xl text-white mb-16 text-center">{t("hypocrisy.gameplay.title")}</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {#each features as f (f.title)}

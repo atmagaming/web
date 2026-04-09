@@ -1,4 +1,6 @@
 <script lang="ts">
+import LanguageSwitcher from "@/components/LanguageSwitcher.svelte";
+import { t } from "@/lib/i18n/t";
 import { cn } from "@/lib/utils";
 import { page } from "$app/stores";
 
@@ -23,11 +25,14 @@ let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
 
   <div class="hidden md:flex items-center gap-1">
     {#if isGamePage}
-      <a href="/" class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white/50 px-3.5 py-1.5 hover:text-white transition-colors no-underline">&larr; About</a>
+      <a href="/" class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white/50 px-3.5 py-1.5 hover:text-white transition-colors no-underline">&larr; {t("nav.backAbout")}</a>
     {:else}
-      <a href="/" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname === '/' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>About</a>
-      <a href="/games/hypocrisy" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname.startsWith('/games') ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>Our Games</a>
+      <a href="/" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname === '/' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.about")}</a>
+      <a href="/games/hypocrisy" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname.startsWith('/games') ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.ourGames")}</a>
     {/if}
+    <div class={isGamePage ? "[&_button]:text-white/50 [&_button]:hover:text-white [&_button.text-red]:text-red" : ""}>
+      <LanguageSwitcher />
+    </div>
     <button
       type="button"
       class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white bg-red px-4 py-1.5 ml-3 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
@@ -35,6 +40,6 @@ let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
         window.dispatchEvent(new CustomEvent('scrollto', { detail: 'join' }));
         document.querySelector('#join')?.scrollIntoView({ behavior: 'smooth' });
       }}
-    >Get in Touch &darr;</button>
+    >{t("nav.getInTouch")} &darr;</button>
   </div>
 </nav>

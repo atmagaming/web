@@ -1,33 +1,20 @@
 <script lang="ts">
 import { onMount } from "svelte";
 import gsap from "@/lib/gsap";
+import { locale } from "@/lib/i18n";
+import { t } from "@/lib/i18n/t";
+import { translations } from "@/lib/i18n/translations";
 
 let el: HTMLElement;
 
-const phases = [
-  {
-    phase: "Phase 1",
-    title: "Prototype",
-    status: "current",
-    description:
-      "Core combat mechanics, first playable world, companion system foundation. Building the soul of the game.",
-    items: ["Core combat loop", "First world prototype", "Base companion AI", "Art style exploration"],
-  },
-  {
-    phase: "Phase 2",
-    title: "Early Access Prep",
-    status: "upcoming",
-    description: "Expanding content, polishing systems, and preparing for community feedback.",
-    items: ["3 playable worlds", "Full skill tree", "Rogue-lite progression", "Steam Early Access launch"],
-  },
-  {
-    phase: "Phase 3",
-    title: "Full Release",
-    status: "future",
-    description: "Complete vision with all worlds, companions, and the full narrative experience.",
-    items: ["All 6 worlds", "8 companions", "Full story campaign", "Original soundtrack"],
-  },
-];
+const phaseKeys = ["phase1", "phase2", "phase3"] as const;
+const statuses = ["current", "upcoming", "future"] as const;
+const phases = $derived(
+  phaseKeys.map((key, i) => ({
+    ...translations[locale.value].hypocrisy.roadmap[key],
+    status: statuses[i],
+  })),
+);
 
 onMount(() => {
   const ctx = gsap.context(() => {
@@ -47,8 +34,8 @@ onMount(() => {
 
 <section id="roadmap" bind:this={el} class="py-24 px-6 bg-dark-900/50">
   <div class="max-w-5xl mx-auto">
-    <p class="text-sm text-accent-400 uppercase tracking-widest mb-4 text-center">Roadmap</p>
-    <h2 class="font-display text-4xl md:text-5xl text-white mb-16 text-center">Development Journey</h2>
+    <p class="text-sm text-accent-400 uppercase tracking-widest mb-4 text-center">{t("hypocrisy.roadmap.sectionLabel")}</p>
+    <h2 class="font-display text-4xl md:text-5xl text-white mb-16 text-center">{t("hypocrisy.roadmap.title")}</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {#each phases as p (p.phase)}
@@ -61,7 +48,7 @@ onMount(() => {
             <span
               class="absolute top-4 right-4 text-[10px] uppercase tracking-wider text-accent-400 bg-accent-600/20 px-2 py-1 rounded-full"
             >
-              Current
+              {t("hypocrisy.roadmap.current")}
             </span>
           {/if}
           <p class="text-xs text-white/40 uppercase tracking-wider mb-2">{p.phase}</p>

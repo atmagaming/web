@@ -1,51 +1,14 @@
 <script lang="ts">
 import { onMount } from "svelte";
 import gsap from "@/lib/gsap";
+import { locale } from "@/lib/i18n";
+import { t } from "@/lib/i18n/t";
+import { translations } from "@/lib/i18n/translations";
 
 let el: HTMLElement;
 
-const companions = [
-  {
-    name: "Helios",
-    role: "The Radiant Warrior",
-    description: "A former soldier of the regime who defected after witnessing its true nature.",
-  },
-  {
-    name: "Kai",
-    role: "The Shadow Trickster",
-    description: "A cunning infiltrator who uses deception as a weapon against the corrupt.",
-  },
-  {
-    name: "Iris",
-    role: "The Seer",
-    description: "A mystic who can perceive the threads of fate and guide others through darkness.",
-  },
-  {
-    name: "Kira",
-    role: "The Alchemist",
-    description: "A brilliant inventor who transforms raw elements into powerful tools of rebellion.",
-  },
-  {
-    name: "Darius",
-    role: "The Guardian",
-    description: "An unyielding protector whose strength comes from his unshakable convictions.",
-  },
-  {
-    name: "Ronin",
-    role: "The Wanderer",
-    description: "A masterless blade seeking purpose in a world that has lost its way.",
-  },
-  {
-    name: "Lucy",
-    role: "The Healer",
-    description: "A compassionate soul who mends both wounds and spirits with equal care.",
-  },
-  {
-    name: "Nellie",
-    role: "The Chronicler",
-    description: "A keeper of forbidden knowledge who preserves the truth the regime tries to erase.",
-  },
-];
+const companionKeys = ["helios", "kai", "iris", "kira", "darius", "ronin", "lucy", "nellie"] as const;
+const companions = $derived(companionKeys.map((key) => translations[locale.value].hypocrisy.characters[key]));
 
 onMount(() => {
   const ctx = gsap.context(() => {
@@ -65,10 +28,10 @@ onMount(() => {
 
 <section id="characters" bind:this={el} class="py-24 px-6 bg-dark-900/50">
   <div class="max-w-6xl mx-auto">
-    <p class="text-sm text-accent-400 uppercase tracking-widest mb-4 text-center">Characters</p>
-    <h2 class="font-display text-4xl md:text-5xl text-white mb-6 text-center">Your Companions</h2>
+    <p class="text-sm text-accent-400 uppercase tracking-widest mb-4 text-center">{t("hypocrisy.characters.sectionLabel")}</p>
+    <h2 class="font-display text-4xl md:text-5xl text-white mb-6 text-center">{t("hypocrisy.characters.title")}</h2>
     <p class="text-lg text-white/50 text-center max-w-2xl mx-auto mb-16">
-      Allies who join your fight, each carrying their own scars, strengths, and stories.
+      {t("hypocrisy.characters.description")}
     </p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -1,11 +1,14 @@
 <script lang="ts">
 import { fade } from "svelte/transition";
 import SectionHeader from "@/components/ui/SectionHeader.svelte";
-import { reasons } from "./reasons";
+import { locale } from "@/lib/i18n";
+import { t } from "@/lib/i18n/t";
+import { translations } from "@/lib/i18n/translations";
 import WhatGame from "./WhatGame.svelte";
 
 let { slideIndex = $bindable(0), pinned = false }: { slideIndex?: number; pinned?: boolean } = $props();
 
+const reasons = $derived(translations[locale.value].home.reasons);
 const showingReasons = $derived(slideIndex < reasons.length);
 </script>
 
@@ -22,7 +25,7 @@ const showingReasons = $derived(slideIndex < reasons.length);
           class="absolute font-display text-[clamp(20rem,40vw,45rem)] leading-none text-dark-950/[0.04] tabular-nums"
           transition:fade={{ duration: 300 }}
         >
-          {showingReasons ? String(slideIndex + 1).padStart(2, "0") : "FIRST GAME"}
+          {showingReasons ? String(slideIndex + 1).padStart(2, "0") : t("home.what.firstGameBg")}
         </span>
       {/key}
     </div>
@@ -45,17 +48,17 @@ const showingReasons = $derived(slideIndex < reasons.length);
 
     <!-- Static header -->
     <div>
-      <SectionHeader number="03" label="What &middot; First Initiative" />
+      <SectionHeader number={t("home.what.number")} label={t("home.what.label")} />
 
       <h2
         class="font-display text-[clamp(2.2rem,7.5vw,7.5rem)] leading-[0.88] tracking-[0.01em] text-dark-950 mb-2 lg:mb-4"
       >
-        ATMA<br /><span class="text-gold">GAMING.</span>
+        {t("home.what.title1")}<br /><span class="text-gold">{t("home.what.title2")}</span>
       </h2>
 
       <p class="text-[1.15rem] leading-[1.65] text-text max-w-[640px] mb-12">
-        Our first vehicle for cultural education is a <strong class="font-medium text-dark-950">video game studio</strong>
-        — making story-rich, non-niche games that use storytelling as a tool for propagating ideas.
+        {t("home.what.description")} <strong class="font-medium text-dark-950">{t("home.what.descriptionBold")}</strong>
+        {t("home.what.descriptionSuffix")}
       </p>
     </div>
 
@@ -66,13 +69,13 @@ const showingReasons = $derived(slideIndex < reasons.length);
           ? 'opacity-100 translate-y-0'
           : 'opacity-0 -translate-y-8 pointer-events-none'}"
       >
-        <div class="font-mono text-[0.63rem] tracking-[0.25em] uppercase text-text mb-6">Why games?</div>
+        <div class="font-mono text-[0.63rem] tracking-[0.25em] uppercase text-text mb-6">{t("home.what.whyGames")}</div>
 
         <div class="max-w-[700px]">
           <div class="flex items-baseline gap-3 mb-4">
             <span
               class="font-display text-[clamp(1.6rem,3vw,2.8rem)] leading-[1.05] tracking-[0.02em] text-dark-950 uppercase shrink-0"
-              >GAMES</span
+              >{t("home.what.gamesPrefix")}</span
             >
             <div class="relative flex-1">
               {#each reasons as reason, i}
@@ -121,15 +124,15 @@ const showingReasons = $derived(slideIndex < reasons.length);
 {:else}
   <!-- Mobile: static layout, all reasons visible -->
   <section class="px-6 py-12 border-t-[1.5px] border-dark-950" id="what">
-    <SectionHeader number="03" label="What &middot; First Initiative" />
+    <SectionHeader number={t("home.what.number")} label={t("home.what.label")} />
 
     <h2 class="font-display text-[clamp(2.2rem,7.5vw,7.5rem)] leading-[0.88] tracking-[0.01em] text-dark-950 mb-2">
       ATMA<br /><span class="text-gold">GAMING.</span>
     </h2>
 
     <p class="text-[0.95rem] leading-[1.55] text-text max-w-[640px] mb-8">
-      Our first vehicle for cultural education is a <strong class="font-medium text-dark-950">video game studio</strong>
-      — making story-rich, non-niche games that use storytelling as a tool for propagating ideas.
+      {t("home.what.description")} <strong class="font-medium text-dark-950">{t("home.what.descriptionBold")}</strong>
+      {t("home.what.descriptionSuffix")}
     </p>
 
     <div class="font-mono text-[0.63rem] tracking-[0.25em] uppercase text-text mb-6">Why games?</div>
@@ -138,7 +141,7 @@ const showingReasons = $derived(slideIndex < reasons.length);
       {#each reasons as reason}
         <div>
           <p class="font-display text-[1.3rem] leading-[1.1] tracking-[0.02em] text-dark-950 uppercase mb-2">
-            GAMES {reason.prefix}<span class="text-red">{reason.emphasis}</span>
+            {t("home.what.gamesPrefix")} {reason.prefix}<span class="text-red">{reason.emphasis}</span>
           </p>
           <p class="text-[0.9rem] leading-[1.6] text-text">
             {reason.text}
