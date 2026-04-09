@@ -1,5 +1,5 @@
-import type { Locale } from "./index";
-import { locale } from "./index";
+import type { Locale } from "./locale.svelte";
+import { locale } from "./locale.svelte";
 import { translations } from "./translations";
 
 type Translations = typeof translations.en;
