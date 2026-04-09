@@ -6,14 +6,13 @@ type Category = "partner" | "investor";
 
 let {
   open = false,
-  category = "partner",
   onClose,
 }: {
   open: boolean;
-  category?: Category;
   onClose: () => void;
 } = $props();
 
+let category = $state<Category>("partner");
 let loading = $state(false);
 let submitted = $state(false);
 let error = $state<string | null>(null);
@@ -104,12 +103,24 @@ function handleBackdropClick(e: MouseEvent) {
 				<p class="text-sm text-text">We'll get back to you soon.</p>
 			</div>
 		{:else}
-			<form onsubmit={handleSubmit} class="space-y-5">
-				{#if error}
-					<div class="p-4 bg-red-50 border-[1.5px] border-red-200 rounded text-red-900 text-sm">
-						{error}
-					</div>
-				{/if}
+			<div class="space-y-5">
+				<div class="flex gap-3">
+					<label class="flex items-center cursor-pointer">
+						<input type="radio" name="category" value="partner" bind:group={category} class="w-4 h-4" />
+						<span class="ml-2 text-sm text-dark-950">Partner</span>
+					</label>
+					<label class="flex items-center cursor-pointer">
+						<input type="radio" name="category" value="investor" bind:group={category} class="w-4 h-4" />
+						<span class="ml-2 text-sm text-dark-950">Investor</span>
+					</label>
+				</div>
+
+				<form onsubmit={handleSubmit} class="space-y-5">
+					{#if error}
+						<div class="p-4 bg-red-50 border-[1.5px] border-red-200 rounded text-red-900 text-sm">
+							{error}
+						</div>
+					{/if}
 
 				<div>
 					<label for="name" class="block text-xs font-mono tracking-[0.12em] uppercase text-dark-950/70 mb-2">
@@ -162,6 +173,7 @@ function handleBackdropClick(e: MouseEvent) {
 					</Button>
 				</div>
 			</form>
+			</div>
 		{/if}
 	</div>
 </div>
