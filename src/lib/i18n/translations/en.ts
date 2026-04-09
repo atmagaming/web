@@ -130,11 +130,6 @@ export const en = {
         emphasis: "art.",
         text: "Art transforms through direct experience — without the need for analytical thinking. Sheer exposure to optimistic, compassionate characters and worlds gradually shifts the player's own tendencies. The mood is transitioned by contact. People learn by example, not by lecture.",
       },
-      {
-        prefix: "provide ",
-        emphasis: "immediate relief.",
-        text: "Games can offer psychological stress relief — though this must be carefully balanced to avoid escapism. We reject purely exploitative monetization and push our games to be cultural products first and foremost.",
-      },
     ],
     whatGame: {
       number: "04",
@@ -187,79 +182,93 @@ export const en = {
     hero: {
       title: "HYPOCRISY",
       tagline: "Fight the regime. Confront your soul.",
-      wishlist: "Wishlist on Steam",
-      discord: "Join Discord",
+      description: "Action Roguelike RPG",
+      setting: "Sci-Fantasy",
+      platforms: "Steam • PC • Mac • Consoles",
+      schedule: "Early Demo: May 2026 • Early Access: Late 2026 • Full Release: 2027",
+      scrollHint: "Discover the world",
     },
-    about: {
-      sectionLabel: "About the Game",
-      title: "A Dark Journey Within",
+    premise: {
+      sectionLabel: "The Game",
+      title: "A War Outside. A War Within.",
       paragraph1:
-        "Hypocrisy is an action-adventure rogue-lite with deep RPG elements, set in a rich Science Fantasy universe. Players take on the role of a rebel fighter navigating a dystopian world ruled by a corrupt regime that controls humanity through suppression of the soul.",
+        "In a universe of floating islands held aloft by massive crystals, a despotic regime controls humanity by exploiting the darkest impulses of the soul. You are a rebel fighter, wielding ARIA — a futuristic living suit that bonds with its host — rising through six stacked worlds to reach the tyrant at the top.",
       paragraph2:
-        "As you battle through procedurally influenced environments, you'll face not only external enemies but also the inner demons that mirror the very corruption you fight against. Every run brings new challenges, new revelations, and new opportunities for growth.",
-      specGenreLabel: "Genre",
-      specGenreValue: "Action Rogue-lite",
-      specSettingLabel: "Setting",
-      specSettingValue: "Science Fantasy",
-      specPerspectiveLabel: "Perspective",
-      specPerspectiveValue: "2D Side-scroll",
-      specPlatformLabel: "Platform",
-      specPlatformValue: "PC (Steam)",
+        "But the true battle is internal. Each world embodies an enemy of the soul — wrath, desire, greed, obsession, envy, pride — and confronting them means confronting yourself. Death is not the end: it is the teacher. Every fall strips your progress, but the knowledge you carry forward reshapes the journey.",
     },
-    gameplay: {
-      sectionLabel: "Gameplay",
-      title: "Core Mechanics",
-      combat: {
-        title: "Visceral 2D Combat",
-        description: "Fast-paced melee and ranged combat with fluid combo systems and dodging mechanics.",
-      },
-      skills: {
-        title: "Skills & Abilities",
-        description: "Unlock and upgrade a diverse skill tree. Combine abilities for devastating synergies.",
-      },
-      roguelite: {
-        title: "Rogue-lite Progression",
-        description: "Each run is unique. Carry forward knowledge and key upgrades as you grow stronger.",
-      },
-      companions: {
-        title: "Companions",
-        description: "Recruit allies with unique abilities and stories. Build bonds that shape your journey.",
-      },
-    },
-    universe: {
-      sectionLabel: "Universe & Worlds",
-      title: "Six Worlds. Six Enemies.",
+    world: {
+      sectionLabel: "The Universe",
+      title: "Six Worlds. Six Enemies of the Soul.",
       description:
-        "Each world represents an enemy of the soul — a fundamental flaw that the regime exploits to maintain control. Conquer them to reclaim your true self.",
-      greed: {
-        name: "World of Greed",
-        description: "A realm of excess where materialism consumes all. Golden towers hide hollow souls.",
-      },
+        "Six worlds stacked vertically, each resembling a galaxy centered around massive crystals that provide light, warmth, and energy. The only way up is through. From the solid ground of the lowest world to the towering heights of pride — you must conquer each to ascend.",
       wrath: {
-        name: "World of Wrath",
-        description: "Burning landscapes of uncontrolled rage. Destruction is the only language spoken here.",
+        name: "Wrath",
+        layer: "First World",
+        description:
+          "The foundation. Solid ground stretching infinitely deep, scorched by uncontrolled rage. Destruction is the only language spoken here. This is where every journey begins.",
       },
-      sloth: {
-        name: "World of Sloth",
-        description: "A decaying paradise where apathy reigns. Beauty fades as ambition withers.",
+      desire: {
+        name: "Desire",
+        layer: "Second World",
+        description:
+          "A seductive realm of longing suspended in the sky. Floating islands draped in beauty that masks emptiness. What you chase here will never satisfy.",
+      },
+      greed: {
+        name: "Greed",
+        layer: "Third World",
+        description:
+          "Islands of excess orbiting golden crystals. Towering monuments to accumulation hide hollow cores. The more you take, the less you have.",
+      },
+      obsession: {
+        name: "Obsession",
+        layer: "Fourth World",
+        description:
+          "A maze of repeating patterns and spiraling structures. The crystals here pulse with hypnotic rhythm. Breaking free means letting go.",
       },
       envy: {
-        name: "World of Envy",
-        description: "Mirrors and illusions everywhere. Nothing is real, nothing is ever enough.",
+        name: "Envy",
+        layer: "Fifth World",
+        description:
+          "Mirrors and illusions suspended between shimmering crystals. Nothing is real, nothing is ever enough. The world distorts to show you what others have.",
       },
       pride: {
-        name: "World of Pride",
-        description: "Towering monuments to ego. The higher you climb, the further you fall.",
+        name: "Pride",
+        layer: "Sixth World",
+        description:
+          "The highest realm. Islands that scrape the veil itself. Towering monuments to ego, bathed in blinding crystal light. The higher you climb, the further you fall.",
       },
-      lust: {
-        name: "World of Lust",
-        description: "A seductive labyrinth of desire. Pleasure masks the emptiness beneath.",
+    },
+    combat: {
+      sectionLabel: "Gameplay",
+      title: "The Fight Within",
+      ariaDescription:
+        "You control ARIA — a futuristic living suit that bonds with its host. Combat is fast-paced, easy to learn, but demanding to master. Switch between skills, build devastating combos, and adapt to enemies that embody the very flaws you must overcome.",
+      combat: {
+        title: "Fast-Paced Isometric Combat",
+        description:
+          "Fluid melee and ranged combat in a 3D isometric world. Chain attacks, dodge, and exploit enemy weaknesses in encounters that reward precision and creativity.",
+      },
+      skills: {
+        title: "Deep Skill System",
+        description:
+          "Unlock and master a branching skill tree. Every run lets you experiment with new builds — finding the synergies that match your playstyle.",
+      },
+      roguelite: {
+        title: "Meaningful Death",
+        description:
+          "When you die, you lose your level and gold — but not your knowledge. Each run reshapes the path: different routes, different characters, different items. Mastery comes through repetition.",
+      },
+      companions: {
+        title: "Companions With Depth",
+        description:
+          "Eight allies with unique abilities and stories. The bonds you build with them reveal the essence of your character — and unlock new possibilities.",
       },
     },
     characters: {
       sectionLabel: "Characters",
       title: "Your Companions",
-      description: "Allies who join your fight, each carrying their own scars, strengths, and stories.",
+      description:
+        "Eight allies join your rebellion. Each carries their own scars, strengths, and stories — and the bonds you forge with them shape the journey.",
       helios: {
         name: "Helios",
         role: "The Radiant Warrior",
@@ -273,7 +282,7 @@ export const en = {
       iris: {
         name: "Iris",
         role: "The Seer",
-        description: "A mystic who can perceive the threads of fate and guide others through darkness.",
+        description: "A mystic who perceives the threads of fate and guides others through darkness.",
       },
       kira: {
         name: "Kira",
@@ -301,25 +310,46 @@ export const en = {
         description: "A keeper of forbidden knowledge who preserves the truth the regime tries to erase.",
       },
     },
-    artMusic: {
-      sectionLabel: "Art & Music",
-      title: "Crafted with Soul",
-      artTitle: "Art Direction",
-      artDescription:
-        "A distinctive blend of dark, atmospheric environments with vibrant energy effects. Hand-crafted pixel art meets modern lighting — creating a visual language that is both nostalgic and fresh.",
-      conceptArt: "Concept Art",
-      soundtrackTitle: "Soundtrack",
-      soundtrackDescription:
-        "An original soundtrack that weaves orchestral grandeur with electronic textures. Each world has its own sonic identity — from haunting ambient pieces to pulse-pounding battle themes.",
-      trackMainTheme: "Main Theme",
-      trackGreed: "World of Greed",
-      trackBattle: "Battle Anthem",
-      trackReflection: "Reflection",
-      comingSoon: "Coming soon",
+    mission: {
+      sectionLabel: "The Mission",
+      title: "More Than a Game",
+      paragraph1:
+        "Hypocrisy is the first project of ATMA — an organization dedicated to transforming society through cultural products. We believe the crises of our time share a common root: a misunderstanding of human nature. Games, as the most engaging medium of our era, have the power to shift perspectives without the resistance that direct persuasion triggers.",
+      paragraph2:
+        "Through Hypocrisy, we propagate ideas of morality and universalism — not through lectures, but through lived experience. Players confront the enemies of the soul not as abstract concepts, but as worlds they must navigate, understand, and overcome. The transformation happens through play.",
+      founderName: "Vladyslav Yazykov",
+      founderRole: "Founder & Creative Director",
+      discoverAtma: "Discover ATMA's Mission",
     },
-    roadmap: {
-      sectionLabel: "Roadmap",
-      title: "Development Journey",
+    devProgress: {
+      sectionLabel: "Development",
+      title: "Behind the Curtain",
+      subtitle: "A look at where we are. Everything here is work in progress.",
+      visualsTab: "Visuals",
+      soundtrackTab: "Soundtrack",
+      roadmapTab: "Roadmap",
+      galleryItems: {
+        phoenixPolished: "Phoenix — Polished Concept",
+        phoenixShapes: "Phoenix — Shape Studies",
+        worldBuildings: "World — Architecture",
+        worldPlants: "World — Flora",
+        worldEnvironment: "World — Environment",
+        character: "Character In-Game",
+        circlePlatform: "Platform Mechanic",
+        levelDesign: "Level Design",
+        deathScreen: "Death Screen UI",
+        earlyUi: "Early UI Concept",
+        hud: "Heads-Up Display",
+        mainMenu: "Main Menu",
+        upgrades: "Upgrade System",
+      },
+      tracks: {
+        mainMystery: "Main Mystery",
+        krodha: "Krodha",
+        mohaAttachment: "Moha — Attachment",
+        drf: "DRF",
+        reflection: "Reflection",
+      },
       current: "Current",
       phase1: {
         phase: "Phase 1",
@@ -341,29 +371,18 @@ export const en = {
         items: ["All 6 worlds", "8 companions", "Full story campaign", "Original soundtrack"],
       },
     },
-    team: {
-      sectionLabel: "Team",
-      title: "The People Behind ATMA",
-      description: "A small, passionate team united by a shared vision of creating meaningful gaming experiences.",
-      founderName: "Vladyslav Yaremchuk",
-      founderRole: "Founder & Creative Director",
-      memberName: "Team Member",
-      roleDev: "Game Developer",
-      roleArtist: "Artist",
-      roleSound: "Sound Designer",
-    },
-    joinUs: {
-      sectionLabel: "Careers",
-      title: "Join the Team",
+    joinCta: {
+      sectionLabel: "Join Us",
+      title: "Build This World With Us",
       description:
-        "We're looking for passionate individuals who share our vision. If you want to create games that matter, we'd love to hear from you.",
+        "We're looking for people who want their work to mean something beyond the product. If you share our vision of games that transform, we want to hear from you.",
       roleDev: {
         title: "Game Developer",
         type: "Full-time / Remote",
         description: "Build core gameplay systems in Unity/Godot.",
       },
       roleArtist: {
-        title: "2D Artist",
+        title: "2D / 3D Artist",
         type: "Full-time / Remote",
         description: "Create characters, environments, and UI art.",
       },
@@ -378,10 +397,8 @@ export const en = {
         description: "Grow and nurture our player community.",
       },
       applyNow: "Apply Now",
-    },
-    callToAction: {
-      title: "Begin Your Journey",
-      description: "Wishlist Hypocrisy on Steam and join our community to stay updated on development.",
+      ctaTitle: "Begin Your Journey",
+      ctaDescription: "Wishlist Hypocrisy on Steam and join our community to follow development.",
       wishlist: "Wishlist on Steam",
       discord: "Join Discord",
       contact: "Contact Us",
