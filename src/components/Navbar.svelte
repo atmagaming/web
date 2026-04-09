@@ -34,7 +34,7 @@ onMount(() => {
     "fixed top-0 left-0 right-0 z-[500] flex items-center justify-between px-6 lg:px-16 h-[52px] backdrop-blur-sm transition-transform duration-300",
     hidden && !mobileOpen && "-translate-y-full",
     isGamePage
-      ? "bg-[#050507]/80 border-b border-white/10"
+      ? "bg-[#03050a]/30 border-b border-white/5 backdrop-blur-md"
       : "bg-white/[0.96] border-b-[1.5px] border-dark-950",
   )}
 >

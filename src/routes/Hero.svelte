@@ -1,4 +1,5 @@
 <script lang="ts">
+import ScrollPrompt from "@/components/ScrollPrompt.svelte";
 import Button from "@/components/ui/Button.svelte";
 import { t } from "@/lib/i18n/t";
 import { fitText } from "@/lib/utils";
@@ -47,8 +48,5 @@ let {
     >{t("home.hero.missionStatement")} &nearr;</Button>
   </div>
 
-  <div class="absolute bottom-8 right-16 font-mono text-[0.6rem] tracking-[0.18em] uppercase text-border hidden lg:flex items-center gap-3">
-    {t("home.hero.scroll")}
-    <span class="block w-px h-8 bg-gradient-to-b from-border to-transparent"></span>
-  </div>
+  <ScrollPrompt textKey="home.hero.scroll" color="rgba(107, 114, 128, 0.6)" position="bottom-right" />
 </section>
