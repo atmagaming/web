@@ -14,11 +14,11 @@ export const en = {
   home: {
     hero: {
       tag: "ATMA \u00B7 moral Evolution for the welfare of all",
-      title1: "IDEAS SHAPE",
-      title2: "CIVILIZATIONS.",
-      title3: "WE SHAPE IDEAS.",
+      title1: "CULTURE DEFINES",
+      title2: "CIVILIZATION.",
+      title3: "WE SHAPE IT.",
       mission:
-        "ATMA builds cultural products that shift how people think — about happiness, suffering, and each other.",
+        "The crises of our time share a common root — a misunderstanding of human nature. ATMA creates cultural products that address it directly.",
       startingWithGames: "Starting with games.",
       whyWeExist: "Why we exist",
       missionStatement: "Mission Statement",
@@ -32,24 +32,25 @@ export const en = {
       title2: "IS",
       title3: "IDEOLOGICAL.",
       paragraph1prefix:
-        "Poverty, war, mental health crises, environmental collapse — these share a common root: a culture built on",
+        "Billions lack basic necessities. Wars rage. Over a billion people live with a mental health disorder. The environment degrades. These problems share a common root: a culture built on",
       paragraph1suffix: ".",
       tooltipMisunderstanding: {
         label: "misunderstanding human nature",
         description:
-          "Over a billion people live with a mental health disorder. Depression and anxiety alone cost the global economy $1 trillion/year. The real cause: the attempt to satisfy an infinite longing for happiness through finite material means.",
+          "The disregard of the spiritual dimension of life — the attempt to satisfy an infinite longing for happiness through finite material means. A culture built on this misunderstanding naturally produces exploitation, suffering, and environmental destruction.",
       },
-      paragraph2prefix: "Structural fixes — policy, economics, institutions — are necessary but not sufficient.",
+      paragraph2prefix:
+        "The structural causes — geopolitical power, resource competition, institutional failures — are real. But they are themselves",
       tooltipValues: {
-        label: "You cannot sustainably fix behavior without changing values",
+        label: "symptoms of a deeper civilizational orientation",
         description:
-          "Every structural solution rests on the values of those who implement it. Transparent governance requires honest people. Fair economies require a culture that condemns exploitation. Without ideological foundation, reforms are temporary — reversed by the next generation with different incentives.",
+          "To achieve a profound, long-lived result, we must change people's thinking. Otherwise, any result is temporary. Cultural and ideological influence is required — not just policy reform.",
       },
       paragraph3prefix: "Humanity",
       paragraph3has: "has",
       paragraph3middle:
         "progressed morally: slavery abolished, human rights codified, environmental consciousness emerged.",
-      paragraph3bold: "We can go further.",
+      paragraph3bold: "But we can go further.",
     },
     how: {
       number: "02",
@@ -81,18 +82,19 @@ export const en = {
       },
       track2title: "Immediate Relief",
       track2text:
-        "Revenue from commercial products funds direct aid — refugees, under-resourced communities, environmental projects.",
+        "ATMA creates commercial products within the existing market system — providing meaningful work with beneficial impact, while channeling resources toward urgent needs: refugees, under-resourced communities, environmental projects.",
       track2bold: "Working within the market",
-      track2suffix: ", not against it. Sustainable impact model.",
+      track2suffix: ", not against it.",
     },
     what: {
       number: "03",
       label: "What \u00B7 First Initiative",
       title1: "ATMA",
       title2: "GAMING.",
-      description: "Our first vehicle for cultural education is a",
-      descriptionBold: "video game studio",
-      descriptionSuffix: "— making story-rich, non-niche games that use storytelling as a tool for propagating ideas.",
+      description: "ATMA Gaming is a",
+      descriptionBold: "video game development studio",
+      descriptionSuffix:
+        "— making story-rich, non-niche games that utilize storytelling as a powerful tool for propagating ideas.",
       whyGames: "Why games?",
       gamesPrefix: "GAMES",
       firstGameBg: "FIRST GAME",
@@ -124,9 +126,14 @@ export const en = {
         text: "$189B in 2025 — exceeding the global film box office ($33B) and recorded music ($32B) combined. Projected to surpass $200B by 2028.",
       },
       {
-        prefix: "are ",
+        prefix: "are a form of ",
         emphasis: "art.",
-        text: "Art transforms through direct experience — without the need for analytical thinking. Sheer exposure to optimistic, compassionate characters and worlds gradually shifts the player's own tendencies. People learn by contact, not by lecture.",
+        text: "Art transforms through direct experience — without the need for analytical thinking. Sheer exposure to optimistic, compassionate characters and worlds gradually shifts the player's own tendencies. The mood is transitioned by contact. People learn by example, not by lecture.",
+      },
+      {
+        prefix: "provide ",
+        emphasis: "immediate relief.",
+        text: "Games can offer psychological stress relief — though this must be carefully balanced to avoid escapism. We reject purely exploitative monetization and push our games to be cultural products first and foremost.",
       },
     ],
     whatGame: {
@@ -165,8 +172,8 @@ export const en = {
     },
     closing: {
       line1: "CHANGE",
-      line1accent: "MINDS.",
-      line2: "CHANGE SYSTEMS.",
+      line1accent: "THINKING.",
+      line2: "CHANGE CULTURE.",
       line3: "CHANGE THE WORLD.",
       missionStatement: "Mission Statement",
       getInTouch: "Get in Touch",
