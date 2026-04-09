@@ -104,7 +104,7 @@ function handleBackdropClick(e: MouseEvent) {
 				<p class="text-sm text-text">We'll get back to you soon.</p>
 			</div>
 		{:else}
-			<form on:submit={handleSubmit} class="space-y-5">
+			<form onsubmit={handleSubmit} class="space-y-5">
 				{#if error}
 					<div class="p-4 bg-red-50 border-[1.5px] border-red-200 rounded text-red-900 text-sm">
 						{error}

@@ -17,7 +17,7 @@ const whatSteps = reasons.length + 1;
 const sectionSteps = [1, 1, 1, whatSteps, 1, 1];
 const totalSteps = sectionSteps.reduce((sum, s) => sum + s, 0);
 
-let container: HTMLDivElement;
+let container = $state<HTMLDivElement | undefined>(undefined);
 let currentStep = $state(0);
 let isDesktop = $state(browser && window.innerWidth >= LG_BREAKPOINT);
 
