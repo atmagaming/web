@@ -1,6 +1,7 @@
 <script lang="ts">
 import Button from "@/components/ui/Button.svelte";
 import { t } from "@/lib/i18n/t";
+import { fitText } from "@/lib/utils";
 
 let {
   onScrollToWhy,
@@ -23,7 +24,7 @@ let {
     {t("home.hero.tag")}
   </p>
 
-  <h1 class="hero-title font-display text-[clamp(4rem,12vw,12rem)] leading-[0.88] tracking-[0.01em] text-dark-950 mb-6">
+  <h1 use:fitText class="hero-title font-display text-[clamp(4rem,12vw,12rem)] leading-[0.88] tracking-[0.01em] text-dark-950 mb-6">
     {t("home.hero.title1")}<br>
     <span class="text-red">{t("home.hero.title2")}</span><br>
     {t("home.hero.title3")}

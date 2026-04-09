@@ -2,13 +2,14 @@
 import SectionHeader from "@/components/ui/SectionHeader.svelte";
 import Tooltip from "@/components/ui/Tooltip.svelte";
 import { t } from "@/lib/i18n/t";
+import { fitText } from "@/lib/utils";
 </script>
 
 <section class="min-h-screen flex items-center px-6 lg:px-16 py-24 border-t-[1.5px] border-dark-950 bg-surface">
   <div class="how-inner w-full">
     <SectionHeader number={t("home.how.number")} label={t("home.how.label")} />
 
-    <h2 class="font-display text-[clamp(3rem,7.5vw,7.5rem)] leading-[0.88] tracking-[0.01em] text-dark-950 mb-12">
+    <h2 use:fitText class="font-display text-[clamp(3rem,7.5vw,7.5rem)] leading-[0.88] tracking-[0.01em] text-dark-950 mb-12">
       {t("home.how.title1")}<br>{t("home.how.title2")}<br><span class="text-gold">{t("home.how.title3")}</span> {t("home.how.title4")}
     </h2>
 
