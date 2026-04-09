@@ -2,13 +2,16 @@
 import { onMount } from "svelte";
 import LanguageSwitcher from "@/components/LanguageSwitcher.svelte";
 import { t } from "@/lib/i18n/t";
+import { modalOpen } from "@/lib/stores";
 import { cn } from "@/lib/utils";
 import { page } from "$app/stores";
 
 let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
 let mobileOpen = $state(false);
-let hidden = $state(false);
+let scrollHidden = $state(false);
 let lastScrollY = 0;
+
+let hidden = $derived(scrollHidden || $modalOpen);
 
 function closeMobile() {
   mobileOpen = false;
@@ -17,8 +20,8 @@ function closeMobile() {
 onMount(() => {
   function onScroll() {
     const y = window.scrollY;
-    if (y < 52) hidden = false;
-    else hidden = y > lastScrollY;
+    if (y < 52) scrollHidden = false;
+    else scrollHidden = y > lastScrollY;
     lastScrollY = y;
   }
   window.addEventListener("scroll", onScroll, { passive: true });
