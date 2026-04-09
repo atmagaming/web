@@ -1,30 +1,16 @@
 <script lang="ts">
-import { onMount } from "svelte";
 
 import ScrollPrompt from "@/components/ScrollPrompt.svelte";
-import gsap from "@/lib/gsap";
 import { t } from "@/lib/i18n/t";
 import { fitText } from "@/lib/utils";
 
-let el: HTMLElement;
-let videoEl: HTMLVideoElement;
 
-onMount(() => {
-  videoEl.play().catch(() => {});
 
-  // const ctx = gsap.context(() => {
-  //   const tl = gsap.timeline();
-  //   tl.from(".hero-game-title", { y: 60, opacity: 0, duration: 1, ease: "expo.out" });
-  //   tl.from(".hero-game-tagline", { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6");
-  //   tl.from(".hero-game-chip", { y: 20, opacity: 0, duration: 0.6, ease: "power2.out", stagger: 0.08 }, "-=0.5");
-  // }, el);
 
-  // return () => ctx.revert();
-});
 </script>
 
-<section bind:this={el} class="min-h-screen flex items-center justify-start relative overflow-hidden">
-  <video bind:this={videoEl} muted loop playsinline preload="none" src="/assets/videos/environment.mp4" class="absolute inset-0 w-full h-full object-cover"></video>
+<section class="min-h-screen flex items-center justify-start relative overflow-hidden">
+  <video autoplay muted loop src="/assets/videos/environment.mp4" class="absolute inset-0 w-full h-full object-cover"></video>
   <div class="absolute inset-0 bg-[#03050a]/75"></div>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,_rgba(180,134,11,0.06)_0%,_transparent_60%)]"></div>
 
