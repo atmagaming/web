@@ -16,13 +16,17 @@ let { standalone = false }: { standalone?: boolean } = $props();
 {#snippet gameBlock()}
   <SectionHeader label={t("home.whatGame.label")} />
   <div class="bg-dark-950 relative overflow-hidden">
-    <!-- Background image (right side) -->
-    <img
-      src="/assets/images/game-icon.jpeg"
-      alt=""
+    <!-- Background video (right side) -->
+    <video
+      src="/assets/videos/environment.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="none"
       aria-hidden="true"
       class="absolute top-0 right-0 h-full w-2/3 object-cover object-center"
-    />
+    ></video>
     <!-- Gradient overlay: solid dark from left, fading to transparent -->
     <div
       class="absolute inset-0"
