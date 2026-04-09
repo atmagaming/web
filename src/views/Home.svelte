@@ -7,7 +7,11 @@ import How from "@/sections/home/How.svelte";
 import Join from "@/sections/home/Join.svelte";
 import { reasons } from "@/sections/home/reasons";
 import What from "@/sections/home/What.svelte";
+import WhatGame from "@/sections/home/WhatGame.svelte";
 import Why from "@/sections/home/Why.svelte";
+import { browser } from "$app/environment";
+
+const LG_BREAKPOINT = 1024;
 
 const whatSteps = reasons.length + 1;
 const sectionSteps = [1, 1, 1, whatSteps, 1, 1];
@@ -15,6 +19,7 @@ const totalSteps = sectionSteps.reduce((sum, s) => sum + s, 0);
 
 let container: HTMLDivElement;
 let currentStep = $state(0);
+let isDesktop = $state(browser && window.innerWidth >= LG_BREAKPOINT);
 
 const activeSection = $derived.by(() => {
   let step = currentStep;
@@ -63,7 +68,31 @@ onMount(() => {
     transformOrigin: "top",
   });
 
-  // Master scroll pin
+  if (!isDesktop) {
+    // Mobile: simple scroll-triggered fade-ins
+    for (const s of [".why-inner", ".how-inner", ".join-inner", ".closing-inner"]) {
+      gsap.from(s, {
+        scrollTrigger: { trigger: s, start: "top 85%" },
+        y: 30,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power3.out",
+      });
+    }
+
+    gsap.from(".track-card", {
+      scrollTrigger: { trigger: ".track-grid", start: "top 85%" },
+      y: 20,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.15,
+      ease: "power3.out",
+    });
+
+    return;
+  }
+
+  // Desktop: master scroll pin
   const trigger = gsap.to(
     {},
     {
@@ -92,31 +121,44 @@ onMount(() => {
 });
 </script>
 
-<div bind:this={container} class="relative h-screen overflow-hidden">
-  <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(0)}">
-    <Hero
-      onScrollToWhy={() => scrollToStep(sectionStartStep(1))}
-      onScrollToJoin={() => scrollToStep(sectionStartStep(4))}
-    />
-  </div>
+{#if isDesktop}
+  <div bind:this={container} class="relative h-screen overflow-hidden">
+    <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(0)}">
+      <Hero
+        onScrollToWhy={() => scrollToStep(sectionStartStep(1))}
+        onScrollToJoin={() => scrollToStep(sectionStartStep(4))}
+      />
+    </div>
 
-  <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(1)}">
-    <Why />
-  </div>
+    <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(1)}">
+      <Why />
+    </div>
 
-  <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(2)}">
-    <How />
-  </div>
+    <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(2)}">
+      <How />
+    </div>
 
-  <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(3)}">
-    <What slideIndex={activeSection.subStep} />
-  </div>
+    <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(3)}">
+      <What slideIndex={activeSection.subStep} pinned />
+    </div>
 
-  <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(4)}">
-    <Join />
-  </div>
+    <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(4)}">
+      <Join />
+    </div>
 
-  <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(5)}">
-    <Closing />
+    <div class="absolute inset-0 transition-all duration-700 ease-out {sectionClass(5)}">
+      <Closing />
+    </div>
   </div>
-</div>
+{:else}
+  <Hero
+    onScrollToWhy={() => document.querySelector('#why')?.scrollIntoView({ behavior: 'smooth' })}
+    onScrollToJoin={() => document.querySelector('#join')?.scrollIntoView({ behavior: 'smooth' })}
+  />
+  <Why />
+  <How />
+  <What />
+  <WhatGame standalone />
+  <Join />
+  <Closing />
+{/if}

@@ -31,7 +31,10 @@ let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
     <button
       type="button"
       class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white bg-red px-4 py-1.5 ml-3 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
-      onclick={() => window.dispatchEvent(new CustomEvent('scrollto', { detail: 'join' }))}
+      onclick={() => {
+        window.dispatchEvent(new CustomEvent('scrollto', { detail: 'join' }));
+        document.querySelector('#join')?.scrollIntoView({ behavior: 'smooth' });
+      }}
     >Get in Touch &darr;</button>
   </div>
 </nav>
