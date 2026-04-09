@@ -47,7 +47,7 @@ function closeModal() {
       </div>
 
       <div class="flex justify-center">
-        <Button type="button" onclick={openModal} variant="outline">
+        <Button id="join-button" type="button" onclick={openModal} variant="outline">
           Get in Touch
         </Button>
       </div>

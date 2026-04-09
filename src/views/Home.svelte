@@ -91,7 +91,8 @@ onMount(() => {
 
     const handleMobileScrollTo = (e: Event) => {
       const name = (e as CustomEvent).detail;
-      document.querySelector(`#${name}`)?.scrollIntoView({ behavior: "smooth" });
+      const selector = name === "join" ? "#join-button" : `#${name}`;
+      document.querySelector(selector)?.scrollIntoView({ behavior: "smooth" });
     };
     window.addEventListener("scrollto", handleMobileScrollTo);
 
