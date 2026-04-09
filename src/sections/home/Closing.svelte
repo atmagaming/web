@@ -23,7 +23,7 @@ import { t } from "@/lib/i18n/t";
 
   <footer class="py-8 flex flex-col md:flex-row items-center justify-between gap-3 border-white/10">
     <span class="font-display text-2xl tracking-[0.15em] text-white">ATMA</span>
-    <span class="font-mono text-[0.6rem] tracking-widest uppercase text-white/40">
+    <span class="font-mono text-[0.6rem] tracking-widest uppercase text-white/40 text-center md:text-right">
       {t("home.closing.footer")}
     </span>
   </footer>

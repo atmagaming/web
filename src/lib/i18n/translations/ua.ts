@@ -11,6 +11,7 @@ export const ua: typeof en = {
     backAbout: "Про нас",
     ourGames: "Наші ігри",
     getInTouch: "Зв'язатися",
+    join: "Приєднатися",
   },
   home: {
     hero: {

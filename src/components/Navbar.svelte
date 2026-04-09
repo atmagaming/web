@@ -1,15 +1,35 @@
 <script lang="ts">
+import { onMount } from "svelte";
 import LanguageSwitcher from "@/components/LanguageSwitcher.svelte";
 import { t } from "@/lib/i18n/t";
 import { cn } from "@/lib/utils";
 import { page } from "$app/stores";
 
 let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
+let mobileOpen = $state(false);
+let hidden = $state(false);
+let lastScrollY = 0;
+
+function closeMobile() {
+  mobileOpen = false;
+}
+
+onMount(() => {
+  function onScroll() {
+    const y = window.scrollY;
+    if (y < 52) hidden = false;
+    else hidden = y > lastScrollY;
+    lastScrollY = y;
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  return () => window.removeEventListener("scroll", onScroll);
+});
 </script>
 
 <nav
   class={cn(
-    "fixed top-0 left-0 right-0 z-[500] flex items-center justify-between px-6 lg:px-16 h-[52px] backdrop-blur-sm",
+    "fixed top-0 left-0 right-0 z-[500] flex items-center justify-between px-6 lg:px-16 h-[52px] backdrop-blur-sm transition-transform duration-300",
+    hidden && !mobileOpen && "-translate-y-full",
     isGamePage
       ? "bg-[#050507]/80 border-b border-white/10"
       : "bg-white/[0.96] border-b-[1.5px] border-dark-950",
@@ -23,9 +43,11 @@ let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
     )}
   >ATMA</a>
 
+  <!-- Desktop nav -->
   <div class="hidden md:flex items-center gap-1">
     {#if isGamePage}
-      <a href="/" class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white/50 px-3.5 py-1.5 hover:text-white transition-colors no-underline">&larr; {t("nav.backAbout")}</a>
+      <button type="button" class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white/50 px-3.5 py-1.5 hover:text-white transition-colors no-underline bg-transparent border-none cursor-pointer" onclick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}>{t("nav.about")}</button>
+      <button type="button" class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white/50 px-3.5 py-1.5 hover:text-white transition-colors no-underline bg-transparent border-none cursor-pointer" onclick={() => document.querySelector('#join')?.scrollIntoView({ behavior: 'smooth' })}>{t("nav.join")}</button>
     {:else}
       <a href="/" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname === '/' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.about")}</a>
       <a href="/games/hypocrisy" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname.startsWith('/games') ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.ourGames")}</a>
@@ -41,4 +63,50 @@ let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
       }}
     >{t("nav.getInTouch")} &darr;</button>
   </div>
+
+  <!-- Mobile hamburger -->
+  <button
+    type="button"
+    class={cn(
+      "md:hidden flex flex-col justify-center gap-[5px] w-8 h-8 bg-transparent border-none cursor-pointer p-0",
+    )}
+    onclick={() => (mobileOpen = !mobileOpen)}
+    aria-label="Toggle menu"
+  >
+    <span class={cn("block w-5 h-[1.5px] transition-all origin-center", isGamePage ? "bg-white" : "bg-dark-950", mobileOpen && "translate-y-[6.5px] rotate-45")}></span>
+    <span class={cn("block w-5 h-[1.5px] transition-all", isGamePage ? "bg-white" : "bg-dark-950", mobileOpen && "opacity-0")}></span>
+    <span class={cn("block w-5 h-[1.5px] transition-all origin-center", isGamePage ? "bg-white" : "bg-dark-950", mobileOpen && "-translate-y-[6.5px] -rotate-45")}></span>
+  </button>
 </nav>
+
+<!-- Mobile menu overlay -->
+{#if mobileOpen}
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <div
+    class={cn(
+      "fixed inset-0 top-[52px] z-[499] md:hidden flex flex-col items-center pt-8 gap-4 backdrop-blur-md",
+      isGamePage ? "bg-[#050507]/95" : "bg-white/95",
+    )}
+    onclick={closeMobile}
+    onkeydown={(e) => { if (e.key === "Escape") closeMobile(); }}
+  >
+    {#if isGamePage}
+      <button type="button" class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white/70 px-4 py-2 hover:text-white transition-colors bg-transparent border-none cursor-pointer" onclick={() => { closeMobile(); document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' }); }}>{t("nav.about")}</button>
+      <button type="button" class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white/70 px-4 py-2 hover:text-white transition-colors bg-transparent border-none cursor-pointer" onclick={() => { closeMobile(); document.querySelector('#join')?.scrollIntoView({ behavior: 'smooth' }); }}>{t("nav.join")}</button>
+    {:else}
+      <a href="/" onclick={closeMobile} class={cn("font-mono text-[0.8rem] tracking-[0.1em] uppercase px-4 py-2 transition-all no-underline", $page.url.pathname === '/' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950')}>{t("nav.about")}</a>
+      <a href="/games/hypocrisy" onclick={closeMobile} class={cn("font-mono text-[0.8rem] tracking-[0.1em] uppercase px-4 py-2 transition-all no-underline", $page.url.pathname.startsWith('/games') ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950')}>{t("nav.ourGames")}</a>
+    {/if}
+    <div class={isGamePage ? "[&_button]:text-white/50 [&_button]:hover:text-white [&_button.text-red]:text-red" : ""}>
+      <LanguageSwitcher />
+    </div>
+    <button
+      type="button"
+      class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white bg-red px-6 py-2.5 mt-2 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
+      onclick={() => {
+        closeMobile();
+        window.dispatchEvent(new CustomEvent('scrollto', { detail: 'join' }));
+      }}
+    >{t("nav.getInTouch")} &darr;</button>
+  </div>
+{/if}

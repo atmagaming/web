@@ -27,7 +27,7 @@ onMount(() => {
 });
 </script>
 
-<section bind:this={el} class="py-24 px-6 bg-dark-900/50">
+<section id="join" bind:this={el} class="py-24 px-6 bg-dark-900/50">
   <div class="max-w-4xl mx-auto">
     <p class="text-sm text-accent-400 uppercase tracking-widest mb-4 text-center">{t("hypocrisy.joinUs.sectionLabel")}</p>
     <h2 class="font-display text-4xl md:text-5xl text-white mb-6 text-center">{t("hypocrisy.joinUs.title")}</h2>

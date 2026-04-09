@@ -11,6 +11,7 @@ export const ru: typeof en = {
     backAbout: "О нас",
     ourGames: "Наши игры",
     getInTouch: "Связаться",
+    join: "Присоединиться",
   },
   home: {
     hero: {

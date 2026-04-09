@@ -9,6 +9,7 @@ export const en = {
     backAbout: "About",
     ourGames: "Our Games",
     getInTouch: "Get in Touch",
+    join: "Join",
   },
   home: {
     hero: {
