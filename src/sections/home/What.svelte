@@ -4,6 +4,7 @@ import SectionHeader from "@/components/ui/SectionHeader.svelte";
 import { locale } from "@/lib/i18n";
 import { t } from "@/lib/i18n/t";
 import { translations } from "@/lib/i18n/translations";
+import { fitText } from "@/lib/utils";
 import WhatGame from "./WhatGame.svelte";
 
 let { slideIndex = $bindable(0), pinned = false }: { slideIndex?: number; pinned?: boolean } = $props();
@@ -51,6 +52,7 @@ const showingReasons = $derived(slideIndex < reasons.length);
       <SectionHeader number={t("home.what.number")} label={t("home.what.label")} />
 
       <h2
+        use:fitText
         class="font-display text-[clamp(2.2rem,7.5vw,7.5rem)] leading-[0.88] tracking-[0.01em] text-dark-950 mb-2 lg:mb-4"
       >
         {t("home.what.title1")}<br /><span class="text-gold">{t("home.what.title2")}</span>
@@ -126,7 +128,7 @@ const showingReasons = $derived(slideIndex < reasons.length);
   <section class="px-6 py-12 border-t-[1.5px] border-dark-950" id="what">
     <SectionHeader number={t("home.what.number")} label={t("home.what.label")} />
 
-    <h2 class="font-display text-[clamp(2.2rem,7.5vw,7.5rem)] leading-[0.88] tracking-[0.01em] text-dark-950 mb-2">
+    <h2 use:fitText class="font-display text-[clamp(2.2rem,7.5vw,7.5rem)] leading-[0.88] tracking-[0.01em] text-dark-950 mb-2">
       ATMA<br /><span class="text-gold">GAMING.</span>
     </h2>
 

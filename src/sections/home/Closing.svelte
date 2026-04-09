@@ -1,11 +1,12 @@
 <script lang="ts">
 import Button from "@/components/ui/Button.svelte";
 import { t } from "@/lib/i18n/t";
+import { fitText } from "@/lib/utils";
 </script>
 
 <section class="min-h-screen flex flex-col closing-inner bg-dark-950 px-6 lg:px-16 border-t-[1.5px] border-dark-950">
   <div class="flex-1 flex flex-col items-center justify-center py-24 text-center">
-    <p class="font-display text-[clamp(2rem,5vw,5rem)] leading-none text-white tracking-[0.02em] max-w-[900px] mx-auto mb-10">
+    <p use:fitText class="font-display text-[clamp(2rem,5vw,5rem)] leading-none text-white tracking-[0.02em] max-w-[900px] mx-auto mb-10">
       {t("home.closing.line1")} <span class="text-gold">{t("home.closing.line1accent")}</span><br>
       {t("home.closing.line2")}<br>
       {t("home.closing.line3")}

@@ -3,6 +3,7 @@ import ContactFormModal from "@/components/ContactFormModal.svelte";
 import Button from "@/components/ui/Button.svelte";
 import SectionHeader from "@/components/ui/SectionHeader.svelte";
 import { t } from "@/lib/i18n/t";
+import { fitText } from "@/lib/utils";
 
 let modalOpen = $state(false);
 
@@ -19,7 +20,7 @@ function closeModal() {
   <div class="join-inner w-full">
     <SectionHeader number={t("home.join.number")} label={t("home.join.label")} />
 
-    <h2 class="font-display text-[clamp(3rem,7.5vw,7.5rem)] leading-[0.88] tracking-[0.01em] text-dark-950 mb-12">
+    <h2 use:fitText class="font-display text-[clamp(3rem,7.5vw,7.5rem)] leading-[0.88] tracking-[0.01em] text-dark-950 mb-12">
       {t("home.join.title1")}<br><span class="text-gold">{t("home.join.title2")}</span>
     </h2>
 

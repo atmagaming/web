@@ -2,6 +2,7 @@
 import { onMount } from "svelte";
 import gsap from "@/lib/gsap";
 import { t } from "@/lib/i18n/t";
+import { fitText } from "@/lib/utils";
 
 let el: HTMLElement;
 
@@ -33,7 +34,7 @@ onMount(() => {
       <img src="/assets/images/game-icon.jpeg" alt="Hypocrisy" class="w-full h-full object-cover" />
     </div>
 
-    <h1 class="hero-game-title font-display text-7xl md:text-9xl font-bold tracking-[0.15em] text-white mb-4">
+    <h1 use:fitText class="hero-game-title font-display text-7xl md:text-9xl font-bold tracking-[0.15em] text-white mb-4">
       {t("hypocrisy.hero.title")}
     </h1>
     <p class="hero-game-tagline text-xl md:text-2xl text-white/60 mb-12">{t("hypocrisy.hero.tagline")}</p>
