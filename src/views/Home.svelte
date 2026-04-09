@@ -89,7 +89,15 @@ onMount(() => {
       ease: "power3.out",
     });
 
-    return;
+    const handleMobileScrollTo = (e: Event) => {
+      const name = (e as CustomEvent).detail;
+      document.querySelector(`#${name}`)?.scrollIntoView({ behavior: "smooth" });
+    };
+    window.addEventListener("scrollto", handleMobileScrollTo);
+
+    return () => {
+      window.removeEventListener("scrollto", handleMobileScrollTo);
+    };
   }
 
   // Desktop: master scroll pin
