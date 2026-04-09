@@ -1,5 +1,7 @@
 <script lang="ts">
+import { Mail, Send } from "lucide-svelte";
 import Button from "@/components/ui/Button.svelte";
+import { modalOpen } from "@/lib/stores";
 import { cn } from "@/lib/utils";
 
 let {
@@ -9,6 +11,10 @@ let {
   open: boolean;
   onClose: () => void;
 } = $props();
+
+$effect(() => {
+  modalOpen.set(open);
+});
 
 let loading = $state(false);
 let submitted = $state(false);
@@ -101,18 +107,7 @@ function handleBackdropClick(e: MouseEvent) {
         class="flex items-center gap-2 text-dark-950/60 hover:text-gold transition-colors cursor-pointer"
         title="Email: ceo@atmagaming.com"
       >
-        <svg
-          class="w-5 h-5 transition-colors"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <rect x="2" y="4" width="20" height="16" rx="2" />
-          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-        </svg>
+        <Mail class="w-5 h-5 transition-colors" />
         <span class="text-xs font-mono tracking-[0.1em] uppercase">Email</span>
       </a>
 
@@ -123,18 +118,7 @@ function handleBackdropClick(e: MouseEvent) {
         class="flex items-center gap-2 text-dark-950/60 hover:text-gold transition-colors cursor-pointer"
         title="Telegram: @elumixor"
       >
-        <svg
-          class="w-5 h-5 transition-colors"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="22" y1="2" x2="11" y2="13" />
-          <polygon points="22 2 15 22 11 13 2 9 22 2" />
-        </svg>
+        <Send class="w-5 h-5 transition-colors" />
         <span class="text-xs font-mono tracking-[0.1em] uppercase">Telegram</span>
       </a>
     </div>
