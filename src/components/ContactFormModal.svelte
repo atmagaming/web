@@ -80,59 +80,10 @@ function handleBackdropClick(e: MouseEvent) {
     )}
   >
     <!-- Header with close button -->
-    <div class="flex items-center justify-between px-8 py-6 border-b-[1.5px] border-dark-950/20">
-      <div>
-        <h2 class="font-display text-2xl tracking-[0.04em] text-dark-950">
-          Get in Touch
-        </h2>
-      </div>
-      <div class="flex items-center gap-6">
-        <!-- Contact Links -->
-        <div class="flex items-center gap-4">
-          <a
-            href="mailto:ceo@atmagaming.com"
-            class="group flex items-center gap-2 text-dark-950/60 hover:text-gold transition-colors cursor-pointer"
-            title="Email: ceo@atmagaming.com"
-          >
-            <svg
-              class="w-5 h-5 transition-colors"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-            <span class="text-xs font-mono tracking-[0.1em] uppercase">Email</span>
-          </a>
-
-          <a
-            href="https://t.me/elumixor"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group flex items-center gap-2 text-dark-950/60 hover:text-gold transition-colors cursor-pointer"
-            title="Telegram: @elumixor"
-          >
-            <svg
-              class="w-5 h-5 transition-colors"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <line x1="22" y1="2" x2="11" y2="13" />
-              <polygon points="22 2 15 22 11 13 2 9 22 2" />
-            </svg>
-            <span class="text-xs font-mono tracking-[0.1em] uppercase">Telegram</span>
-          </a>
-        </div>
-      </div>
-
+    <div class="flex items-center justify-between px-8 py-6">
+      <h2 class="font-display text-2xl tracking-[0.04em] text-dark-950">
+        Get in Touch
+      </h2>
       <button
         onclick={onClose}
         type="button"
@@ -141,6 +92,51 @@ function handleBackdropClick(e: MouseEvent) {
       >
         ×
       </button>
+    </div>
+
+    <!-- Contact Links -->
+    <div class="flex items-center gap-6 px-8 py-4 border-b-[1.5px] border-dark-950/20">
+      <a
+        href="mailto:ceo@atmagaming.com"
+        class="flex items-center gap-2 text-dark-950/60 hover:text-gold transition-colors cursor-pointer"
+        title="Email: ceo@atmagaming.com"
+      >
+        <svg
+          class="w-5 h-5 transition-colors"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+          <polyline points="22,6 12,13 2,6" />
+        </svg>
+        <span class="text-xs font-mono tracking-[0.1em] uppercase">Email</span>
+      </a>
+
+      <a
+        href="https://t.me/elumixor"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 text-dark-950/60 hover:text-gold transition-colors cursor-pointer"
+        title="Telegram: @elumixor"
+      >
+        <svg
+          class="w-5 h-5 transition-colors"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="22" y1="2" x2="11" y2="13" />
+          <polygon points="22 2 15 22 11 13 2 9 22 2" />
+        </svg>
+        <span class="text-xs font-mono tracking-[0.1em] uppercase">Telegram</span>
+      </a>
     </div>
 
     <!-- Content -->

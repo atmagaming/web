@@ -12,7 +12,7 @@ let {
 } = $props();
 </script>
 
-<span class="tooltip-trigger relative inline-block">
+<span class="tooltip-trigger relative">
   <span class="font-medium border-b border-gold border-dashed cursor-default">{label}</span>
   <!-- Invisible hit area: extends around the visible tooltip so mouse doesn't lose hover -->
   <span class="tooltip-box absolute left-1/2 -translate-x-1/2 top-full opacity-0 pointer-events-none transition-opacity duration-150 z-10 p-6 -m-3">

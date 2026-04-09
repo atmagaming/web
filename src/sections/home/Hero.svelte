@@ -34,16 +34,16 @@ let {
     <strong class="font-medium">{t("home.hero.startingWithGames")}</strong>
   </p>
 
-  <div class="hero-actions flex items-center gap-5 flex-wrap">
+  <div class="hero-actions flex items-center gap-2 flex-wrap">
+   <Button onclick={onScrollToWhy}>
+      {t("home.hero.whyWeExist")} &darr;
+    </Button>
     <Button
       variant="outline"
       href="https://atmagaming.notion.site/Vision-dc4f14be61f741c38881701ac9c2ab74"
       target="_blank"
       rel="noopener noreferrer"
     >{t("home.hero.missionStatement")} &nearr;</Button>
-    <Button variant="outline" onclick={onScrollToJoin}>
-      {t("home.hero.getInTouch")} &darr;
-    </Button>
   </div>
 
   <div class="absolute bottom-8 right-16 font-mono text-[0.6rem] tracking-[0.18em] uppercase text-border hidden lg:flex items-center gap-3">
