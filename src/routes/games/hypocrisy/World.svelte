@@ -4,6 +4,7 @@ import gsap from "@/lib/gsap";
 import { locale } from "@/lib/i18n";
 import { t } from "@/lib/i18n/t";
 import { translations } from "@/lib/i18n/translations";
+import SectionHeader from "./SectionHeader.svelte";
 
 let el: HTMLElement;
 
@@ -46,20 +47,14 @@ onMount(() => {
 });
 </script>
 
-<section id="universe" bind:this={el} class="py-32 lg:py-48 px-6 lg:px-16">
-  <div class="max-w-5xl mx-auto">
-    <p class="text-xs text-accent-500 uppercase tracking-[0.25em] font-mono mb-4 text-center flex items-center justify-center gap-4">
-      <span class="w-8 h-px bg-accent-500"></span>
-      {t("hypocrisy.world.sectionLabel")}
-      <span class="w-8 h-px bg-accent-500"></span>
-    </p>
-    <h2 class="font-display text-5xl md:text-7xl lg:text-8xl text-white mb-6 text-center leading-none">
-      {t("hypocrisy.world.title")}
-    </h2>
-    <p class="text-lg text-white/40 text-center max-w-2xl mx-auto mb-20">
+<section id="universe" bind:this={el} class="py-32 lg:py-48">
+  <SectionHeader label={t("hypocrisy.world.sectionLabel")} title={t("hypocrisy.world.title")}>
+    <p class="text-lg text-white/50 max-w-2xl mb-20">
       {t("hypocrisy.world.description")}
     </p>
+  </SectionHeader>
 
+  <div class="px-6 lg:px-16">
     <!-- Vertical world stack: bottom to top -->
     <div class="relative flex flex-col-reverse gap-0">
       <!-- Vertical connecting line -->
@@ -72,7 +67,7 @@ onMount(() => {
             class="absolute left-3 md:left-5 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300 group-hover:scale-125"
             style="border-color: {world.color}; background: {world.color}15;"
           >
-            <span class="text-[9px] font-mono font-bold" style="color: {world.color}">{world.index}</span>
+            <span class="text-[10px] font-mono font-bold" style="color: {world.color}">{world.index}</span>
           </div>
 
           <div class="relative py-4">
@@ -82,7 +77,7 @@ onMount(() => {
             <h3 class="font-display text-3xl md:text-4xl text-white mb-3 transition-colors duration-300" style="--hover-color: {world.color}">
               {world.name}
             </h3>
-            <p class="text-sm text-white/40 leading-relaxed max-w-xl group-hover:text-white/60 transition-colors duration-300">
+            <p class="text-sm text-white/50 leading-relaxed max-w-xl group-hover:text-white/60 transition-colors duration-300">
               {world.description}
             </p>
           </div>

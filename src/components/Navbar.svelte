@@ -1,6 +1,6 @@
 <script lang="ts">
 import { onMount } from "svelte";
-import LanguageSwitcher from "@/components/LanguageSwitcher.svelte";
+// import LanguageSwitcher from "@/components/LanguageSwitcher.svelte";
 import { t } from "@/lib/i18n/t";
 import { modalOpen } from "@/lib/stores";
 import { cn } from "@/lib/utils";
@@ -50,7 +50,11 @@ onMount(() => {
   <div class="hidden md:flex items-center gap-1">
     {#if isGamePage}
       <button type="button" class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white/50 px-3.5 py-1.5 hover:text-white transition-colors no-underline bg-transparent border-none cursor-pointer" onclick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}>{t("nav.about")}</button>
-      <button type="button" class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white/50 px-3.5 py-1.5 hover:text-white transition-colors no-underline bg-transparent border-none cursor-pointer" onclick={() => document.querySelector('#join')?.scrollIntoView({ behavior: 'smooth' })}>{t("nav.join")}</button>
+      <button
+        type="button"
+        class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white bg-red px-4 py-1.5 ml-3 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
+        onclick={() => document.querySelector('#join')?.scrollIntoView({ behavior: 'smooth' })}
+      >{t("nav.join")}</button>
     {:else}
       <a href="/" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname === '/' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.about")}</a>
       <a href="/games/hypocrisy" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname.startsWith('/games') ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.ourGames")}</a>
@@ -59,13 +63,15 @@ onMount(() => {
     <!-- <div class={isGamePage ? "[&_button]:text-white/50 [&_button]:hover:text-white [&_button.text-red]:text-red" : ""}>
       <LanguageSwitcher />
     </div> -->
-    <button
-      type="button"
-      class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white bg-red px-4 py-1.5 ml-3 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
-      onclick={() => {
-        window.dispatchEvent(new CustomEvent('scrollto', { detail: 'join' }));
-      }}
-    >{t("nav.getInTouch")} &darr;</button>
+    {#if !isGamePage}
+      <button
+        type="button"
+        class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white bg-red px-4 py-1.5 ml-3 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
+        onclick={() => {
+          window.dispatchEvent(new CustomEvent('scrollto', { detail: 'join' }));
+        }}
+      >{t("nav.getInTouch")} &darr;</button>
+    {/if}
   </div>
 
   <!-- Mobile hamburger -->
@@ -96,21 +102,29 @@ onMount(() => {
   >
     {#if isGamePage}
       <button type="button" class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white/70 px-4 py-2 hover:text-white transition-colors bg-transparent border-none cursor-pointer" onclick={() => { closeMobile(); document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' }); }}>{t("nav.about")}</button>
-      <button type="button" class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white/70 px-4 py-2 hover:text-white transition-colors bg-transparent border-none cursor-pointer" onclick={() => { closeMobile(); document.querySelector('#join')?.scrollIntoView({ behavior: 'smooth' }); }}>{t("nav.join")}</button>
+      <button
+        type="button"
+        class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white bg-red px-6 py-2.5 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
+        onclick={() => {
+          closeMobile();
+          document.querySelector('#join')?.scrollIntoView({ behavior: 'smooth' });
+        }}
+      >{t("nav.join")}</button>
     {:else}
       <a href="/" onclick={closeMobile} class={cn("font-mono text-[0.8rem] tracking-[0.1em] uppercase px-4 py-2 transition-all no-underline", $page.url.pathname === '/' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950')}>{t("nav.about")}</a>
       <a href="/games/hypocrisy" onclick={closeMobile} class={cn("font-mono text-[0.8rem] tracking-[0.1em] uppercase px-4 py-2 transition-all no-underline", $page.url.pathname.startsWith('/games') ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950')}>{t("nav.ourGames")}</a>
+      <!-- Temporarily hide language switcher -->
+      <!-- <div class={isGamePage ? "[&_button]:text-white/50 [&_button]:hover:text-white [&_button.text-red]:text-red" : ""}>
+        <LanguageSwitcher />
+      </div> -->
+      <button
+        type="button"
+        class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white bg-red px-6 py-2.5 mt-2 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
+        onclick={() => {
+          closeMobile();
+          window.dispatchEvent(new CustomEvent('scrollto', { detail: 'join' }));
+        }}
+      >{t("nav.getInTouch")} &darr;</button>
     {/if}
-    <div class={isGamePage ? "[&_button]:text-white/50 [&_button]:hover:text-white [&_button.text-red]:text-red" : ""}>
-      <LanguageSwitcher />
-    </div>
-    <button
-      type="button"
-      class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white bg-red px-6 py-2.5 mt-2 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
-      onclick={() => {
-        closeMobile();
-        window.dispatchEvent(new CustomEvent('scrollto', { detail: 'join' }));
-      }}
-    >{t("nav.getInTouch")} &darr;</button>
   </div>
 {/if}

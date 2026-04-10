@@ -141,7 +141,7 @@ export const en = {
       tagRoguelike: "Roguelike RPG",
       tagSciFan: "Sci-Fantasy",
       tagSteam: "Steam",
-      tagPlatforms: "PC, Mac, Consoles",
+      tagPlatforms: "PC • Mac • Consoles",
       learnMore: "Learn more",
     },
     join: {
@@ -181,16 +181,18 @@ export const en = {
   hypocrisy: {
     hero: {
       title: "HYPOCRISY",
-      tagline: "Fight the regime. Confront your soul.",
-      description: "Action Roguelike RPG",
+      workingTitle: "Working title — subject to change",
+      tagline: "Hope in a heroic fight for freedom — defying oppression and the darkness within.",
+      description: "Action • Roguelike • RPG",
       setting: "Sci-Fantasy",
-      platforms: "Steam • PC • Mac • Consoles",
-      schedule: "Early Demo: May 2026 • Early Access: Late 2026 • Full Release: 2027",
+      schedule: "Early Access: Late 2026",
       scrollHint: "Discover the world",
     },
     premise: {
       sectionLabel: "The Game",
       title: "A War Outside. A War Within.",
+      pitch:
+        "A rebel fighter in a living suit rises through six worlds — each embodying an enemy of the soul — to topple a tyrant who rules by exploiting humanity's darkest impulses. Death strips your progress but not your knowledge. The true battle is internal.",
       paragraph1:
         "In a universe of floating islands held aloft by massive crystals, a despotic regime controls humanity by exploiting the darkest impulses of the soul. You are a rebel fighter, wielding ARIA — a futuristic living suit that bonds with its host — rising through six stacked worlds to reach the tyrant at the top.",
       paragraph2:
@@ -254,7 +256,7 @@ export const en = {
           "Unlock and master a branching skill tree. Every run lets you experiment with new builds — finding the synergies that match your playstyle.",
       },
       roguelite: {
-        title: "Meaningful Death",
+        title: "Roguelike Legacy",
         description:
           "When you die, you lose your level and gold — but not your knowledge. Each run reshapes the path: different routes, different characters, different items. Mastery comes through repetition.",
       },
@@ -318,15 +320,15 @@ export const en = {
       paragraph2:
         "Through Hypocrisy, we propagate ideas of morality and universalism — not through lectures, but through lived experience. Players confront the enemies of the soul not as abstract concepts, but as worlds they must navigate, understand, and overcome. The transformation happens through play.",
       founderName: "Vladyslav Yazykov",
-      founderRole: "Founder & Creative Director",
+      founderRole: "Founder, CEO, Creative Lead",
       discoverAtma: "Discover ATMA's Mission",
     },
     devProgress: {
-      sectionLabel: "Development",
-      title: "Behind the Curtain",
-      subtitle: "A look at where we are. Everything here is work in progress.",
+      sectionLabel: "Current Results",
+      title: "Work in Progress",
+      subtitle: "Concept art, in-game screenshots, UI designs, and original soundtrack — all work in progress.",
       visualsTab: "Visuals",
-      soundtrackTab: "Soundtrack",
+      soundtrackTab: "Music",
       roadmapTab: "Roadmap",
       galleryItems: {
         phoenixPolished: "Phoenix — Polished Concept",
@@ -342,6 +344,7 @@ export const en = {
         hud: "Heads-Up Display",
         mainMenu: "Main Menu",
         upgrades: "Upgrade System",
+        gameEarly: "Early Game Concept",
       },
       tracks: {
         mainMystery: "Main Mystery",
@@ -349,11 +352,21 @@ export const en = {
         mohaAttachment: "Moha — Attachment",
         drf: "DRF",
         reflection: "Reflection",
+        krodhaS5: "Krodha S5",
+      },
+      trackConcepts: {
+        concept1: "Concept I",
+        concept2: "Concept II",
+        concept3: "Concept III",
+        concept4: "Concept IV",
+        concept5: "Concept V",
+        concept6: "Concept VI",
       },
       current: "Current",
       phase1: {
         phase: "Phase 1",
         title: "Prototype",
+        date: "2025 — May 2026",
         description:
           "Core combat mechanics, first playable world, companion system foundation. Building the soul of the game.",
         items: ["Core combat loop", "First world prototype", "Base companion AI", "Art style exploration"],
@@ -361,40 +374,78 @@ export const en = {
       phase2: {
         phase: "Phase 2",
         title: "Early Access Prep",
+        date: "Jun 2026 — Nov 2026",
         description: "Expanding content, polishing systems, and preparing for community feedback.",
         items: ["3 playable worlds", "Full skill tree", "Rogue-lite progression", "Steam Early Access launch"],
       },
       phase3: {
         phase: "Phase 3",
-        title: "Full Release",
+        title: "Full Release Prep",
+        date: "Dec 2026 — Nov 2027",
         description: "Complete vision with all worlds, companions, and the full narrative experience.",
         items: ["All 6 worlds", "8 companions", "Full story campaign", "Original soundtrack"],
       },
+      phase4: {
+        phase: "Phase 4",
+        title: "Release",
+        date: "Dec 2027",
+        description: "Full launch on Steam with the complete game experience.",
+        items: ["Full release on Steam", "Console ports exploration", "Post-launch content planning"],
+      },
+    },
+    roadmap: {
+      title: "Where We're Headed",
     },
     joinCta: {
       sectionLabel: "Join Us",
       title: "Build This World With Us",
       description:
         "We're looking for people who want their work to mean something beyond the product. If you share our vision of games that transform, we want to hear from you.",
-      roleDev: {
-        title: "Game Developer",
-        type: "Full-time / Remote",
-        description: "Build core gameplay systems in Unity/Godot.",
+      missionExcerpt:
+        "Hypocrisy is the first project of ATMA — an organization dedicated to transforming society through cultural products. We believe games, as the most engaging medium of our era, have the power to shift perspectives. Through Hypocrisy, we propagate ideas of morality and universalism — not through lectures, but through lived experience.",
+      readVision: "Read about our vision",
+      teamLabel: "The Team",
+      contactUs: "Write to Us",
+      reachOutLabel: "Reach Out",
+      reachOutDescription: "Write your message with details, or simply email us or reach out on Telegram.",
+      openRolesLabel: "Open Roles",
+      disclaimer: "The project is currently in pre-production. All positions are remote and on a revenue-share basis.",
+      roleConceptArtist: {
+        title: "2D Concept Artist",
+        type: "Revenue-share / Remote",
+        description:
+          "Design characters, environments, and key visual concepts that define the game's aesthetic direction.",
       },
-      roleArtist: {
-        title: "2D / 3D Artist",
-        type: "Full-time / Remote",
-        description: "Create characters, environments, and UI art.",
+      role3dArtist: {
+        title: "3D Artist",
+        type: "Revenue-share / Remote",
+        description: "Model and texture characters, props, and environments for a stylized sci-fantasy world.",
       },
-      roleSound: {
-        title: "Sound Designer",
-        type: "Contract / Remote",
-        description: "Craft immersive soundscapes and effects.",
+      role3dAnimator: {
+        title: "3D Animator",
+        type: "Revenue-share / Remote",
+        description: "Bring characters to life with expressive combat, locomotion, and cinematic animations.",
       },
-      roleCommunity: {
-        title: "Community Manager",
-        type: "Part-time / Remote",
-        description: "Grow and nurture our player community.",
+      roleVfx: {
+        title: "VFX Artist",
+        type: "Revenue-share / Remote",
+        description:
+          "Create spell effects, environmental particles, and impact visuals that elevate combat and exploration.",
+      },
+      roleSfx: {
+        title: "SFX Designer",
+        type: "Revenue-share / Remote",
+        description: "Craft immersive sound effects for combat, abilities, UI, and ambient world-building.",
+      },
+      roleNarrative: {
+        title: "Narrative Designer",
+        type: "Revenue-share / Remote",
+        description: "Shape branching storylines, dialogue, and lore that explore moral dilemmas and character depth.",
+      },
+      roleProjectManager: {
+        title: "Project Manager",
+        type: "Revenue-share / Remote",
+        description: "Coordinate the team, manage milestones, and keep pre-production on track across disciplines.",
       },
       applyNow: "Apply Now",
       ctaTitle: "Begin Your Journey",

@@ -2,6 +2,7 @@
 import { onMount } from "svelte";
 import gsap from "@/lib/gsap";
 import { t } from "@/lib/i18n/t";
+import SectionHeader from "./SectionHeader.svelte";
 
 let el: HTMLElement;
 
@@ -21,19 +22,14 @@ onMount(() => {
 });
 </script>
 
-<section bind:this={el} class="py-32 lg:py-48 px-6 lg:px-16 relative overflow-hidden">
+<section bind:this={el} class="py-32 lg:py-48 relative overflow-hidden">
   <!-- Subtle warm gradient to differentiate from other sections -->
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,_rgba(180,134,11,0.04)_0%,_transparent_60%)]"></div>
 
-  <div class="mission-content relative z-10 max-w-4xl mx-auto">
-    <p class="text-xs text-accent-500 uppercase tracking-[0.25em] font-mono mb-4 flex items-center gap-4">
-      <span class="w-8 h-px bg-accent-500"></span>
-      {t("hypocrisy.mission.sectionLabel")}
-    </p>
-    <h2 class="font-display text-5xl md:text-7xl lg:text-8xl text-white mb-10 leading-none">
-      {t("hypocrisy.mission.title")}
-    </h2>
+  <div class="mission-content relative z-10">
+    <SectionHeader label={t("hypocrisy.mission.sectionLabel")} title={t("hypocrisy.mission.title")} />
 
+    <div class="px-6 lg:px-16">
     <p class="text-lg text-white/50 leading-relaxed mb-6">
       {t("hypocrisy.mission.paragraph1")}
     </p>
@@ -48,16 +44,17 @@ onMount(() => {
       </div>
       <div>
         <p class="text-sm font-semibold text-white">{t("hypocrisy.mission.founderName")}</p>
-        <p class="text-xs text-white/40">{t("hypocrisy.mission.founderRole")}</p>
+        <p class="text-xs text-white/25">{t("hypocrisy.mission.founderRole")}</p>
       </div>
     </div>
 
     <a
       href="/"
-      class="inline-flex items-center gap-3 text-sm text-accent-400 hover:text-accent-300 transition-colors font-mono uppercase tracking-wider group"
+      class="inline-flex items-center gap-3 text-sm text-accent-400 hover:text-accent-300 transition-colors font-mono uppercase tracking-[0.2em] group"
     >
       {t("hypocrisy.mission.discoverAtma")}
       <span class="w-6 h-px bg-accent-500 group-hover:w-10 transition-all"></span>
     </a>
+    </div>
   </div>
 </section>
