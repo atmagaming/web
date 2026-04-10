@@ -18,7 +18,7 @@ let { standalone = false }: { standalone?: boolean } = $props();
   <div class="bg-dark-950 relative overflow-hidden">
     <!-- Background image (right side) -->
     <img
-      src="/assets/images/game-icon.jpeg"
+      src="/assets/images/game-icon.webp"
       alt=""
       aria-hidden="true"
       class="absolute top-0 right-0 h-full w-2/3 object-cover object-center"

@@ -34,7 +34,7 @@ onMount(() => {
 
 const positionClass =
   position === "bottom-right"
-    ? "fixed bottom-8 right-16 hidden lg:flex"
+    ? "absolute bottom-8 right-16 hidden lg:flex"
     : "absolute bottom-12 left-1/2 -translate-x-1/2 flex";
 </script>
 

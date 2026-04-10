@@ -1,21 +1,15 @@
 <script lang="ts">
-import Characters from "./Characters.svelte";
-import Combat from "./Combat.svelte";
 import DevProgress from "./DevProgress.svelte";
 import Hero from "./Hero.svelte";
-import JoinCTA from "./JoinCTA.svelte";
-import Mission from "./Mission.svelte";
-import Premise from "./Premise.svelte";
-import World from "./World.svelte";
+import JoinCTA from "./join-cta/JoinCTA.svelte";
+import Roadmap from "./Roadmap.svelte";
+import TheGame from "./TheGame.svelte";
 </script>
 
 <div class="game-page">
   <Hero />
-  <Premise />
-  <World />
-  <Combat />
-  <Characters />
-  <Mission />
+  <TheGame />
+  <Roadmap />
   <DevProgress />
   <JoinCTA />
 </div>
