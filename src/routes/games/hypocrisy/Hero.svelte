@@ -1,33 +1,18 @@
 <script lang="ts">
 import ScrollPrompt from "@/components/ScrollPrompt.svelte";
-import gsap from "@/lib/gsap";
 import { t } from "@/lib/i18n/t";
 import AnimatedTitle from "./AnimatedTitle.svelte";
 import Tag from "./Tag.svelte";
-
-let belowTitleEl: HTMLElement;
-
-function onTitleReady(titleNode: HTMLElement) {
-  // Position subtitle below the title
-  if (!belowTitleEl) return;
-  const titleRect = titleNode.getBoundingClientRect();
-  const sectionRect = titleNode.closest("section")?.getBoundingClientRect();
-  if (sectionRect) belowTitleEl.style.top = `${titleRect.bottom - sectionRect.top + 80}px`;
-
-  // Fade in subtitle after letter animations settle
-  gsap.fromTo(belowTitleEl, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 2, delay: 1.5, ease: "power3.out" });
-}
 </script>
 
 <section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#03050a]">
-  <video autoplay muted loop playsinline src="/assets/videos/environment.mp4" class="absolute inset-0 w-full h-full object-cover"></video>
+  <video autoplay muted loop playsinline poster="/assets/images/environment-poster.webp" src="/assets/videos/environment.webm" class="absolute inset-0 w-full h-full object-cover"></video>
 
   <div class="knockout-mask absolute inset-0 w-full h-full bg-[#03050a] flex flex-col items-center justify-center px-6 lg:px-16 box-border">
-    <AnimatedTitle text={t("hypocrisy.hero.title")} onready={onTitleReady} />
-    <p class="text-[10px] md:text-xs text-white/25 tracking-[0.2em] uppercase mt-12 font-mono">{t("hypocrisy.hero.workingTitle")}</p>
+    <AnimatedTitle text={t("hypocrisy.hero.title")} />
   </div>
 
-  <div bind:this={belowTitleEl} class="absolute left-0 right-0 z-10 px-6 lg:px-16" style="opacity: 0;">
+  <div class="absolute bottom-8 md:bottom-12 left-0 right-0 z-10 px-6 lg:px-16 box-border">
     <p class="text-lg md:text-xl text-white/50 font-light leading-relaxed mb-6 max-w-xl">
       {t("hypocrisy.hero.tagline")}
     </p>
@@ -73,4 +58,5 @@ function onTitleReady(titleNode: HTMLElement) {
   .knockout-mask {
     mix-blend-mode: multiply;
   }
+
 </style>

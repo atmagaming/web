@@ -9,7 +9,7 @@ const trackList = [
   { file: "/assets/music/krodha-2.mp3", key: "krodha" as const, concept: "concept2" as const },
   { file: "/assets/music/moha-attachment.mp3", key: "mohaAttachment" as const, concept: "concept3" as const },
   { file: "/assets/music/drf.mp3", key: "drf" as const, concept: "concept4" as const },
-  { file: "/assets/music/reflection.wav", key: "reflection" as const, concept: "concept5" as const },
+  { file: "/assets/music/reflection.mp3", key: "reflection" as const, concept: "concept5" as const },
   { file: "/assets/music/KrodhaS5.mp3", key: "krodhaS5" as const, concept: "concept6" as const },
 ];
 
@@ -35,8 +35,13 @@ function formatTime(seconds: number): string {
   return `${minutes}:${secs.toString().padStart(2, "0")}`;
 }
 
-function initWaveSurfer(file: string, container: HTMLElement) {
-  if (wavesurfers.has(file)) return;
+const waveformContainers = new Map<string, HTMLElement>();
+
+function initWaveSurfer(file: string): WaveSurfer | undefined {
+  if (wavesurfers.has(file)) return wavesurfers.get(file);
+
+  const container = waveformContainers.get(file);
+  if (!container) return;
 
   const ws = WaveSurfer.create({
     container,
@@ -53,6 +58,8 @@ function initWaveSurfer(file: string, container: HTMLElement) {
 
   ws.on("ready", () => {
     trackDurations[file] = ws.getDuration();
+    ws.play();
+    playingTrack = file;
   });
 
   ws.on("audioprocess", () => {
@@ -69,11 +76,21 @@ function initWaveSurfer(file: string, container: HTMLElement) {
   });
 
   wavesurfers.set(file, ws);
+  return ws;
 }
 
 function toggleTrack(file: string) {
   const ws = wavesurfers.get(file);
-  if (!ws) return;
+
+  if (!ws) {
+    // First click — load and play
+    if (playingTrack) {
+      const current = wavesurfers.get(playingTrack);
+      current?.pause();
+    }
+    initWaveSurfer(file);
+    return;
+  }
 
   if (playingTrack === file) {
     ws.pause();
@@ -91,7 +108,7 @@ function toggleTrack(file: string) {
 }
 
 function waveformAction(node: HTMLElement, file: string) {
-  initWaveSurfer(file, node);
+  waveformContainers.set(file, node);
 }
 
 onMount(() => () => {

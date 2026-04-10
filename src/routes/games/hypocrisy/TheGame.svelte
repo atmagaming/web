@@ -60,8 +60,8 @@ onMount(() => {
       <!-- 1: Combat — video -->
       <div class="feature-showcase group relative rounded-sm overflow-hidden h-[320px] md:h-[380px] cursor-default">
         <video
-          autoplay muted loop playsinline
-          src="/assets/videos/combat-loop.mp4"
+          autoplay muted loop playsinline preload="none"
+          src="/assets/videos/combat-loop.webm"
           class="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-700"
         ></video>
         <div class="absolute inset-0 bg-gradient-to-t from-[#03050a] via-[#03050a]/40 to-transparent"></div>
@@ -127,11 +127,11 @@ onMount(() => {
               class="relative flex-1 overflow-hidden"
               style="transition-delay: {i * 50}ms;"
             >
-              <img
+              <!-- <img
                 {src}
                 alt="Companion"
                 class="absolute inset-0 w-full h-full object-cover object-top opacity-70 group-hover:opacity-90 scale-105 group-hover:scale-110 transition-all duration-700"
-              />
+              /> -->
               <!-- Individual portrait divider -->
               {#if i > 0}
                 <div class="absolute left-0 top-0 bottom-0 w-px bg-black/40"></div>

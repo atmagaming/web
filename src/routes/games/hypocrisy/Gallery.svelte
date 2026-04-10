@@ -12,17 +12,17 @@ type GalleryItem =
 
 const row1: GalleryItem[] = [
   { type: "image", src: "/assets/images/concepts/phoenix/polished.webp", key: "phoenixPolished" },
-  { type: "video", src: "/assets/videos/environment.mp4", label: "Environment" },
+  { type: "video", src: "/assets/videos/environment.webm", label: "Environment" },
   { type: "image", src: "/assets/images/concepts/world/world-1.webp", key: "worldEnvironment" },
   { type: "image", src: "/assets/images/ui/main-menu.webp", key: "mainMenu" },
-  { type: "video", src: "/assets/videos/new character.mp4", label: "Character" },
+  { type: "video", src: "/assets/videos/new character.webm", label: "Character" },
   { type: "image", src: "/assets/images/concepts/world/plants.webp", key: "worldPlants" },
 ];
 
 const row2: GalleryItem[] = [
   { type: "image", src: "/assets/images/concepts/world/buildings.webp", key: "worldBuildings" },
   { type: "image", src: "/assets/images/screenshots/character.webp", key: "character" },
-  { type: "video", src: "/assets/videos/old-fighting-concept.mp4", label: "Combat Prototype" },
+  { type: "video", src: "/assets/videos/old-fighting-concept.webm", label: "Combat Prototype" },
   { type: "image", src: "/assets/images/concepts/game-early.webp", key: "gameEarly" },
   { type: "image", src: "/assets/images/concepts/phoenix/shapes.webp", key: "phoenixShapes" },
   { type: "image", src: "/assets/images/ui/hud.webp", key: "hud" },
@@ -30,10 +30,10 @@ const row2: GalleryItem[] = [
 ];
 
 const row3: GalleryItem[] = [
-  { type: "video", src: "/assets/videos/old-foes.mp4", label: "Enemies" },
+  { type: "video", src: "/assets/videos/old-foes.webm", label: "Enemies" },
   { type: "image", src: "/assets/images/screenshots/circle-platform.webp", key: "circlePlatform" },
   { type: "image", src: "/assets/images/ui/death.webp", key: "deathScreen" },
-  { type: "video", src: "/assets/videos/old-environment.mp4", label: "World Exploration" },
+  { type: "video", src: "/assets/videos/old-environment.webm", label: "World Exploration" },
   { type: "image", src: "/assets/images/ui/upgrades.webp", key: "upgrades" },
   { type: "image", src: "/assets/images/ui/early-ui-concept.webp", key: "earlyUi" },
 ];
@@ -152,7 +152,7 @@ function closeLightbox() {
                 class="relative shrink-0 h-[220px] md:h-[280px] w-[360px] md:w-[460px] rounded-sm overflow-hidden bg-dark-900 group cursor-pointer border border-white/5 hover:border-accent-500/20 transition-all duration-300 p-0"
                 onclick={() => openLightbox(item.src, getCaption(item))}
               >
-                <video src={item.src} autoplay muted loop playsinline class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"></video>
+                <video src={item.src} autoplay muted loop playsinline preload="none" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"></video>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
                 <span class="absolute bottom-2.5 left-3 text-[10px] text-white/50 font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-300">{getCaption(item)}</span>
               </button>
@@ -183,7 +183,7 @@ function closeLightbox() {
     onkeydown={(e) => { if (e.key === "Escape") closeLightbox(); }}
   >
     <div class="relative max-w-[90vw] max-h-[90vh]">
-      {#if lightboxSrc.endsWith(".mp4")}
+      {#if lightboxSrc.endsWith(".webm")}
         <video src={lightboxSrc} autoplay loop muted controls class="max-w-full max-h-[85vh] object-contain rounded-sm"></video>
       {:else}
         <img src={lightboxSrc} alt={lightboxCaption} class="max-w-full max-h-[85vh] object-contain rounded-sm" />
