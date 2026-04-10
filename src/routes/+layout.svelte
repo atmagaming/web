@@ -22,7 +22,7 @@ let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
     rel="stylesheet"
   />
   {#if isGamePage}
-    <link rel="prefetch" href="/assets/videos/environment.mp4" as="video" />
+    <link rel="prefetch" href="/assets/videos/environment.webm" as="video" />
   {/if}
 </svelte:head>
 
