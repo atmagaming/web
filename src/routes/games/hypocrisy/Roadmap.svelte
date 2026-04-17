@@ -88,7 +88,7 @@ onMount(() => {
 });
 </script>
 
-<section bind:this={el} class="roadmap-section py-32 lg:py-48 relative overflow-hidden">
+<section id="roadmap" bind:this={el} class="roadmap-section py-32 lg:py-48 relative overflow-hidden">
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_30%,_rgba(180,134,11,0.03)_0%,_transparent_60%)]"></div>
 
   <SectionHeader label={t("hypocrisy.devProgress.roadmapTab")} title={t("hypocrisy.roadmap.title")} />

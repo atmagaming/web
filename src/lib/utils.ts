@@ -48,6 +48,7 @@ export function fitText(node: HTMLElement, options?: { mode?: "shrink" | "exact"
   }
 
   resize();
+  if (typeof document !== "undefined" && document.fonts) document.fonts.ready.then(resize);
   const observer = new ResizeObserver(resize);
   observer.observe(node.parentElement ?? node);
   return { destroy: () => observer.disconnect() };

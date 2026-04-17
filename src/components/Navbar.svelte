@@ -10,6 +10,8 @@ let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
 let mobileOpen = $state(false);
 let scrollHidden = $state(false);
 let lastScrollY = 0;
+let programmaticScroll = false;
+let programmaticTimeout: ReturnType<typeof setTimeout> | undefined;
 
 let hidden = $derived(scrollHidden || $modalOpen);
 
@@ -17,9 +19,32 @@ function closeMobile() {
   mobileOpen = false;
 }
 
+function scrollToId(id: string) {
+  const target = document.querySelector(`#${id}`);
+  if (!target) return;
+
+  programmaticScroll = true;
+  if (programmaticTimeout) clearTimeout(programmaticTimeout);
+
+  const finish = () => {
+    programmaticScroll = false;
+    lastScrollY = window.scrollY;
+    window.removeEventListener("scrollend", finish);
+  };
+
+  window.addEventListener("scrollend", finish, { once: true });
+  programmaticTimeout = setTimeout(finish, 1500);
+
+  target.scrollIntoView({ behavior: "smooth" });
+}
+
 onMount(() => {
   function onScroll() {
     const y = window.scrollY;
+    if (programmaticScroll) {
+      lastScrollY = y;
+      return;
+    }
     if (y < 52) scrollHidden = false;
     else scrollHidden = y > lastScrollY;
     lastScrollY = y;
@@ -49,11 +74,13 @@ onMount(() => {
   <!-- Desktop nav -->
   <div class="hidden md:flex items-center gap-1">
     {#if isGamePage}
-      <button type="button" class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white/50 px-3.5 py-1.5 hover:text-white transition-colors no-underline bg-transparent border-none cursor-pointer" onclick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}>{t("nav.about")}</button>
+      {#each [{ id: "about", label: t("nav.about") }, { id: "roadmap", label: t("nav.roadmap") }, { id: "development", label: t("nav.development") }] as link (link.id)}
+        <button type="button" class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white/50 px-3.5 py-1.5 hover:text-white transition-colors no-underline bg-transparent border-none cursor-pointer" onclick={() => scrollToId(link.id)}>{link.label}</button>
+      {/each}
       <button
         type="button"
         class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white bg-red px-4 py-1.5 ml-3 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
-        onclick={() => document.querySelector('#join')?.scrollIntoView({ behavior: 'smooth' })}
+        onclick={() => scrollToId('join')}
       >{t("nav.join")}</button>
     {:else}
       <a href="/" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname === '/' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.about")}</a>
@@ -101,13 +128,15 @@ onMount(() => {
     onkeydown={(e) => { if (e.key === "Escape") closeMobile(); }}
   >
     {#if isGamePage}
-      <button type="button" class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white/70 px-4 py-2 hover:text-white transition-colors bg-transparent border-none cursor-pointer" onclick={() => { closeMobile(); document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' }); }}>{t("nav.about")}</button>
+      {#each [{ id: "about", label: t("nav.about") }, { id: "roadmap", label: t("nav.roadmap") }, { id: "development", label: t("nav.development") }] as link (link.id)}
+        <button type="button" class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white/70 px-4 py-2 hover:text-white transition-colors bg-transparent border-none cursor-pointer" onclick={() => { closeMobile(); scrollToId(link.id); }}>{link.label}</button>
+      {/each}
       <button
         type="button"
         class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white bg-red px-6 py-2.5 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
         onclick={() => {
           closeMobile();
-          document.querySelector('#join')?.scrollIntoView({ behavior: 'smooth' });
+          scrollToId('join');
         }}
       >{t("nav.join")}</button>
     {:else}
