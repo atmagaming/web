@@ -14,8 +14,16 @@ onMount(() => {
   if (!letterEls?.length) return;
 
   for (const el of letterEls) {
+    const fadeDelay = Math.random() * 1.2;
     const drift = 2 + Math.random() * 3;
     const speed = 2 + Math.random() * 3;
+
+    gsap.to(el, {
+      opacity: 1,
+      duration: 0.8,
+      delay: fadeDelay,
+      ease: "power2.out",
+    });
 
     gsap.to(el, {
       y: drift,
@@ -23,7 +31,7 @@ onMount(() => {
       ease: "quad.inOut",
       yoyo: true,
       repeat: -1,
-      delay: Math.random() * 2,
+      delay: fadeDelay + Math.random() * 1.5,
     });
   }
 });
@@ -47,6 +55,7 @@ onMount(() => {
 
   .hero-letter {
     display: inline-block;
-    will-change: transform;
+    will-change: transform, opacity;
+    opacity: 0;
   }
 </style>
