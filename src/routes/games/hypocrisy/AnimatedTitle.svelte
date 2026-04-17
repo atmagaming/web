@@ -9,6 +9,7 @@ const letters = $derived(text.split(""));
 let titleEl: HTMLElement;
 
 function fitWidth(node: HTMLElement) {
+  console.log("Fitting width for", node);
   function resize() {
     const parent = node.parentElement;
     if (!parent) return;

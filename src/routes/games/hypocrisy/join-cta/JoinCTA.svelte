@@ -1,11 +1,18 @@
 <script lang="ts">
+import BookOpenIcon from "lucide-svelte/icons/book-open";
+import BoxIcon from "lucide-svelte/icons/box";
+import PaletteIcon from "lucide-svelte/icons/palette";
+import PlayIcon from "lucide-svelte/icons/play";
+import SendIcon from "lucide-svelte/icons/send";
+import SparklesIcon from "lucide-svelte/icons/sparkles";
+import UsersIcon from "lucide-svelte/icons/users";
+import Volume2Icon from "lucide-svelte/icons/volume-2";
+import { onMount } from "svelte";
 import ContactFormModal from "@/components/ContactFormModal.svelte";
 import gsap from "@/lib/gsap";
 import { locale } from "@/lib/i18n";
 import { t } from "@/lib/i18n/t";
 import { translations } from "@/lib/i18n/translations";
-import { BookOpen, Box, Palette, Play, Send, Sparkles, Users, Volume2 } from "lucide-svelte";
-import { onMount } from "svelte";
 import Closing from "../../../Closing.svelte";
 import SectionHeader from "../SectionHeader.svelte";
 import OpenRoles from "./OpenRoles.svelte";
@@ -30,13 +37,13 @@ const roleKeys = [
 ] as const;
 
 const roleIcons = {
-  roleConceptArtist: Palette,
-  role3dArtist: Box,
-  role3dAnimator: Play,
-  roleVfx: Sparkles,
-  roleSfx: Volume2,
-  roleNarrative: BookOpen,
-  roleProjectManager: Users,
+  roleConceptArtist: PaletteIcon,
+  role3dArtist: BoxIcon,
+  role3dAnimator: PlayIcon,
+  roleVfx: SparklesIcon,
+  roleSfx: Volume2Icon,
+  roleNarrative: BookOpenIcon,
+  roleProjectManager: UsersIcon,
 } as const;
 
 const team = [
@@ -177,7 +184,7 @@ onMount(() => {
           onclick={() => openModal()}
           class="font-mono text-[0.65rem] tracking-[0.15em] uppercase px-5 py-2.5 inline-flex items-center gap-2 transition-all cursor-pointer text-accent-500 border-[1.5px] border-accent-500/30 hover:border-accent-500 hover:text-accent-400"
         >
-          <Send class="w-3.5 h-3.5 mr-1" />
+          <SendIcon class="w-3.5 h-3.5 mr-1" />
           Get in Touch
         </button>
       </div>

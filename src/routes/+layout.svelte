@@ -21,9 +21,6 @@ let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
     href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel:wght@700;900&family=DM+Mono:wght@400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
     rel="stylesheet"
   />
-  {#if isGamePage}
-    <link rel="prefetch" href="/assets/videos/environment.webm" as="video" />
-  {/if}
 </svelte:head>
 
 <div class="min-h-screen flex flex-col" style="background-color: {isGamePage ? '#03050a' : '#ffffff'}">
