@@ -12,6 +12,8 @@ export const ua: typeof en = {
     ourGames: "Наші ігри",
     getInTouch: "Зв'язатися",
     join: "Приєднатися",
+    roadmap: "Дорожня карта",
+    development: "Прогрес",
   },
   home: {
     hero: {

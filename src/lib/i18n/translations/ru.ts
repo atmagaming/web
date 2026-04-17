@@ -12,6 +12,8 @@ export const ru: typeof en = {
     ourGames: "Наши игры",
     getInTouch: "Связаться",
     join: "Присоединиться",
+    roadmap: "Дорожная карта",
+    development: "Прогресс",
   },
   home: {
     hero: {

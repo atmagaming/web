@@ -10,6 +10,8 @@ export const en = {
     ourGames: "Our Games",
     getInTouch: "Get in Touch",
     join: "Join",
+    roadmap: "Roadmap",
+    development: "Progress",
   },
   home: {
     hero: {
