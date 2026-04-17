@@ -1,34 +1,13 @@
 <script lang="ts">
 import { onMount } from "svelte";
 import gsap from "@/lib/gsap";
+import { fitText } from "@/lib/utils";
 
 let { text }: { text: string } = $props();
 
 const letters = $derived(text.split(""));
 
 let titleEl: HTMLElement;
-
-function fitWidth(node: HTMLElement) {
-  console.log("Fitting width for", node);
-  function resize() {
-    const parent = node.parentElement;
-    if (!parent) return;
-    const parentStyle = getComputedStyle(parent);
-    const available = parent.clientWidth - parseFloat(parentStyle.paddingLeft) - parseFloat(parentStyle.paddingRight);
-
-    node.style.fontSize = "10px";
-    node.style.width = "auto";
-    const textWidth = node.offsetWidth;
-    node.style.width = "";
-
-    if (textWidth > 0 && available > 0) node.style.fontSize = `${10 * (available / textWidth)}px`;
-  }
-
-  resize();
-  const observer = new ResizeObserver(resize);
-  observer.observe(node.parentElement ?? node);
-  return { destroy: () => observer.disconnect() };
-}
 
 onMount(() => {
   const letterEls = titleEl?.querySelectorAll<HTMLElement>(".hero-letter");
@@ -52,8 +31,9 @@ onMount(() => {
 
 <h1
   bind:this={titleEl}
-  use:fitWidth
-  class="font-display font-bold leading-[0.85] tracking-[-0.02em] text-center select-none text-white whitespace-nowrap"
+  use:fitText={{ mode: "exact" }}
+  style="--chars: {letters.length}"
+  class="animated-title font-display font-bold leading-[0.85] tracking-[-0.02em] text-center select-none text-white whitespace-nowrap"
 >
   {#each letters as letter, i (i)}
     <span class="hero-letter">{letter}</span>
@@ -61,6 +41,10 @@ onMount(() => {
 </h1>
 
 <style>
+  .animated-title {
+    font-size: clamp(3rem, calc(100cqi / var(--chars) * 1.55), 20rem);
+  }
+
   .hero-letter {
     display: inline-block;
     will-change: transform;

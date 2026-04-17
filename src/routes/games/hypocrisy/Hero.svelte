@@ -67,6 +67,7 @@ onMount(() => {
 <style>
   .knockout-mask {
     mix-blend-mode: multiply;
+    container-type: inline-size;
   }
 
 </style>
