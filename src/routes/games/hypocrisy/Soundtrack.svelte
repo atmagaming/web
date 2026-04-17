@@ -26,6 +26,8 @@ const tracks = $derived(
 
 let playingTrack = $state<string | null>(null);
 const wavesurfers = new Map<string, WaveSurfer>();
+const readyFiles = new Set<string>();
+const playOnReady = new Set<string>();
 const trackDurations = $state<Record<string, number>>({});
 const trackCurrentTimes = $state<Record<string, number>>({});
 
@@ -58,8 +60,12 @@ function initWaveSurfer(file: string): WaveSurfer | undefined {
 
   ws.on("ready", () => {
     trackDurations[file] = ws.getDuration();
-    ws.play();
-    playingTrack = file;
+    readyFiles.add(file);
+    if (playOnReady.has(file)) {
+      playOnReady.delete(file);
+      ws.play();
+      playingTrack = file;
+    }
   });
 
   ws.on("audioprocess", () => {
@@ -79,16 +85,20 @@ function initWaveSurfer(file: string): WaveSurfer | undefined {
   return ws;
 }
 
+function pauseCurrent() {
+  if (!playingTrack) return;
+  const current = wavesurfers.get(playingTrack);
+  current?.pause();
+  playOnReady.delete(playingTrack);
+}
+
 function toggleTrack(file: string) {
   const ws = wavesurfers.get(file);
 
-  if (!ws) {
-    // First click — load and play
-    if (playingTrack) {
-      const current = wavesurfers.get(playingTrack);
-      current?.pause();
-    }
-    initWaveSurfer(file);
+  if (!ws || !readyFiles.has(file)) {
+    pauseCurrent();
+    playOnReady.add(file);
+    if (!ws) initWaveSurfer(file);
     return;
   }
 
@@ -98,11 +108,7 @@ function toggleTrack(file: string) {
     return;
   }
 
-  if (playingTrack) {
-    const current = wavesurfers.get(playingTrack);
-    current?.pause();
-  }
-
+  pauseCurrent();
   ws.play();
   playingTrack = file;
 }
@@ -111,9 +117,12 @@ function waveformAction(node: HTMLElement, file: string) {
   waveformContainers.set(file, node);
 }
 
-onMount(() => () => {
-  for (const ws of wavesurfers.values()) ws.destroy();
-  wavesurfers.clear();
+onMount(() => {
+  for (const track of trackList) initWaveSurfer(track.file);
+  return () => {
+    for (const ws of wavesurfers.values()) ws.destroy();
+    wavesurfers.clear();
+  };
 });
 </script>
 
@@ -186,6 +195,7 @@ onMount(() => () => {
 <style>
   .waveform-container {
     cursor: pointer;
+    height: 64px;
   }
 
   .waveform-container :global(wave) {
