@@ -1,5 +1,6 @@
 <script lang="ts">
-import { Mail, Send } from "lucide-svelte";
+import MailIcon from "lucide-svelte/icons/mail";
+import SendIcon from "lucide-svelte/icons/send";
 import Button from "@/components/ui/Button.svelte";
 import { modalOpen } from "@/lib/stores";
 import { cn } from "@/lib/utils";
@@ -107,7 +108,7 @@ function handleBackdropClick(e: MouseEvent) {
         class="flex items-center gap-2 text-dark-950/60 hover:text-gold transition-colors cursor-pointer"
         title="Email: ceo@atmagaming.com"
       >
-        <Mail class="w-5 h-5 transition-colors" />
+        <MailIcon class="w-5 h-5 transition-colors" />
         <span class="text-xs font-mono tracking-[0.1em] uppercase">Email</span>
       </a>
 
@@ -118,7 +119,7 @@ function handleBackdropClick(e: MouseEvent) {
         class="flex items-center gap-2 text-dark-950/60 hover:text-gold transition-colors cursor-pointer"
         title="Telegram: @elumixor"
       >
-        <Send class="w-5 h-5 transition-colors" />
+        <SendIcon class="w-5 h-5 transition-colors" />
         <span class="text-xs font-mono tracking-[0.1em] uppercase">Telegram</span>
       </a>
     </div>

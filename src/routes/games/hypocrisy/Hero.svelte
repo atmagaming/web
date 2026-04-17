@@ -1,12 +1,22 @@
 <script lang="ts">
+import { onMount } from "svelte";
 import ScrollPrompt from "@/components/ScrollPrompt.svelte";
 import { t } from "@/lib/i18n/t";
 import AnimatedTitle from "./AnimatedTitle.svelte";
 import Tag from "./Tag.svelte";
+
+let mounted = $state(false);
+onMount(() => {
+  mounted = true;
+});
 </script>
 
 <section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#03050a]">
-  <video autoplay muted loop playsinline poster="/assets/images/environment-poster.webp" src="/assets/videos/environment.webm" class="absolute inset-0 w-full h-full object-cover"></video>
+  {#if mounted}
+    <video autoplay muted loop playsinline preload="none" poster="/assets/images/environment-poster.webp" src="/assets/videos/environment.webm" class="absolute inset-0 w-full h-full object-cover"></video>
+  {:else}
+    <img src="/assets/images/environment-poster.webp" alt="" class="absolute inset-0 w-full h-full object-cover" />
+  {/if}
 
   <div class="knockout-mask absolute inset-0 w-full h-full bg-[#03050a] flex flex-col items-center justify-center px-6 lg:px-16 box-border">
     <AnimatedTitle text={t("hypocrisy.hero.title")} />
