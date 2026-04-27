@@ -37,16 +37,20 @@ onMount(() => {
 });
 </script>
 
-<h1
-  bind:this={titleEl}
-  use:fitText={{ mode: "exact" }}
-  style="--chars: {letters.length}"
-  class="animated-title font-display font-bold leading-[0.85] tracking-[-0.02em] text-center select-none text-white whitespace-nowrap"
+<div
+  class="knockout-mask absolute inset-0 w-full h-full bg-[#03050a] flex flex-col items-center justify-center px-6 lg:px-16 box-border"
 >
-  {#each letters as letter, i (i)}
-    <span class="hero-letter">{letter}</span>
-  {/each}
-</h1>
+  <h1
+    bind:this={titleEl}
+    use:fitText={{ mode: "exact" }}
+    style="--chars: {letters.length}"
+    class="animated-title font-display font-bold leading-[0.85] tracking-[-0.02em] text-center select-none text-white whitespace-nowrap"
+  >
+    {#each letters as letter, i (i)}
+      <span class="hero-letter">{letter}</span>
+    {/each}
+  </h1>
+</div>
 
 <style>
   .animated-title {
@@ -57,5 +61,10 @@ onMount(() => {
     display: inline-block;
     will-change: transform, opacity;
     opacity: 0;
+  }
+
+  .knockout-mask {
+    mix-blend-mode: multiply;
+    container-type: inline-size;
   }
 </style>
