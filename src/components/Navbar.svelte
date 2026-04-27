@@ -6,7 +6,7 @@ import { modalOpen } from "@/lib/stores";
 import { cn } from "@/lib/utils";
 import { page } from "$app/stores";
 
-let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
+let isGamePage = $derived($page.url.pathname.startsWith("/hypocrisy"));
 let mobileOpen = $state(false);
 let scrollHidden = $state(false);
 let lastScrollY = 0;
@@ -84,7 +84,7 @@ onMount(() => {
       >{t("nav.join")}</button>
     {:else}
       <a href="/" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname === '/' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.about")}</a>
-      <a href="/games/hypocrisy" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname.startsWith('/games') ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.ourGames")}</a>
+      <a href="/hypocrisy" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname.startsWith('/games') ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.ourGames")}</a>
     {/if}
     <!-- Temporarily hide language -->
     <!-- <div class={isGamePage ? "[&_button]:text-white/50 [&_button]:hover:text-white [&_button.text-red]:text-red" : ""}>

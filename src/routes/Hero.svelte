@@ -1,6 +1,7 @@
 <script lang="ts">
 import ScrollPrompt from "@/components/ScrollPrompt.svelte";
 import Button from "@/components/ui/Button.svelte";
+import Icon from "@/components/ui/Icon.svelte";
 import { t } from "@/lib/i18n/t";
 import { fitText } from "@/lib/utils";
 
@@ -38,14 +39,18 @@ let {
 
   <div class="hero-actions flex items-center gap-2 flex-wrap">
    <Button onclick={onScrollToWhy}>
-      {t("home.hero.whyWeExist")} &darr;
+      {t("home.hero.whyWeExist")}
+      <Icon src="/assets/icons/arrows/down.svg" />
     </Button>
     <Button
       variant="outline"
       href="https://atmagaming.notion.site/Vision-dc4f14be61f741c38881701ac9c2ab74"
       target="_blank"
       rel="noopener noreferrer"
-    >{t("home.hero.missionStatement")} &nearr;</Button>
+    >
+      {t("home.hero.missionStatement")}
+      <Icon src="/assets/icons/arrows/up-right.svg" />
+    </Button>
   </div>
 
   <ScrollPrompt textKey="home.hero.scroll" color="rgba(107, 114, 128, 0.6)" position="bottom-right" />

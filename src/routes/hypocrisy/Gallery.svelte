@@ -35,7 +35,6 @@ const row3: GalleryItem[] = [
   { type: "image", src: "/assets/images/ui/death.webp", key: "deathScreen" },
   { type: "video", src: "/assets/videos/old-environment.webm", label: "World Exploration" },
   { type: "image", src: "/assets/images/ui/upgrades.webp", key: "upgrades" },
-  { type: "image", src: "/assets/images/ui/early-ui-concept.webp", key: "earlyUi" },
 ];
 
 const rows = [row1, row2, row3];

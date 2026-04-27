@@ -63,15 +63,18 @@ function handleBackdropClick(e: MouseEvent) {
 </script>
 
 <!-- Backdrop -->
-<div
+<button
+  type="button"
+  aria-label="Close modal"
+  tabindex="-1"
   class={cn(
-    "fixed inset-0 z-40 transition-all duration-500 ease-out",
+    "fixed inset-0 z-40 transition-all duration-500 ease-out cursor-default",
     open
       ? "bg-black/50 backdrop-blur-sm"
       : "bg-black/0 backdrop-blur-none pointer-events-none",
   )}
   onclick={handleBackdropClick}
-/>
+></button>
 
 <!-- Modal -->
 <div

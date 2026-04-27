@@ -1,5 +1,6 @@
 <script lang="ts">
 import DevProgress from "./DevProgress.svelte";
+import Features from "./Features.svelte";
 import Hero from "./Hero.svelte";
 import JoinCTA from "./join-cta/JoinCTA.svelte";
 import Roadmap from "./Roadmap.svelte";
@@ -9,6 +10,7 @@ import TheGame from "./TheGame.svelte";
 <div class="game-page">
   <Hero />
   <TheGame />
+  <Features />
   <Roadmap />
   <DevProgress />
   <JoinCTA />

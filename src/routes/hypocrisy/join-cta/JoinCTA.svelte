@@ -13,7 +13,7 @@ import gsap from "@/lib/gsap";
 import { locale } from "@/lib/i18n";
 import { t } from "@/lib/i18n/t";
 import { translations } from "@/lib/i18n/translations";
-import Closing from "../../../Closing.svelte";
+import Closing from "../../Closing.svelte";
 import SectionHeader from "../SectionHeader.svelte";
 import OpenRoles from "./OpenRoles.svelte";
 import Team from "./Team.svelte";

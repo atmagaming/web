@@ -12,7 +12,7 @@ interface Props {
 
 let { textKey, color = "rgba(255, 255, 255, 0.4)", position = "bottom-center", hidden = false }: Props = $props();
 
-let el: HTMLElement | undefined;
+let el = $state<HTMLElement | undefined>(undefined);
 
 onMount(() => {
   if (!el) return;
@@ -32,10 +32,11 @@ onMount(() => {
   return () => ctx.revert();
 });
 
-const positionClass =
+const positionClass = $derived(
   position === "bottom-right"
     ? "absolute bottom-8 right-16 hidden lg:flex"
-    : "absolute bottom-12 left-1/2 -translate-x-1/2 flex";
+    : "absolute bottom-12 left-1/2 -translate-x-1/2 flex",
+);
 </script>
 
 {#if !hidden}
