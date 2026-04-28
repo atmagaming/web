@@ -7,6 +7,7 @@ const { name, role, image, link, linkType }: TeamMember = $props();
 const initials = $derived(
   name
     .split(" ")
+    .filter((part) => part.length > 0)
     .map((part) => part[0])
     .join(""),
 );

@@ -1,9 +1,8 @@
 <script lang="ts">
 import { t } from "@/lib/i18n/t";
-import type { PhaseStatus } from "./phase-types";
 
 interface Props {
-  status: PhaseStatus;
+  status: "current" | "upcoming" | "future";
   phase: string;
   title: string;
   date: string;

@@ -3,10 +3,9 @@ import SendIcon from "lucide-svelte/icons/send";
 import { onMount } from "svelte";
 import ContactFormModal from "@/components/ContactFormModal.svelte";
 import gsap from "@/lib/gsap";
-import { locale } from "@/lib/i18n";
 import { t } from "@/lib/i18n/t";
-import { translations } from "@/lib/i18n/translations";
 import Closing from "../../Closing.svelte";
+import { localizedAt } from "../_shared/i18n";
 import SectionHeader from "../_shared/SectionHeader.svelte";
 import OpenRoles from "./OpenRoles.svelte";
 import { roleIcons, roleKeys } from "./role-icons";
@@ -17,12 +16,7 @@ let modalOpen = $state(false);
 let sectionEl: HTMLElement;
 let contentEl: HTMLElement;
 
-const roles = $derived(
-  roleKeys.map((key) => {
-    const roleData = translations[locale.value].hypocrisy.joinCta[key] ?? translations.en.hypocrisy.joinCta[key];
-    return { ...roleData, icon: roleIcons[key] };
-  }),
-);
+const roles = $derived(roleKeys.map((key) => ({ ...localizedAt("joinCta", key), icon: roleIcons[key] })));
 
 onMount(() => {
   const ctx = gsap.context(() => {

@@ -1,26 +1,22 @@
 <script lang="ts">
 import { onMount } from "svelte";
 import gsap from "@/lib/gsap";
-import { locale } from "@/lib/i18n";
 import { t } from "@/lib/i18n/t";
-import { translations } from "@/lib/i18n/translations";
+import { localizedAt } from "../_shared/i18n";
 import SectionHeader from "../_shared/SectionHeader.svelte";
 import Phase from "./Phase.svelte";
-import type { PhaseStatus } from "./phase-types";
 
 const phaseDefinitions = [
-  { key: "phase1", status: "current" as PhaseStatus, width: 45 },
-  { key: "phase2", status: "upcoming" as PhaseStatus, width: 30 },
-  { key: "phase3", status: "future" as PhaseStatus, width: 25 },
+  { key: "phase1", status: "current", width: 45 },
+  { key: "phase2", status: "upcoming", width: 30 },
+  { key: "phase3", status: "future", width: 25 },
 ] as const;
 
-function localizedPhase(key: "phase1" | "phase2" | "phase3" | "phase4") {
-  return translations[locale.value].hypocrisy.devProgress[key] ?? translations.en.hypocrisy.devProgress[key];
-}
+const phases = $derived(
+  phaseDefinitions.map(({ key, status, width }) => ({ ...localizedAt("devProgress", key), status, width })),
+);
 
-const phases = $derived(phaseDefinitions.map(({ key, status, width }) => ({ ...localizedPhase(key), status, width })));
-
-const releasePhase = $derived(localizedPhase("phase4"));
+const releasePhase = $derived(localizedAt("devProgress", "phase4"));
 
 let sectionEl: HTMLElement;
 let timelineEl: HTMLElement;

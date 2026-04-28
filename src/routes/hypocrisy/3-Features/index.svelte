@@ -12,6 +12,8 @@ const featureDefinitions = [
   { key: "companions", tagKey: "hypocrisy.combat.pillarTagBonds" },
 ] as const;
 
+const totalPadded = String(featureDefinitions.length).padStart(2, "0");
+
 const features = $derived(
   featureDefinitions.map(({ key, tagKey }) => ({
     tag: t(tagKey),
@@ -19,7 +21,6 @@ const features = $derived(
     description: t(`hypocrisy.combat.${key}.description`),
   })),
 );
-const totalPadded = $derived(String(features.length).padStart(2, "0"));
 
 let sectionEl: HTMLElement;
 
@@ -80,7 +81,7 @@ onMount(() => {
     {#each features as feature, i (i)}
       <FeatureRow
         index={i}
-        total={features.length}
+        total={featureDefinitions.length}
         tag={feature.tag}
         title={feature.title}
         description={feature.description}

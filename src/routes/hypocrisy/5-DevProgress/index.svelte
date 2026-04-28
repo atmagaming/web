@@ -27,9 +27,8 @@ onMount(() => {
 
 <section id="development" bind:this={sectionEl} class="dev-section">
   <div bind:this={headerEl} class="dev-header">
-    <SectionHeader label={t("hypocrisy.devProgress.sectionLabel")} title={t("hypocrisy.devProgress.title")}>
-      <p class="lead">{t("hypocrisy.devProgress.subtitle")}</p>
-    </SectionHeader>
+    <SectionHeader label={t("hypocrisy.devProgress.sectionLabel")} title={t("hypocrisy.devProgress.title")} />
+    <p class="lead page-x">{t("hypocrisy.devProgress.subtitle")}</p>
   </div>
 
   <div class="gallery-wrapper">
