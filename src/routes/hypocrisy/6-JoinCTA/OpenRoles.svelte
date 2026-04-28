@@ -3,14 +3,7 @@ import { t } from "@/lib/i18n/t";
 import RoleCard from "./RoleCard.svelte";
 import type { RoleIcon } from "./role-icons";
 
-interface Role {
-  title: string;
-  description: string;
-  type: string;
-  icon: RoleIcon;
-}
-
-const { roles }: { roles: Role[] } = $props();
+const { roles }: { roles: { title: string; description: string; type: string; icon: RoleIcon }[] } = $props();
 </script>
 
 <div class="open-roles">

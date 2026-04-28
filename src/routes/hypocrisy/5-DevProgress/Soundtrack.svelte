@@ -95,21 +95,24 @@ function pauseCurrent() {
 
 function toggleTrack(file: string) {
   const waveSurfer = waveSurfers.get(file);
-
-  if (!waveSurfer || !readyFiles.has(file)) {
-    pauseCurrent();
-    playOnReady.add(file);
-    if (!waveSurfer) initWaveSurfer(file);
-    return;
-  }
+  const isReady = waveSurfer && readyFiles.has(file);
 
   if (playingTrack === file) {
-    waveSurfer.pause();
+    if (isReady) waveSurfer.pause();
+    playOnReady.delete(file);
     playingTrack = null;
     return;
   }
 
   pauseCurrent();
+
+  if (!isReady) {
+    playOnReady.add(file);
+    playingTrack = file;
+    if (!waveSurfer) initWaveSurfer(file);
+    return;
+  }
+
   startPlayback(waveSurfer, file);
 }
 
