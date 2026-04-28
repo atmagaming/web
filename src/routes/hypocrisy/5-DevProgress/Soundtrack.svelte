@@ -1,9 +1,9 @@
 <script lang="ts">
 import { onMount } from "svelte";
 import WaveSurfer from "wavesurfer.js";
-import { locale } from "@/lib/i18n";
 import { t } from "@/lib/i18n/t";
-import { translations } from "@/lib/i18n/translations";
+import { localized } from "../_shared/i18n";
+import { ROMAN_NUMERALS } from "../_shared/roman-numerals";
 import TrackCard from "./TrackCard.svelte";
 
 const trackList = [
@@ -15,16 +15,14 @@ const trackList = [
   { file: "/assets/music/KrodhaS5.mp3", key: "krodhaS5", concept: "concept6" },
 ] as const;
 
-const romanNumerals = ["I", "II", "III", "IV", "V", "VI"] as const;
-
-if (trackList.length > romanNumerals.length)
-  throw new Error(`Soundtrack has ${trackList.length} tracks but only ${romanNumerals.length} roman numerals`);
+if (trackList.length > ROMAN_NUMERALS.length)
+  throw new Error(`Soundtrack has ${trackList.length} tracks but only ${ROMAN_NUMERALS.length} roman numerals`);
 
 const tracks = $derived(
   trackList.map((track, index) => ({
     ...track,
-    numeral: romanNumerals[index],
-    conceptLabel: translations[locale.value].hypocrisy.devProgress.trackConcepts[track.concept],
+    numeral: ROMAN_NUMERALS[index],
+    conceptLabel: localized("devProgress").trackConcepts[track.concept],
   })),
 );
 

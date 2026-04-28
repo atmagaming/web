@@ -1,7 +1,6 @@
 <script lang="ts">
 import { t } from "@/lib/i18n/t";
-
-const ROMAN_NUMERALS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"] as const;
+import { ROMAN_NUMERALS } from "../_shared/roman-numerals";
 
 interface Props {
   index: number;
