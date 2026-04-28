@@ -1,13 +1,7 @@
 <script lang="ts">
 import { onMount } from "svelte";
 
-interface Props {
-  src: string;
-  caption: string;
-  onClose: () => void;
-}
-
-const { src, caption, onClose }: Props = $props();
+const { src, caption, onClose }: { src: string; caption: string; onClose: () => void } = $props();
 
 const isVideo = $derived(src.endsWith(".webm"));
 

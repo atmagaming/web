@@ -1,7 +1,15 @@
 <script lang="ts">
 import type { Action } from "svelte/action";
 
-interface Props {
+const {
+  numeral,
+  conceptLabel,
+  duration,
+  currentTime,
+  isPlaying,
+  onToggle,
+  waveformAction,
+}: {
   numeral: string;
   conceptLabel: string;
   duration: number | undefined;
@@ -9,9 +17,7 @@ interface Props {
   isPlaying: boolean;
   onToggle: () => void;
   waveformAction: Action<HTMLElement>;
-}
-
-const { numeral, conceptLabel, duration, currentTime, isPlaying, onToggle, waveformAction }: Props = $props();
+} = $props();
 
 const progress = $derived(duration ? ((currentTime ?? 0) / duration) * 100 : 0);
 

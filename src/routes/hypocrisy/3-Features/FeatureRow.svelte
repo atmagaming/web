@@ -2,15 +2,13 @@
 import { t } from "@/lib/i18n/t";
 import { ROMAN_NUMERALS } from "../_shared/roman-numerals";
 
-interface Props {
-  index: number;
-  total: number;
-  tag: string;
-  title: string;
-  description: string;
-}
-
-const { index, total, tag, title, description }: Props = $props();
+const {
+  index,
+  total,
+  tag,
+  title,
+  description,
+}: { index: number; total: number; tag: string; title: string; description: string } = $props();
 
 if (index < 0 || index >= ROMAN_NUMERALS.length)
   throw new Error(`FeatureRow index ${index} out of range (0-${ROMAN_NUMERALS.length - 1})`);

@@ -1,7 +1,15 @@
 <script lang="ts">
 import { t } from "@/lib/i18n/t";
 
-interface Props {
+const {
+  status,
+  phase,
+  title,
+  date,
+  description,
+  width,
+  items,
+}: {
   status: "current" | "upcoming" | "future";
   phase: string;
   title: string;
@@ -9,9 +17,7 @@ interface Props {
   description: string;
   width: number;
   items: readonly string[];
-}
-
-const { status, phase, title, date, description, width, items }: Props = $props();
+} = $props();
 </script>
 
 <div class="phase-entry phase-{status}">

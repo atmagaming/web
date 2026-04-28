@@ -1,14 +1,12 @@
 <script lang="ts">
 import type { RoleIcon } from "./role-icons";
 
-interface Props {
-  title: string;
-  description: string;
-  type: string;
-  icon: RoleIcon;
-}
-
-const { title, description, type, icon: Icon }: Props = $props();
+const {
+  title,
+  description,
+  type,
+  icon: Icon,
+}: { title: string; description: string; type: string; icon: RoleIcon } = $props();
 </script>
 
 <div class="role-card">
