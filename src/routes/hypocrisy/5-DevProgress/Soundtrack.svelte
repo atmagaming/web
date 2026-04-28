@@ -111,14 +111,19 @@ function toggleTrack(file: string) {
 
 function waveformAction(node: HTMLElement, file: string) {
   containers.set(file, node);
+  return {
+    destroy: () => {
+      containers.delete(file);
+      wavesurfers.get(file)?.destroy();
+      wavesurfers.delete(file);
+      readyFiles.delete(file);
+      playOnReady.delete(file);
+    },
+  };
 }
 
 onMount(() => {
   for (const track of trackList) initWaveSurfer(track.file);
-  return () => {
-    for (const ws of wavesurfers.values()) ws.destroy();
-    wavesurfers.clear();
-  };
 });
 </script>
 

@@ -7,10 +7,11 @@ import Gallery from "./Gallery.svelte";
 import Soundtrack from "./Soundtrack.svelte";
 
 let sectionEl: HTMLElement;
+let headerEl: HTMLElement;
 
 onMount(() => {
   const ctx = gsap.context(() => {
-    gsap.from(".dev-header > *", {
+    gsap.from(headerEl.children, {
       scrollTrigger: { trigger: sectionEl, start: "top 75%" },
       y: 30,
       opacity: 0,
@@ -25,7 +26,7 @@ onMount(() => {
 </script>
 
 <section id="development" bind:this={sectionEl} class="dev-section">
-  <div class="dev-header">
+  <div bind:this={headerEl} class="dev-header">
     <SectionHeader label={t("hypocrisy.devProgress.sectionLabel")} title={t("hypocrisy.devProgress.title")}>
       <p class="lead">{t("hypocrisy.devProgress.subtitle")}</p>
     </SectionHeader>
@@ -38,22 +39,4 @@ onMount(() => {
   <Soundtrack />
 </section>
 
-<style>
-  .dev-section {
-    padding: 8rem 0;
-
-    @media (min-width: 1024px) {
-      padding: 12rem 0;
-    }
-  }
-
-  .lead {
-    margin-bottom: 4rem;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.25);
-  }
-
-  .gallery-wrapper {
-    margin-bottom: 8rem;
-  }
-</style>
+<style src="./DevProgress.css"></style>

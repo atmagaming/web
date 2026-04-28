@@ -7,9 +7,9 @@ interface Props {
   phase: string;
   title: string;
   date: string;
-  description?: string;
-  width?: number;
-  items?: readonly string[];
+  description: string;
+  width: number;
+  items: readonly string[];
 }
 
 const { status, phase, title, date, description, width, items }: Props = $props();
@@ -36,28 +36,22 @@ const { status, phase, title, date, description, width, items }: Props = $props(
     <h3 class="phase-title font-display">{title}</h3>
     <p class="phase-date">{date}</p>
 
-    {#if width !== undefined}
-      <div class="duration" style="max-width: {width * 2.5}px;">
-        <div class="duration-track">
-          <div class="duration-fill"></div>
-        </div>
+    <div class="duration" style="max-width: {width * 2.5}px;">
+      <div class="duration-track">
+        <div class="duration-fill"></div>
       </div>
-    {/if}
+    </div>
 
-    {#if description}
-      <p class="phase-description">{description}</p>
-    {/if}
+    <p class="phase-description">{description}</p>
 
-    {#if items}
-      <ul class="phase-items">
-        {#each items as item (item)}
-          <li class="phase-item">
-            <span class="phase-bullet"></span>
-            {item}
-          </li>
-        {/each}
-      </ul>
-    {/if}
+    <ul class="phase-items">
+      {#each items as item (item)}
+        <li class="phase-item">
+          <span class="phase-bullet"></span>
+          {item}
+        </li>
+      {/each}
+    </ul>
   </div>
 </div>
 

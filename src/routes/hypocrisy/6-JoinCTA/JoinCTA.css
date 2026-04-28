@@ -85,7 +85,7 @@
   border-color: var(--color-accent-500);
 }
 
-:global(.contact-icon) {
+.join-section :global(.contact-icon) {
   width: 0.875rem;
   height: 0.875rem;
   margin-right: 0.25rem;

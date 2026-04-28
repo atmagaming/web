@@ -46,13 +46,8 @@ function captionFor(entry: GalleryEntry): string {
 let lightboxSrc = $state<string | null>(null);
 let lightboxCaption = $state("");
 
-const rowElements: HTMLElement[] = [];
-
-function registerRow(node: HTMLElement, index: number) {
-  rowElements[index] = node;
-}
-
 function initGallery(wrapper: HTMLElement) {
+  const rowElements = Array.from(wrapper.querySelectorAll<HTMLElement>(".gallery-row"));
   let scrollPos = 0;
   let frameId = 0;
   let paused = document.hidden;
@@ -62,7 +57,6 @@ function initGallery(wrapper: HTMLElement) {
   function applyScroll() {
     for (let index = 0; index < rowElements.length; index++) {
       const row = rowElements[index];
-      if (!row) continue;
       const halfScroll = row.scrollWidth / 2;
       const raw = scrollPos + rowOffsets[index];
       row.scrollLeft = ((raw % halfScroll) + halfScroll) % halfScroll;
@@ -140,7 +134,7 @@ function closeLightbox() {
   </div>
 
   {#each rows as row, rowIndex (rowIndex)}
-    <div class="gallery-row" use:registerRow={rowIndex}>
+    <div class="gallery-row">
       <div class="gallery-track">
         {#each [0, 1] as copy (copy)}
           {#each row as entry (entry.src + copy)}

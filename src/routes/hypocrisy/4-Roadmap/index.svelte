@@ -8,19 +8,19 @@ import SectionHeader from "../_shared/SectionHeader.svelte";
 import Phase from "./Phase.svelte";
 import type { PhaseStatus } from "./phase-types";
 
-const phaseKeys = ["phase1", "phase2", "phase3"] as const;
-const phaseStatuses: PhaseStatus[] = ["current", "upcoming", "future"];
-const phaseWidths = [45, 30, 25] as const;
+const phaseDefinitions = [
+  { key: "phase1", status: "current" as PhaseStatus, width: 45 },
+  { key: "phase2", status: "upcoming" as PhaseStatus, width: 30 },
+  { key: "phase3", status: "future" as PhaseStatus, width: 25 },
+] as const;
 
-const phases = $derived(
-  phaseKeys.map((key, index) => ({
-    ...translations[locale.value].hypocrisy.devProgress[key],
-    status: phaseStatuses[index],
-    width: phaseWidths[index],
-  })),
-);
+function localizedPhase(key: "phase1" | "phase2" | "phase3" | "phase4") {
+  return translations[locale.value].hypocrisy.devProgress[key] ?? translations.en.hypocrisy.devProgress[key];
+}
 
-const releasePhase = $derived(translations[locale.value].hypocrisy.devProgress.phase4);
+const phases = $derived(phaseDefinitions.map(({ key, status, width }) => ({ ...localizedPhase(key), status, width })));
+
+const releasePhase = $derived(localizedPhase("phase4"));
 
 let sectionEl: HTMLElement;
 let timelineEl: HTMLElement;

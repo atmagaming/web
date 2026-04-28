@@ -2,21 +2,20 @@
 import Icon from "@/components/ui/Icon.svelte";
 import { type TranslationKey, t } from "@/lib/i18n/t";
 
-interface Props {
-  translationKey?: TranslationKey;
-  text?: string;
-  iconSrc?: string;
-  variant?: "default" | "muted";
-}
+type Props =
+  | { translationKey: TranslationKey; text?: never; iconSrc?: string; variant?: "default" | "muted" }
+  | { translationKey?: never; text: string; iconSrc?: string; variant?: "default" | "muted" };
 
 const { translationKey, text, iconSrc, variant = "default" }: Props = $props();
+
+const label = $derived(translationKey ? t(translationKey) : text);
 </script>
 
 <span class="hero-tag" class:muted={variant === "muted"}>
   {#if iconSrc}
     <Icon src={iconSrc} />
   {/if}
-  {translationKey ? t(translationKey) : text}
+  {label}
 </span>
 
 <style>

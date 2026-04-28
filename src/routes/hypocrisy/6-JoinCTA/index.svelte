@@ -18,10 +18,10 @@ let sectionEl: HTMLElement;
 let contentEl: HTMLElement;
 
 const roles = $derived(
-  roleKeys.map((key) => ({
-    ...translations[locale.value].hypocrisy.joinCta[key],
-    icon: roleIcons[key],
-  })),
+  roleKeys.map((key) => {
+    const roleData = translations[locale.value].hypocrisy.joinCta[key] ?? translations.en.hypocrisy.joinCta[key];
+    return { ...roleData, icon: roleIcons[key] };
+  }),
 );
 
 onMount(() => {
