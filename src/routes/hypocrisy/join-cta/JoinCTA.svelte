@@ -1,12 +1,5 @@
 <script lang="ts">
-import BookOpenIcon from "lucide-svelte/icons/book-open";
-import BoxIcon from "lucide-svelte/icons/box";
-import PaletteIcon from "lucide-svelte/icons/palette";
-import PlayIcon from "lucide-svelte/icons/play";
 import SendIcon from "lucide-svelte/icons/send";
-import SparklesIcon from "lucide-svelte/icons/sparkles";
-import UsersIcon from "lucide-svelte/icons/users";
-import Volume2Icon from "lucide-svelte/icons/volume-2";
 import { onMount } from "svelte";
 import ContactFormModal from "@/components/ContactFormModal.svelte";
 import gsap from "@/lib/gsap";
@@ -16,101 +9,12 @@ import { translations } from "@/lib/i18n/translations";
 import Closing from "../../Closing.svelte";
 import SectionHeader from "../SectionHeader.svelte";
 import OpenRoles from "./OpenRoles.svelte";
+import { roleIcons, roleKeys } from "./role-icons";
 import Team from "./Team.svelte";
+import { teamMembers } from "./team-data";
 
 let modalOpen = $state(false);
-
-function openModal() {
-  modalOpen = true;
-}
-
-let el: HTMLElement;
-
-const roleKeys = [
-  "roleConceptArtist",
-  "role3dArtist",
-  "role3dAnimator",
-  "roleVfx",
-  "roleSfx",
-  "roleNarrative",
-  "roleProjectManager",
-] as const;
-
-const roleIcons = {
-  roleConceptArtist: PaletteIcon,
-  role3dArtist: BoxIcon,
-  role3dAnimator: PlayIcon,
-  roleVfx: SparklesIcon,
-  roleSfx: Volume2Icon,
-  roleNarrative: BookOpenIcon,
-  roleProjectManager: UsersIcon,
-} as const;
-
-const team = [
-  {
-    name: "Vladyslav Yazykov",
-    role: "Founder, CEO, Creative Lead",
-    image: "/assets/images/team/vlad-y.webp",
-    link: "https://linkedin.com/in/elumixor",
-    linkType: "linkedin" as const,
-  },
-  {
-    name: "George Kobiakov",
-    role: "Art Lead",
-    image: "/assets/images/team/george-k.webp",
-    link: "https://www.linkedin.com/in/george-kobiakov-a3591295/",
-    linkType: "linkedin" as const,
-  },
-  {
-    name: "Yevhenii Kolisnyk",
-    role: "Unity Developer",
-    image: "/assets/images/team/yevhenii-k.webp",
-    link: "https://www.linkedin.com/in/yevhenii-kolisnyk-528487343/",
-    linkType: "linkedin" as const,
-  },
-  {
-    name: "Yehor Mir",
-    role: "Unity Developer",
-    image: "/assets/images/team/yehor-m.webp",
-    link: "https://www.linkedin.com/in/yehor-mir-full-stack/",
-    linkType: "linkedin" as const,
-  },
-  {
-    name: "Oleksandr Nosov",
-    role: "Game Designer",
-    image: "/assets/images/team/oleksander-n.webp",
-    link: "https://www.linkedin.com/in/oleksandr--nosov/",
-    linkType: "linkedin" as const,
-  },
-  {
-    name: "Kseniia Piddubna",
-    role: "UI Designer",
-    image: "/assets/images/team/kseniia-p.webp",
-    link: "https://artstation.com/kseniia_piddubna/",
-    linkType: "artstation" as const,
-  },
-  {
-    name: "Maryia Kostsina",
-    role: "QA Lead",
-    image: "/assets/images/team/maryia-k.webp",
-    link: "https://www.linkedin.com/in/maryia-kostsina/",
-    linkType: "linkedin" as const,
-  },
-  {
-    name: "Jakub Bartušek",
-    role: "Unity Developer",
-    image: null,
-    link: "https://www.linkedin.com/in/jakub-bartu%C5%A1ek-6a6892329/",
-    linkType: "linkedin" as const,
-  },
-  {
-    name: "Mike Yazykov",
-    role: "Composer",
-    image: null,
-    link: null,
-    linkType: null,
-  },
-];
+let sectionEl: HTMLElement;
 
 const roles = $derived(
   roleKeys.map((key) => ({
@@ -122,7 +26,7 @@ const roles = $derived(
 onMount(() => {
   const ctx = gsap.context(() => {
     gsap.from(".join-content > *", {
-      scrollTrigger: { trigger: el, start: "top 75%" },
+      scrollTrigger: { trigger: sectionEl, start: "top 75%" },
       y: 40,
       opacity: 0,
       stagger: 0.12,
@@ -138,53 +42,35 @@ onMount(() => {
       duration: 0.5,
       ease: "power3.out",
     });
-  }, el);
+  }, sectionEl);
 
   return () => ctx.revert();
 });
 </script>
 
-<section id="join" bind:this={el} class="py-32 lg:py-48 relative overflow-hidden">
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(180,134,11,0.06)_0%,_transparent_70%)]"></div>
+<section id="join" bind:this={sectionEl} class="join-section">
+  <div class="join-glow"></div>
 
-  <div class="join-content relative z-10">
+  <div class="join-content">
     <SectionHeader label={t("hypocrisy.joinCta.sectionLabel")} title={t("hypocrisy.joinCta.title")}>
-      <p class="text-lg text-white/50 max-w-2xl mb-12">
-        {t("hypocrisy.joinCta.description")}
-      </p>
+      <p class="lead">{t("hypocrisy.joinCta.description")}</p>
     </SectionHeader>
 
-    <div class="px-6 lg:px-16">
-      <!-- Mission context -->
-      <p class="text-base text-white/50 leading-relaxed mb-4 max-w-2xl">
-        {translations[locale.value].hypocrisy.joinCta.missionExcerpt}
-      </p>
-      <a
-        href="/"
-        class="inline-flex items-center gap-1.5 text-sm text-accent-500 hover:text-accent-400 transition-colors font-mono tracking-wider uppercase mb-16"
-      >
-        {t("hypocrisy.joinCta.readVision")} &rarr;
-      </a>
+    <div class="join-body">
+      <p class="mission-excerpt">{translations[locale.value].hypocrisy.joinCta.missionExcerpt}</p>
+      <a href="/" class="vision-link">{t("hypocrisy.joinCta.readVision")} &rarr;</a>
 
-      <!-- Team -->
-      <Team members={team} />
+      <Team members={teamMembers} />
 
-      <!-- Divider -->
-      <div class="w-16 h-px bg-white/10 mb-16"></div>
+      <div class="divider"></div>
 
-      <!-- Open Roles -->
-      <div class="mb-16">
+      <div class="open-roles-wrapper">
         <OpenRoles {roles} />
       </div>
 
-      <!-- Contact -->
-      <div class="flex justify-center mt-8">
-        <button
-          type="button"
-          onclick={() => openModal()}
-          class="font-mono text-[0.65rem] tracking-[0.15em] uppercase px-5 py-2.5 inline-flex items-center gap-2 transition-all cursor-pointer text-accent-500 border-[1.5px] border-accent-500/30 hover:border-accent-500 hover:text-accent-400"
-        >
-          <SendIcon class="w-3.5 h-3.5 mr-1" />
+      <div class="contact">
+        <button type="button" class="contact-button" onclick={() => (modalOpen = true)}>
+          <SendIcon class="contact-icon" />
           Get in Touch
         </button>
       </div>
@@ -194,4 +80,111 @@ onMount(() => {
 
 <Closing showMissionButton={false} />
 
-<ContactFormModal open={modalOpen} onClose={() => modalOpen = false} />
+<ContactFormModal open={modalOpen} onClose={() => (modalOpen = false)} />
+
+<style>
+  .join-section {
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 0;
+
+    @media (min-width: 1024px) {
+      padding: 12rem 0;
+    }
+  }
+
+  .join-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(180, 134, 11, 0.06) 0%, transparent 70%);
+  }
+
+  .join-content {
+    position: relative;
+    z-index: 10;
+  }
+
+  .lead {
+    max-width: 32rem;
+    margin-bottom: 3rem;
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .join-body {
+    padding: 0 1.5rem;
+
+    @media (min-width: 1024px) {
+      padding: 0 4rem;
+    }
+  }
+
+  .mission-excerpt {
+    max-width: 32rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.625;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .vision-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-bottom: 4rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent-500);
+    transition: color 200ms ease;
+
+    &:hover {
+      color: var(--color-accent-400);
+    }
+  }
+
+  .divider {
+    width: 4rem;
+    height: 1px;
+    margin-bottom: 4rem;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .open-roles-wrapper {
+    margin-bottom: 4rem;
+  }
+
+  .contact {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .contact-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent-500);
+    background: transparent;
+    border: 1.5px solid rgba(184, 134, 11, 0.3);
+    transition: all 200ms ease;
+
+    &:hover {
+      color: var(--color-accent-400);
+      border-color: var(--color-accent-500);
+    }
+  }
+
+  :global(.contact-icon) {
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-right: 0.25rem;
+  }
+</style>

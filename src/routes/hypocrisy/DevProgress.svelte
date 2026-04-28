@@ -6,36 +6,54 @@ import Gallery from "./Gallery.svelte";
 import SectionHeader from "./SectionHeader.svelte";
 import Soundtrack from "./Soundtrack.svelte";
 
-let el: HTMLElement;
+let sectionEl: HTMLElement;
 
 onMount(() => {
   const ctx = gsap.context(() => {
     gsap.from(".dev-header > *", {
-      scrollTrigger: { trigger: el, start: "top 75%" },
+      scrollTrigger: { trigger: sectionEl, start: "top 75%" },
       y: 30,
       opacity: 0,
       stagger: 0.1,
       duration: 0.7,
       ease: "power3.out",
     });
-  }, el);
+  }, sectionEl);
 
   return () => ctx.revert();
 });
 </script>
 
-<section id="development" bind:this={el} class="py-32 lg:py-48">
+<section id="development" bind:this={sectionEl} class="dev-section">
   <div class="dev-header">
     <SectionHeader label={t("hypocrisy.devProgress.sectionLabel")} title={t("hypocrisy.devProgress.title")}>
-      <p class="text-base text-white/25 mb-16">
-        {t("hypocrisy.devProgress.subtitle")}
-      </p>
+      <p class="lead">{t("hypocrisy.devProgress.subtitle")}</p>
     </SectionHeader>
   </div>
 
-  <div class="mb-32">
+  <div class="gallery-wrapper">
     <Gallery />
   </div>
 
   <Soundtrack />
 </section>
+
+<style>
+  .dev-section {
+    padding: 8rem 0;
+
+    @media (min-width: 1024px) {
+      padding: 12rem 0;
+    }
+  }
+
+  .lead {
+    margin-bottom: 4rem;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.25);
+  }
+
+  .gallery-wrapper {
+    margin-bottom: 8rem;
+  }
+</style>
