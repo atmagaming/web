@@ -331,6 +331,7 @@ export const en = {
       subtitle: "Concept art, in-game screenshots, UI designs, and original soundtrack — all work in progress.",
       visualsTab: "Visuals",
       soundtrackTab: "Music",
+      soundtrackSubtitle: "Original compositions — early concepts exploring the emotional landscape of each world.",
       roadmapTab: "Roadmap",
       galleryItems: {
         phoenixPolished: "Phoenix — Polished Concept",
@@ -455,6 +456,7 @@ export const en = {
       wishlist: "Wishlist on Steam",
       discord: "Join Discord",
       contact: "Contact Us",
+      contactButton: "Get in Touch",
     },
   },
 };

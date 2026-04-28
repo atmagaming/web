@@ -18,6 +18,8 @@ onMount(() => {
   if (!el) return;
 
   const ctx = gsap.context(() => {
+    if (!el) return;
+
     gsap.from(el, { y: 20, opacity: 0, duration: 0.6, ease: "power3.out" });
 
     gsap.to(el, {
@@ -41,7 +43,7 @@ const positionClass = $derived(
 
 {#if !hidden}
   <div bind:this={el} class="{positionClass} flex-col items-center gap-3" style="color: {color};">
-    <span class="text-xs uppercase tracking-[0.2em] font-mono">{t(textKey)}</span>
-    <div class="w-px h-8 bg-gradient-to-b from-current to-transparent"></div>
+    <span class="text-xs uppercase tracking-[0.2em] font-mono">{t(textKey as Parameters<typeof t>[0])}</span>
+    <div class="w-px h-8 bg-linear-to-b from-current to-transparent"></div>
   </div>
 {/if}

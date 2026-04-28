@@ -34,7 +34,7 @@ onMount(() => {
 });
 </script>
 
-<div class="knockout-mask">
+<div class="knockout-mask page-x">
   <h1
     bind:this={titleEl}
     use:fitText={{ mode: "exact" }}
@@ -53,19 +53,14 @@ onMount(() => {
     inset: 0;
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
     background: #03050a;
     mix-blend-mode: multiply;
     container-type: inline-size;
-    box-sizing: border-box;
-    padding: 0 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    @media (min-width: 1024px) {
-      padding: 0 4rem;
-    }
   }
 
   .animated-title {

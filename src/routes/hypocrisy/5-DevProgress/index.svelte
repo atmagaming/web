@@ -2,8 +2,8 @@
 import { onMount } from "svelte";
 import gsap from "@/lib/gsap";
 import { t } from "@/lib/i18n/t";
+import SectionHeader from "../_shared/SectionHeader.svelte";
 import Gallery from "./Gallery.svelte";
-import SectionHeader from "./SectionHeader.svelte";
 import Soundtrack from "./Soundtrack.svelte";
 
 let sectionEl: HTMLElement;

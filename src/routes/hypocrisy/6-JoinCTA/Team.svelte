@@ -1,20 +1,13 @@
 <script lang="ts">
 import { t } from "@/lib/i18n/t";
 import TeamMember from "./TeamMember.svelte";
+import type { TeamMember as TeamMemberType } from "./team-data";
 
-interface Member {
-  name: string;
-  role: string;
-  image: string | null;
-  link: string | null;
-  linkType: "linkedin" | "artstation" | null;
-}
-
-const { members }: { members: Member[] } = $props();
+const { members }: { members: ReadonlyArray<TeamMemberType> } = $props();
 </script>
 
 <div class="team">
-  <h3 class="eyebrow">{t("hypocrisy.joinCta.teamLabel")}</h3>
+  <h3 class="section-eyebrow">{t("hypocrisy.joinCta.teamLabel")}</h3>
   <div class="team-grid">
     {#each members as member (member.name)}
       <TeamMember {...member} />
@@ -23,15 +16,6 @@ const { members }: { members: Member[] } = $props();
 </div>
 
 <style>
-  .eyebrow {
-    margin-bottom: 2rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: rgba(184, 134, 11, 0.5);
-  }
-
   .team-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));

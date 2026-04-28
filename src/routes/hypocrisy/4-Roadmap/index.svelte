@@ -4,8 +4,9 @@ import gsap from "@/lib/gsap";
 import { locale } from "@/lib/i18n";
 import { t } from "@/lib/i18n/t";
 import { translations } from "@/lib/i18n/translations";
-import Phase, { type PhaseStatus } from "./Phase.svelte";
-import SectionHeader from "./SectionHeader.svelte";
+import SectionHeader from "../_shared/SectionHeader.svelte";
+import Phase from "./Phase.svelte";
+import type { PhaseStatus } from "./phase-types";
 
 const phaseKeys = ["phase1", "phase2", "phase3"] as const;
 const phaseStatuses: PhaseStatus[] = ["current", "upcoming", "future"];
@@ -78,7 +79,7 @@ onMount(() => {
 
   <SectionHeader label={t("hypocrisy.devProgress.roadmapTab")} title={t("hypocrisy.roadmap.title")} />
 
-  <div class="roadmap-timeline">
+  <div class="roadmap-timeline page-x">
     <div bind:this={timelineTrack} class="timeline-track">
       <div class="timeline-bg"></div>
       <div bind:this={timelineLine} class="timeline-fill"></div>
@@ -110,112 +111,4 @@ onMount(() => {
   </div>
 </section>
 
-<style>
-  .roadmap-section {
-    position: relative;
-    overflow: hidden;
-    padding: 8rem 0;
-
-    @media (min-width: 1024px) {
-      padding: 12rem 0;
-    }
-  }
-
-  .roadmap-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 20% 30%, rgba(180, 134, 11, 0.03) 0%, transparent 60%);
-  }
-
-  .roadmap-timeline {
-    position: relative;
-    margin-top: 5rem;
-    padding: 0 1.5rem;
-
-    @media (min-width: 1024px) {
-      padding: 0 4rem;
-    }
-  }
-
-  .timeline-track {
-    position: absolute;
-    top: 0;
-    left: 31px;
-    width: 1px;
-
-    @media (min-width: 1024px) {
-      left: 71px;
-    }
-  }
-
-  .timeline-bg {
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.04);
-  }
-
-  .timeline-fill {
-    position: absolute;
-    inset: 0;
-    transform-origin: top;
-    background: linear-gradient(
-      to bottom,
-      rgba(212, 160, 23, 0.5) 0%,
-      rgba(212, 160, 23, 0.25) 40%,
-      rgba(255, 255, 255, 0.08) 100%
-    );
-  }
-
-  .phases {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 6rem;
-
-    @media (min-width: 768px) {
-      gap: 8rem;
-    }
-  }
-
-  .release-endpoint {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-top: 6rem;
-
-    @media (min-width: 768px) {
-      margin-top: 8rem;
-    }
-  }
-
-  .release-marker {
-    flex-shrink: 0;
-    width: 14px;
-    margin-right: 2.5rem;
-  }
-
-  .release-node {
-    width: 14px;
-    height: 14px;
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    border-radius: 9999px;
-    background: var(--color-dark-800);
-  }
-
-  .release-title {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 1.875rem;
-    line-height: 1.25;
-
-    @media (min-width: 768px) {
-      font-size: 2.25rem;
-    }
-  }
-
-  .release-date {
-    margin-top: 0.25rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.25);
-  }
-</style>
+<style src="./Roadmap.css"></style>

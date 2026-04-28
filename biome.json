@@ -1,7 +1,23 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.3.14/schema.json",
   "files": {
-    "includes": ["src/**", "scripts/**", "*.json", "*.ts", "*.svelte", "svelte.config.js", "vite.config.ts"]
+    "includes": [
+      "src/**",
+      "scripts/**",
+      "*.json",
+      "*.ts",
+      "*.svelte",
+      "svelte.config.js",
+      "vite.config.ts",
+      "!src/routes/hypocrisy/**/*.css"
+    ]
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
   },
   "linter": {
     "enabled": true,

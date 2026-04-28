@@ -2,6 +2,7 @@
 import { onMount } from "svelte";
 import WaveSurfer from "wavesurfer.js";
 import { locale } from "@/lib/i18n";
+import { t } from "@/lib/i18n/t";
 import { translations } from "@/lib/i18n/translations";
 import TrackCard from "./TrackCard.svelte";
 
@@ -119,9 +120,9 @@ onMount(() => {
 });
 </script>
 
-<div class="soundtrack">
-  <h3 class="eyebrow">Music</h3>
-  <p class="lead">Original compositions — early concepts exploring the emotional landscape of each world.</p>
+<div class="soundtrack page-x">
+  <h3 class="section-eyebrow">{t("hypocrisy.devProgress.soundtrackTab")}</h3>
+  <p class="lead">{t("hypocrisy.devProgress.soundtrackSubtitle")}</p>
 
   <div class="grid">
     {#each tracks as track (track.file)}
@@ -139,23 +140,6 @@ onMount(() => {
 </div>
 
 <style>
-  .soundtrack {
-    padding: 0 1.5rem;
-
-    @media (min-width: 1024px) {
-      padding: 0 4rem;
-    }
-  }
-
-  .eyebrow {
-    margin-bottom: 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: rgba(184, 134, 11, 0.5);
-  }
-
   .lead {
     max-width: 32rem;
     margin-bottom: 2.5rem;
