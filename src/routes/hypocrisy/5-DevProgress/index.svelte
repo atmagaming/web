@@ -10,7 +10,7 @@ let sectionEl: HTMLElement;
 let headerEl: HTMLElement;
 
 onMount(() => {
-  const ctx = gsap.context(() => {
+  const context = gsap.context(() => {
     gsap.from(headerEl.children, {
       scrollTrigger: { trigger: sectionEl, start: "top 75%" },
       y: 30,
@@ -21,7 +21,7 @@ onMount(() => {
     });
   }, sectionEl);
 
-  return () => ctx.revert();
+  return () => context.revert();
 });
 </script>
 

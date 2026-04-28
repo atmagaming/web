@@ -25,7 +25,7 @@ const features = $derived(
 let sectionEl: HTMLElement;
 
 onMount(() => {
-  const ctx = gsap.context(() => {
+  const context = gsap.context(() => {
     for (const row of gsap.utils.toArray<HTMLElement>(".feature-row", sectionEl)) {
       const trigger = { trigger: row, start: "top 82%" };
 
@@ -58,7 +58,7 @@ onMount(() => {
     }
   }, sectionEl);
 
-  return () => ctx.revert();
+  return () => context.revert();
 });
 </script>
 

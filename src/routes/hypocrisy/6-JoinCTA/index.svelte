@@ -19,7 +19,7 @@ let contentEl: HTMLElement;
 const roles = $derived(roleKeys.map((key) => ({ ...localizedAt("joinCta", key), icon: roleIcons[key] })));
 
 onMount(() => {
-  const ctx = gsap.context(() => {
+  const context = gsap.context(() => {
     gsap.from(contentEl.children, {
       scrollTrigger: { trigger: sectionEl, start: "top 75%" },
       y: 40,
@@ -41,7 +41,7 @@ onMount(() => {
       });
   }, sectionEl);
 
-  return () => ctx.revert();
+  return () => context.revert();
 });
 </script>
 

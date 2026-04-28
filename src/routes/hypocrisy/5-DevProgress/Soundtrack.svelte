@@ -7,12 +7,12 @@ import { ROMAN_NUMERALS } from "../_shared/roman-numerals";
 import TrackCard from "./TrackCard.svelte";
 
 const trackList = [
-  { file: "/assets/music/main-mystery.mp3", key: "mainMystery", concept: "concept1" },
-  { file: "/assets/music/krodha-2.mp3", key: "krodha", concept: "concept2" },
-  { file: "/assets/music/moha-attachment.mp3", key: "mohaAttachment", concept: "concept3" },
-  { file: "/assets/music/drf.mp3", key: "drf", concept: "concept4" },
-  { file: "/assets/music/reflection.mp3", key: "reflection", concept: "concept5" },
-  { file: "/assets/music/KrodhaS5.mp3", key: "krodhaS5", concept: "concept6" },
+  { file: "/assets/music/main-mystery.mp3", concept: "concept1" },
+  { file: "/assets/music/krodha-2.mp3", concept: "concept2" },
+  { file: "/assets/music/moha-attachment.mp3", concept: "concept3" },
+  { file: "/assets/music/drf.mp3", concept: "concept4" },
+  { file: "/assets/music/reflection.mp3", concept: "concept5" },
+  { file: "/assets/music/KrodhaS5.mp3", concept: "concept6" },
 ] as const;
 
 if (trackList.length > ROMAN_NUMERALS.length)
@@ -26,7 +26,7 @@ const tracks = $derived(
   })),
 );
 
-const wavesurfers = new Map<string, WaveSurfer>();
+const waveSurfers = new Map<string, WaveSurfer>();
 const containers = new Map<string, HTMLElement>();
 const readyFiles = new Set<string>();
 const playOnReady = new Set<string>();
@@ -35,12 +35,20 @@ let playingTrack = $state<string | null>(null);
 const trackDurations = $state<Record<string, number>>({});
 const trackCurrentTimes = $state<Record<string, number>>({});
 
+function startPlayback(waveSurfer: WaveSurfer, file: string) {
+  playingTrack = file;
+  waveSurfer.play().catch((error: unknown) => {
+    if (playingTrack === file) playingTrack = null;
+    console.error(`WaveSurfer failed to play ${file}:`, error);
+  });
+}
+
 function initWaveSurfer(file: string) {
-  if (wavesurfers.has(file)) return wavesurfers.get(file);
+  if (waveSurfers.has(file)) return waveSurfers.get(file);
   const container = containers.get(file);
   if (!container) return undefined;
 
-  const ws = WaveSurfer.create({
+  const waveSurfer = WaveSurfer.create({
     container,
     waveColor: "rgba(212, 160, 23, 0.2)",
     progressColor: "rgba(212, 160, 23, 0.65)",
@@ -53,58 +61,56 @@ function initWaveSurfer(file: string) {
     backend: "WebAudio",
   });
 
-  ws.on("ready", () => {
-    trackDurations[file] = ws.getDuration();
+  waveSurfer.on("ready", () => {
+    trackDurations[file] = waveSurfer.getDuration();
     readyFiles.add(file);
     if (playOnReady.has(file)) {
       playOnReady.delete(file);
-      ws.play();
-      playingTrack = file;
+      startPlayback(waveSurfer, file);
     }
   });
 
-  ws.on("audioprocess", () => {
-    trackCurrentTimes[file] = ws.getCurrentTime();
+  waveSurfer.on("audioprocess", () => {
+    trackCurrentTimes[file] = waveSurfer.getCurrentTime();
   });
 
-  ws.on("seeking", () => {
-    trackCurrentTimes[file] = ws.getCurrentTime();
+  waveSurfer.on("seeking", () => {
+    trackCurrentTimes[file] = waveSurfer.getCurrentTime();
   });
 
-  ws.on("finish", () => {
+  waveSurfer.on("finish", () => {
     playingTrack = null;
     trackCurrentTimes[file] = 0;
   });
 
-  wavesurfers.set(file, ws);
-  return ws;
+  waveSurfers.set(file, waveSurfer);
+  return waveSurfer;
 }
 
 function pauseCurrent() {
   if (!playingTrack) return;
-  wavesurfers.get(playingTrack)?.pause();
+  waveSurfers.get(playingTrack)?.pause();
   playOnReady.delete(playingTrack);
 }
 
 function toggleTrack(file: string) {
-  const ws = wavesurfers.get(file);
+  const waveSurfer = waveSurfers.get(file);
 
-  if (!ws || !readyFiles.has(file)) {
+  if (!waveSurfer || !readyFiles.has(file)) {
     pauseCurrent();
     playOnReady.add(file);
-    if (!ws) initWaveSurfer(file);
+    if (!waveSurfer) initWaveSurfer(file);
     return;
   }
 
   if (playingTrack === file) {
-    ws.pause();
+    waveSurfer.pause();
     playingTrack = null;
     return;
   }
 
   pauseCurrent();
-  ws.play();
-  playingTrack = file;
+  startPlayback(waveSurfer, file);
 }
 
 function waveformAction(node: HTMLElement, file: string) {
@@ -112,8 +118,8 @@ function waveformAction(node: HTMLElement, file: string) {
   return {
     destroy: () => {
       containers.delete(file);
-      wavesurfers.get(file)?.destroy();
-      wavesurfers.delete(file);
+      waveSurfers.get(file)?.destroy();
+      waveSurfers.delete(file);
       readyFiles.delete(file);
       playOnReady.delete(file);
     },
