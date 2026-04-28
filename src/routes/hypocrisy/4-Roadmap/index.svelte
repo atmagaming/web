@@ -23,6 +23,7 @@ const phases = $derived(
 const releasePhase = $derived(translations[locale.value].hypocrisy.devProgress.phase4);
 
 let sectionEl: HTMLElement;
+let timelineEl: HTMLElement;
 let timelineLine: HTMLElement;
 let timelineTrack: HTMLElement;
 let releaseNode: HTMLElement;
@@ -51,7 +52,16 @@ function animatePhase(node: HTMLElement) {
 
 onMount(() => {
   updateTrackHeight();
-  window.addEventListener("resize", updateTrackHeight);
+
+  let resizeFrame = 0;
+  function onResize() {
+    if (resizeFrame) return;
+    resizeFrame = requestAnimationFrame(() => {
+      resizeFrame = 0;
+      updateTrackHeight();
+    });
+  }
+  window.addEventListener("resize", onResize);
 
   const ctx = gsap.context(() => {
     gsap.fromTo(
@@ -60,16 +70,17 @@ onMount(() => {
       {
         scaleY: 1,
         ease: "none",
-        scrollTrigger: { trigger: ".roadmap-timeline", start: "top 70%", end: "bottom 60%", scrub: 0.8 },
+        scrollTrigger: { trigger: timelineEl, start: "top 70%", end: "bottom 60%", scrub: 0.8 },
       },
     );
 
-    for (const node of gsap.utils.toArray<HTMLElement>(".phase-entry")) animatePhase(node);
+    for (const node of gsap.utils.toArray<HTMLElement>(".phase-entry", sectionEl)) animatePhase(node);
   }, sectionEl);
 
   return () => {
     ctx.revert();
-    window.removeEventListener("resize", updateTrackHeight);
+    cancelAnimationFrame(resizeFrame);
+    window.removeEventListener("resize", onResize);
   };
 });
 </script>
@@ -79,7 +90,7 @@ onMount(() => {
 
   <SectionHeader label={t("hypocrisy.devProgress.roadmapTab")} title={t("hypocrisy.roadmap.title")} />
 
-  <div class="roadmap-timeline page-x">
+  <div bind:this={timelineEl} class="roadmap-timeline page-x">
     <div bind:this={timelineTrack} class="timeline-track">
       <div class="timeline-bg"></div>
       <div bind:this={timelineLine} class="timeline-fill"></div>

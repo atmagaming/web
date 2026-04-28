@@ -17,11 +17,13 @@ const trackList = [
 
 const romanNumerals = ["I", "II", "III", "IV", "V", "VI"] as const;
 
+if (trackList.length > romanNumerals.length)
+  throw new Error(`Soundtrack has ${trackList.length} tracks but only ${romanNumerals.length} roman numerals`);
+
 const tracks = $derived(
   trackList.map((track, index) => ({
     ...track,
     numeral: romanNumerals[index],
-    name: translations[locale.value].hypocrisy.devProgress.tracks[track.key],
     conceptLabel: translations[locale.value].hypocrisy.devProgress.trackConcepts[track.concept],
   })),
 );

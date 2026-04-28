@@ -47,31 +47,36 @@ let lightboxSrc = $state<string | null>(null);
 let lightboxCaption = $state("");
 
 const rowElements: HTMLElement[] = [];
-let scrollPos = 0;
 
 function registerRow(node: HTMLElement, index: number) {
   rowElements[index] = node;
 }
 
-function applyScroll() {
-  for (let index = 0; index < rowElements.length; index++) {
-    const row = rowElements[index];
-    if (!row) continue;
-    const halfScroll = row.scrollWidth / 2;
-    const raw = scrollPos + rowOffsets[index];
-    row.scrollLeft = ((raw % halfScroll) + halfScroll) % halfScroll;
-  }
-}
-
 function initGallery(wrapper: HTMLElement) {
+  let scrollPos = 0;
   let frameId = 0;
+  let paused = document.hidden;
   let touchStartX = 0;
   let touchStartScroll = 0;
 
+  function applyScroll() {
+    for (let index = 0; index < rowElements.length; index++) {
+      const row = rowElements[index];
+      if (!row) continue;
+      const halfScroll = row.scrollWidth / 2;
+      const raw = scrollPos + rowOffsets[index];
+      row.scrollLeft = ((raw % halfScroll) + halfScroll) % halfScroll;
+    }
+  }
+
   function tick() {
-    scrollPos += autoScrollSpeed;
+    if (!paused) scrollPos += autoScrollSpeed;
     applyScroll();
     frameId = requestAnimationFrame(tick);
+  }
+
+  function onVisibilityChange() {
+    paused = document.hidden;
   }
 
   requestAnimationFrame(() => {
@@ -108,8 +113,15 @@ function initGallery(wrapper: HTMLElement) {
     { passive: true },
   );
 
+  document.addEventListener("visibilitychange", onVisibilityChange);
   frameId = requestAnimationFrame(tick);
-  return { destroy: () => cancelAnimationFrame(frameId) };
+
+  return {
+    destroy: () => {
+      cancelAnimationFrame(frameId);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    },
+  };
 }
 
 function openLightbox(src: string, caption: string) {
