@@ -10,26 +10,44 @@ interface Member {
   linkType: "linkedin" | "artstation" | null;
 }
 
-interface Props {
-  members: Member[];
-}
-
-const { members }: Props = $props();
+const { members }: { members: Member[] } = $props();
 </script>
 
-<div>
-  <h3 class="text-xs uppercase tracking-[0.2em] font-mono text-accent-500/50 mb-8">
-    {t("hypocrisy.joinCta.teamLabel")}
-  </h3>
-  <div class="team-grid grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9 gap-4 mb-20">
+<div class="team">
+  <h3 class="eyebrow">{t("hypocrisy.joinCta.teamLabel")}</h3>
+  <div class="team-grid">
     {#each members as member (member.name)}
-      <TeamMember
-        name={member.name}
-        role={member.role}
-        image={member.image}
-        link={member.link}
-        linkType={member.linkType}
-      />
+      <TeamMember {...member} />
     {/each}
   </div>
 </div>
+
+<style>
+  .eyebrow {
+    margin-bottom: 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(184, 134, 11, 0.5);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 5rem;
+
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(9, minmax(0, 1fr));
+    }
+  }
+</style>
