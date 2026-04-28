@@ -1,5 +1,4 @@
 <script lang="ts">
-import { onMount } from "svelte";
 import WaveSurfer from "wavesurfer.js";
 import { t } from "@/lib/i18n/t";
 import { localized } from "../_shared/i18n";
@@ -44,7 +43,8 @@ function startPlayback(waveSurfer: WaveSurfer, file: string) {
 }
 
 function initWaveSurfer(file: string) {
-  if (waveSurfers.has(file)) return waveSurfers.get(file);
+  const existing = waveSurfers.get(file);
+  if (existing) return existing;
   const container = containers.get(file);
   if (!container) return undefined;
 
@@ -125,10 +125,6 @@ function waveformAction(node: HTMLElement, file: string) {
     },
   };
 }
-
-onMount(() => {
-  for (const track of trackList) initWaveSurfer(track.file);
-});
 </script>
 
 <div class="soundtrack page-x">

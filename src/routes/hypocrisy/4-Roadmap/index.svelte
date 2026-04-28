@@ -25,7 +25,6 @@ let timelineTrack: HTMLElement;
 let releaseNode: HTMLElement;
 
 function updateTrackHeight() {
-  if (!timelineTrack || !releaseNode) return;
   const trackRect = timelineTrack.getBoundingClientRect();
   const nodeRect = releaseNode.getBoundingClientRect();
   timelineTrack.style.height = `${nodeRect.top + nodeRect.height / 2 - trackRect.top}px`;

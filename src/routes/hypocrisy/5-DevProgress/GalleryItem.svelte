@@ -1,12 +1,6 @@
 <script lang="ts">
-interface Props {
-  src: string;
-  caption: string;
-  isVideo: boolean;
-  onOpen: () => void;
-}
-
-const { src, caption, isVideo, onOpen }: Props = $props();
+const { src, caption, isVideo, onOpen }: { src: string; caption: string; isVideo: boolean; onOpen: () => void } =
+  $props();
 </script>
 
 <button type="button" class="card" onclick={onOpen}>
