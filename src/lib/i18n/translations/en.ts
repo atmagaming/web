@@ -199,6 +199,16 @@ export const en = {
         "In a universe of floating islands held aloft by massive crystals, a despotic regime controls humanity by exploiting the darkest impulses of the soul. You are a rebel fighter, wielding ARIA — a futuristic living suit that bonds with its host — rising through six stacked worlds to reach the tyrant at the top.",
       paragraph2:
         "But the true battle is internal. Each world embodies an enemy of the soul — wrath, desire, greed, obsession, envy, pride — and confronting them means confronting yourself. Death is not the end: it is the teacher. Every fall strips your progress, but the knowledge you carry forward reshapes the journey.",
+      chapterMarker: "Ch · 00",
+      paragraph1Marker: "§ I · Outside",
+      paragraph2Marker: "§ II · Within",
+      endMarker: "End · Prologue",
+      transmissionLabel: "Transmission",
+      transmissionValue: "Aria · Rebel Frame",
+      coordinatesLabel: "Coordinates",
+      coordinatesValue: "06 Worlds · Vertical",
+      threatLabel: "Threat",
+      threatValue: "Enemies of the Soul",
     },
     world: {
       sectionLabel: "The Universe",
@@ -245,6 +255,13 @@ export const en = {
     combat: {
       sectionLabel: "Gameplay",
       title: "The Fight Within",
+      pillarsLabel: "Four Pillars",
+      pillarPrefix: "Pillar",
+      pillarsEnd: "End · Pillars",
+      pillarTagCoreLoop: "Core Loop",
+      pillarTagProgression: "Progression",
+      pillarTagLegacy: "Legacy",
+      pillarTagBonds: "Bonds",
       ariaDescription:
         "You control ARIA — a futuristic living suit that bonds with its host. Combat is fast-paced, easy to learn, but demanding to master. Switch between skills, build devastating combos, and adapt to enemies that embody the very flaws you must overcome.",
       combat: {

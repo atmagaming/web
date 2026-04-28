@@ -8,16 +8,22 @@ import SectionHeader from "../_shared/SectionHeader.svelte";
 import FeatureRow from "./FeatureRow.svelte";
 
 const featureKeys = ["combat", "skills", "roguelite", "companions"] as const;
-const tags = ["Core Loop", "Progression", "Legacy", "Bonds"] as const;
+
+const tagKeys = [
+  "hypocrisy.combat.pillarTagCoreLoop",
+  "hypocrisy.combat.pillarTagProgression",
+  "hypocrisy.combat.pillarTagLegacy",
+  "hypocrisy.combat.pillarTagBonds",
+] as const;
 
 const features = $derived(featureKeys.map((key) => translations[locale.value].hypocrisy.combat[key]));
+const totalPadded = $derived(String(features.length).padStart(2, "0"));
 
 let sectionEl: HTMLElement;
 
 onMount(() => {
   const ctx = gsap.context(() => {
-    const rows = gsap.utils.toArray<HTMLElement>(".feature-row");
-    for (const row of rows) {
+    for (const row of gsap.utils.toArray<HTMLElement>(".feature-row", sectionEl)) {
       const trigger = { trigger: row, start: "top 82%" };
 
       gsap.from(row.querySelector(".feature-numeral"), {
@@ -62,23 +68,29 @@ onMount(() => {
 
   <div class="meta-row page-x">
     <div class="feature-reveal meta-bar">
-      <span class="meta-label">Four Pillars</span>
+      <span class="meta-label">{t("hypocrisy.combat.pillarsLabel")}</span>
       <span class="meta-rule"></span>
-      <span class="meta-label">01 — {String(features.length).padStart(2, "0")}</span>
+      <span class="meta-label">01 — {totalPadded}</span>
     </div>
   </div>
 
-  <ol class="feature-list">
+  <div class="feature-list">
     {#each features as feature, i (i)}
-      <FeatureRow index={i} total={features.length} tag={tags[i]} title={feature.title} description={feature.description} />
+      <FeatureRow
+        index={i}
+        total={features.length}
+        tag={t(tagKeys[i])}
+        title={feature.title}
+        description={feature.description}
+      />
     {/each}
 
     <div class="feature-rule terminal-rule"></div>
-  </ol>
+  </div>
 
   <div class="signoff page-x">
     <span class="signoff-rule-short"></span>
-    <span class="meta-label">End · Pillars</span>
+    <span class="meta-label">{t("hypocrisy.combat.pillarsEnd")}</span>
     <span class="signoff-rule"></span>
   </div>
 </section>

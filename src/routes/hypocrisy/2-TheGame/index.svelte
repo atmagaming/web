@@ -4,20 +4,21 @@ import gsap from "@/lib/gsap";
 import { t } from "@/lib/i18n/t";
 import MarginNote from "./MarginNote.svelte";
 
-const marginNotes = [
-  { label: "Transmission", value: "Aria · Rebel Frame" },
-  { label: "Coordinates", value: "06 Worlds · Vertical" },
-  { label: "Threat", value: "Enemies of the Soul" },
+const marginNoteKeys = [
+  { labelKey: "hypocrisy.premise.transmissionLabel", valueKey: "hypocrisy.premise.transmissionValue" },
+  { labelKey: "hypocrisy.premise.coordinatesLabel", valueKey: "hypocrisy.premise.coordinatesValue" },
+  { labelKey: "hypocrisy.premise.threatLabel", valueKey: "hypocrisy.premise.threatValue" },
 ] as const;
 
 let sectionEl: HTMLElement;
+let railEl: HTMLElement;
+let cipherEl: HTMLElement;
+let hairEl: HTMLElement;
 
 onMount(() => {
   const ctx = gsap.context(() => {
-    const trigger = { trigger: sectionEl, start: "top 80%" };
-
-    gsap.from(".story-rail", {
-      scrollTrigger: trigger,
+    gsap.from(railEl, {
+      scrollTrigger: { trigger: sectionEl, start: "top 80%" },
       scaleY: 0,
       transformOrigin: "top center",
       duration: 1.4,
@@ -33,7 +34,7 @@ onMount(() => {
       ease: "power3.out",
     });
 
-    gsap.from(".story-cipher", {
+    gsap.from(cipherEl, {
       scrollTrigger: { trigger: sectionEl, start: "top 72%" },
       opacity: 0,
       scale: 0.94,
@@ -41,7 +42,7 @@ onMount(() => {
       ease: "power3.out",
     });
 
-    gsap.from(".story-hair", {
+    gsap.from(hairEl, {
       scrollTrigger: { trigger: sectionEl, start: "top 78%" },
       scaleX: 0,
       transformOrigin: "left center",
@@ -56,13 +57,13 @@ onMount(() => {
 </script>
 
 <section id="about" bind:this={sectionEl} class="story-section">
-  <div class="story-cipher" aria-hidden="true">00</div>
-  <div class="story-rail"></div>
+  <div bind:this={cipherEl} class="story-cipher" aria-hidden="true">00</div>
+  <div bind:this={railEl} class="story-rail"></div>
 
   <header class="story-header page-x">
     <div class="story-reveal story-eyebrow">
       <span class="hairline"></span>
-      <span class="eyebrow-text">{t("hypocrisy.premise.sectionLabel")} · Ch · 00</span>
+      <span class="eyebrow-text">{t("hypocrisy.premise.sectionLabel")} · {t("hypocrisy.premise.chapterMarker")}</span>
       <span class="hairline hairline-fade"></span>
     </div>
 
@@ -73,13 +74,13 @@ onMount(() => {
 
   <div class="story-grid page-x">
     <aside class="story-reveal story-aside">
-      {#each marginNotes as note (note.label)}
-        <MarginNote label={note.label} value={note.value} />
+      {#each marginNoteKeys as note (note.labelKey)}
+        <MarginNote label={t(note.labelKey)} value={t(note.valueKey)} />
       {/each}
     </aside>
 
     <div class="story-body">
-      <span class="story-hair"></span>
+      <span bind:this={hairEl} class="story-hair"></span>
 
       <p class="story-reveal story-quote font-display">
         <span class="quote-mark">“</span>{t("hypocrisy.premise.pitch")}<span class="quote-mark">”</span>
@@ -87,18 +88,18 @@ onMount(() => {
 
       <div class="story-paragraphs">
         <p class="story-reveal story-paragraph">
-          <span class="paragraph-marker">§ I · Outside</span>
+          <span class="paragraph-marker">{t("hypocrisy.premise.paragraph1Marker")}</span>
           {t("hypocrisy.premise.paragraph1")}
         </p>
         <p class="story-reveal story-paragraph">
-          <span class="paragraph-marker">§ II · Within</span>
+          <span class="paragraph-marker">{t("hypocrisy.premise.paragraph2Marker")}</span>
           {t("hypocrisy.premise.paragraph2")}
         </p>
       </div>
 
       <div class="story-reveal story-signoff">
         <span class="hairline-short"></span>
-        <span class="eyebrow-text">End · Prologue</span>
+        <span class="eyebrow-text">{t("hypocrisy.premise.endMarker")}</span>
         <span class="hairline hairline-fade-soft"></span>
       </div>
     </div>

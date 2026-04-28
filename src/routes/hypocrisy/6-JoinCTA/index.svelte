@@ -15,6 +15,7 @@ import { teamMembers } from "./team-data";
 
 let modalOpen = $state(false);
 let sectionEl: HTMLElement;
+let contentEl: HTMLElement;
 
 const roles = $derived(
   roleKeys.map((key) => ({
@@ -25,7 +26,7 @@ const roles = $derived(
 
 onMount(() => {
   const ctx = gsap.context(() => {
-    gsap.from(".join-content > *", {
+    gsap.from(contentEl.children, {
       scrollTrigger: { trigger: sectionEl, start: "top 75%" },
       y: 40,
       opacity: 0,
@@ -34,14 +35,16 @@ onMount(() => {
       ease: "power3.out",
     });
 
-    gsap.from(".team-member", {
-      scrollTrigger: { trigger: ".team-grid", start: "top 80%" },
-      y: 30,
-      opacity: 0,
-      stagger: 0.06,
-      duration: 0.5,
-      ease: "power3.out",
-    });
+    const teamGrid = sectionEl.querySelector(".team-grid");
+    if (teamGrid)
+      gsap.from(sectionEl.querySelectorAll(".team-member"), {
+        scrollTrigger: { trigger: teamGrid, start: "top 80%" },
+        y: 30,
+        opacity: 0,
+        stagger: 0.06,
+        duration: 0.5,
+        ease: "power3.out",
+      });
   }, sectionEl);
 
   return () => ctx.revert();
@@ -51,13 +54,13 @@ onMount(() => {
 <section id="join" bind:this={sectionEl} class="join-section">
   <div class="join-glow"></div>
 
-  <div class="join-content">
+  <div bind:this={contentEl} class="join-content">
     <SectionHeader label={t("hypocrisy.joinCta.sectionLabel")} title={t("hypocrisy.joinCta.title")}>
       <p class="lead">{t("hypocrisy.joinCta.description")}</p>
     </SectionHeader>
 
     <div class="join-body page-x">
-      <p class="mission-excerpt">{translations[locale.value].hypocrisy.joinCta.missionExcerpt}</p>
+      <p class="mission-excerpt">{t("hypocrisy.joinCta.missionExcerpt")}</p>
       <a href="/" class="vision-link">{t("hypocrisy.joinCta.readVision")} &rarr;</a>
 
       <Team members={teamMembers} />
