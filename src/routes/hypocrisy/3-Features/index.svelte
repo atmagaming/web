@@ -1,22 +1,24 @@
 <script lang="ts">
 import { onMount } from "svelte";
 import gsap from "@/lib/gsap";
-import { locale } from "@/lib/i18n";
 import { t } from "@/lib/i18n/t";
-import { translations } from "@/lib/i18n/translations";
 import SectionHeader from "../_shared/SectionHeader.svelte";
 import FeatureRow from "./FeatureRow.svelte";
 
-const featureKeys = ["combat", "skills", "roguelite", "companions"] as const;
-
-const tagKeys = [
-  "hypocrisy.combat.pillarTagCoreLoop",
-  "hypocrisy.combat.pillarTagProgression",
-  "hypocrisy.combat.pillarTagLegacy",
-  "hypocrisy.combat.pillarTagBonds",
+const featureDefinitions = [
+  { key: "combat", tagKey: "hypocrisy.combat.pillarTagCoreLoop" },
+  { key: "skills", tagKey: "hypocrisy.combat.pillarTagProgression" },
+  { key: "roguelite", tagKey: "hypocrisy.combat.pillarTagLegacy" },
+  { key: "companions", tagKey: "hypocrisy.combat.pillarTagBonds" },
 ] as const;
 
-const features = $derived(featureKeys.map((key) => translations[locale.value].hypocrisy.combat[key]));
+const features = $derived(
+  featureDefinitions.map(({ key, tagKey }) => ({
+    tag: t(tagKey),
+    title: t(`hypocrisy.combat.${key}.title`),
+    description: t(`hypocrisy.combat.${key}.description`),
+  })),
+);
 const totalPadded = $derived(String(features.length).padStart(2, "0"));
 
 let sectionEl: HTMLElement;
@@ -79,7 +81,7 @@ onMount(() => {
       <FeatureRow
         index={i}
         total={features.length}
-        tag={t(tagKeys[i])}
+        tag={feature.tag}
         title={feature.title}
         description={feature.description}
       />

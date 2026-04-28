@@ -1,0 +1,19 @@
+.dev-section {
+  padding: 8rem 0;
+}
+
+.lead {
+  margin-bottom: 4rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.gallery-wrapper {
+  margin-bottom: 8rem;
+}
+
+@media (min-width: 1024px) {
+  .dev-section {
+    padding: 12rem 0;
+  }
+}
