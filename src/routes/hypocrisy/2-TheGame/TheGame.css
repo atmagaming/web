@@ -1,0 +1,222 @@
+.story-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 8rem 0;
+}
+
+.story-cipher {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  top: 2rem;
+  right: -4rem;
+  font-family: var(--font-display);
+  font-size: clamp(14rem, 38vw, 40rem);
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(212, 160, 23, 0.08);
+}
+
+.story-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--page-padding-x);
+  width: 1px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(184, 134, 11, 0.35), transparent);
+}
+
+.story-header {
+  position: relative;
+  margin-bottom: 4rem;
+}
+
+.story-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.hairline {
+  width: 2rem;
+  height: 1px;
+  background: var(--color-accent-500);
+}
+
+.hairline-fade {
+  flex: 1;
+  max-width: 10rem;
+  background: linear-gradient(to right, rgba(184, 134, 11, 0.5), transparent);
+}
+
+.hairline-fade-soft {
+  flex: 1;
+  max-width: 12.5rem;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.hairline-short {
+  width: 4rem;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.eyebrow-text {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--color-accent-500);
+}
+
+.story-signoff .eyebrow-text {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.story-title {
+  max-width: 64rem;
+  color: white;
+  font-size: 3rem;
+  line-height: 0.9;
+}
+
+.story-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+.story-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.story-body {
+  position: relative;
+}
+
+.story-hair {
+  display: none;
+  position: absolute;
+  top: 0.75rem;
+  left: -0.5rem;
+  width: 2.5rem;
+  height: 1px;
+  background: rgba(184, 134, 11, 0.6);
+}
+
+.story-quote {
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.5rem;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.quote-mark {
+  display: inline-block;
+  transform: translateY(0.1em);
+  color: var(--color-accent-500);
+}
+
+.story-paragraphs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 56rem;
+}
+
+.story-paragraph {
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 1rem;
+  line-height: 1.625;
+}
+
+.paragraph-marker {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: rgba(184, 134, 11, 0.7);
+}
+
+.story-signoff {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+@media (min-width: 768px) {
+  .story-title {
+    font-size: 4.5rem;
+  }
+
+  .story-quote {
+    font-size: 2.25rem;
+  }
+
+  .story-paragraphs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .story-paragraph {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .story-section {
+    padding: 12rem 0;
+  }
+
+  .story-cipher {
+    right: -6rem;
+  }
+
+  .story-header {
+    margin-bottom: 6rem;
+  }
+
+  .story-title {
+    font-size: 8rem;
+  }
+
+  .story-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 4rem;
+  }
+
+  .story-aside {
+    grid-column: span 3;
+  }
+
+  .story-body {
+    grid-column: span 9;
+    padding-left: 1.5rem;
+  }
+
+  .story-hair {
+    display: block;
+  }
+
+  .story-quote {
+    margin-bottom: 3.5rem;
+    font-size: 3rem;
+  }
+
+  .story-paragraphs {
+    gap: 3rem;
+  }
+}

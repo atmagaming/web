@@ -331,6 +331,7 @@ export const ru: typeof en = {
       subtitle: "Концепт-арт, скриншоты из игры, UI дизайн и оригинальный саундтрек — всё в процессе разработки.",
       visualsTab: "Визуал",
       soundtrackTab: "Музыка",
+      soundtrackSubtitle: "Оригинальные композиции — ранние концепты, исследующие эмоциональный ландшафт каждого мира.",
       roadmapTab: "Дорожная карта",
       galleryItems: {
         phoenixPolished: "Феникс — финальный концепт",
@@ -455,6 +456,7 @@ export const ru: typeof en = {
       wishlist: "В список желаний",
       discord: "Присоединиться к Discord",
       contact: "Связаться",
+      contactButton: "Написать нам",
     },
   },
 };

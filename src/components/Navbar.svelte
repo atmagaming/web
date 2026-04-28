@@ -56,11 +56,11 @@ onMount(() => {
 
 <nav
   class={cn(
-    "fixed top-0 left-0 right-0 z-[500] flex items-center justify-between px-6 lg:px-16 h-[52px] backdrop-blur-sm transition-transform duration-300",
+    "fixed top-0 left-0 right-0 z-500 flex items-center justify-between px-6 lg:px-16 h-13 backdrop-blur-sm transition-transform duration-300",
     hidden && !mobileOpen && "-translate-y-full",
     isGamePage
       ? "bg-[#03050a]/30 border-b border-white/5 backdrop-blur-md"
-      : "bg-white/[0.96] border-b-[1.5px] border-dark-950",
+      : "bg-white/96 border-b-[1.5px] border-dark-950",
   )}
 >
   <a
@@ -75,16 +75,16 @@ onMount(() => {
   <div class="hidden md:flex items-center gap-1">
     {#if isGamePage}
       {#each [{ id: "about", label: t("nav.about") }, { id: "roadmap", label: t("nav.roadmap") }, { id: "development", label: t("nav.development") }] as link (link.id)}
-        <button type="button" class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white/50 px-3.5 py-1.5 hover:text-white transition-colors no-underline bg-transparent border-none cursor-pointer" onclick={() => scrollToId(link.id)}>{link.label}</button>
+        <button type="button" class="font-mono text-[0.67rem] tracking-widest uppercase text-white/50 px-3.5 py-1.5 hover:text-white transition-colors no-underline bg-transparent border-none cursor-pointer" onclick={() => scrollToId(link.id)}>{link.label}</button>
       {/each}
       <button
         type="button"
-        class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white bg-red px-4 py-1.5 ml-3 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
+        class="font-mono text-[0.67rem] tracking-widest uppercase text-white bg-red px-4 py-1.5 ml-3 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
         onclick={() => scrollToId('join')}
       >{t("nav.join")}</button>
     {:else}
-      <a href="/" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname === '/' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.about")}</a>
-      <a href="/hypocrisy" class={cn("font-mono text-[0.67rem] tracking-[0.1em] uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname.startsWith('/games') ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.ourGames")}</a>
+      <a href="/" class={cn("font-mono text-[0.67rem] tracking-widest uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname === '/' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.about")}</a>
+      <a href="/hypocrisy" class={cn("font-mono text-[0.67rem] tracking-widest uppercase px-3.5 py-1.5 transition-all no-underline", $page.url.pathname.startsWith('/hypocrisy') ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950 hover:bg-surface')}>{t("nav.ourGames")}</a>
     {/if}
     <!-- Temporarily hide language -->
     <!-- <div class={isGamePage ? "[&_button]:text-white/50 [&_button]:hover:text-white [&_button.text-red]:text-red" : ""}>
@@ -93,7 +93,7 @@ onMount(() => {
     {#if !isGamePage}
       <button
         type="button"
-        class="font-mono text-[0.67rem] tracking-[0.1em] uppercase text-white bg-red px-4 py-1.5 ml-3 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
+        class="font-mono text-[0.67rem] tracking-widest uppercase text-white bg-red px-4 py-1.5 ml-3 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
         onclick={() => {
           window.dispatchEvent(new CustomEvent('scrollto', { detail: 'join' }));
         }}
@@ -105,7 +105,7 @@ onMount(() => {
   <button
     type="button"
     class={cn(
-      "md:hidden flex flex-col justify-center gap-[5px] w-8 h-8 bg-transparent border-none cursor-pointer p-0",
+      "md:hidden flex flex-col justify-center gap-1.25 w-8 h-8 bg-transparent border-none cursor-pointer p-0",
     )}
     onclick={() => (mobileOpen = !mobileOpen)}
     aria-label="Toggle menu"
@@ -121,7 +121,7 @@ onMount(() => {
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div
     class={cn(
-      "fixed inset-0 top-[52px] z-[499] md:hidden flex flex-col items-center pt-8 gap-4 backdrop-blur-md",
+      "fixed inset-0 top-13 z-499 md:hidden flex flex-col items-center pt-8 gap-4 backdrop-blur-md",
       isGamePage ? "bg-[#050507]/95" : "bg-white/95",
     )}
     onclick={closeMobile}
@@ -129,26 +129,26 @@ onMount(() => {
   >
     {#if isGamePage}
       {#each [{ id: "about", label: t("nav.about") }, { id: "roadmap", label: t("nav.roadmap") }, { id: "development", label: t("nav.development") }] as link (link.id)}
-        <button type="button" class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white/70 px-4 py-2 hover:text-white transition-colors bg-transparent border-none cursor-pointer" onclick={() => { closeMobile(); scrollToId(link.id); }}>{link.label}</button>
+        <button type="button" class="font-mono text-[0.8rem] tracking-widest uppercase text-white/70 px-4 py-2 hover:text-white transition-colors bg-transparent border-none cursor-pointer" onclick={() => { closeMobile(); scrollToId(link.id); }}>{link.label}</button>
       {/each}
       <button
         type="button"
-        class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white bg-red px-6 py-2.5 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
+        class="font-mono text-[0.8rem] tracking-widest uppercase text-white bg-red px-6 py-2.5 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
         onclick={() => {
           closeMobile();
           scrollToId('join');
         }}
       >{t("nav.join")}</button>
     {:else}
-      <a href="/" onclick={closeMobile} class={cn("font-mono text-[0.8rem] tracking-[0.1em] uppercase px-4 py-2 transition-all no-underline", $page.url.pathname === '/' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950')}>{t("nav.about")}</a>
-      <a href="/games/hypocrisy" onclick={closeMobile} class={cn("font-mono text-[0.8rem] tracking-[0.1em] uppercase px-4 py-2 transition-all no-underline", $page.url.pathname.startsWith('/games') ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950')}>{t("nav.ourGames")}</a>
+      <a href="/" onclick={closeMobile} class={cn("font-mono text-[0.8rem] tracking-widest uppercase px-4 py-2 transition-all no-underline", $page.url.pathname === '/' ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950')}>{t("nav.about")}</a>
+      <a href="/hypocrisy" onclick={closeMobile} class={cn("font-mono text-[0.8rem] tracking-widest uppercase px-4 py-2 transition-all no-underline", $page.url.pathname.startsWith('/hypocrisy') ? 'text-white bg-dark-950' : 'text-text hover:text-dark-950')}>{t("nav.ourGames")}</a>
       <!-- Temporarily hide language switcher -->
       <!-- <div class={isGamePage ? "[&_button]:text-white/50 [&_button]:hover:text-white [&_button.text-red]:text-red" : ""}>
         <LanguageSwitcher />
       </div> -->
       <button
         type="button"
-        class="font-mono text-[0.8rem] tracking-[0.1em] uppercase text-white bg-red px-6 py-2.5 mt-2 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
+        class="font-mono text-[0.8rem] tracking-widest uppercase text-white bg-red px-6 py-2.5 mt-2 hover:bg-[#9e1400] transition-colors cursor-pointer border-none"
         onclick={() => {
           closeMobile();
           window.dispatchEvent(new CustomEvent('scrollto', { detail: 'join' }));

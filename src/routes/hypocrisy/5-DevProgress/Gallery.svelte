@@ -123,8 +123,8 @@ function closeLightbox() {
 </script>
 
 <div class="gallery" use:initGallery>
-  <div class="gallery-heading">
-    <h3 class="eyebrow">{t("hypocrisy.devProgress.visualsTab")}</h3>
+  <div class="gallery-heading page-x">
+    <h3 class="section-eyebrow">{t("hypocrisy.devProgress.visualsTab")}</h3>
   </div>
 
   {#each rows as row, rowIndex (rowIndex)}
@@ -158,19 +158,6 @@ function closeLightbox() {
 
   .gallery-heading {
     margin-bottom: 1.25rem;
-    padding: 0 1.5rem;
-
-    @media (min-width: 1024px) {
-      padding: 0 4rem;
-    }
-  }
-
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: rgba(184, 134, 11, 0.5);
   }
 
   .gallery-row {

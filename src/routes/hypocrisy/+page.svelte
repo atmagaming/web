@@ -1,10 +1,10 @@
 <script lang="ts">
 import Hero from "./1-Hero/index.svelte";
 import TheGame from "./2-TheGame/index.svelte";
-import DevProgress from "./DevProgress.svelte";
-import Features from "./Features.svelte";
-import JoinCTA from "./join-cta/JoinCTA.svelte";
-import Roadmap from "./Roadmap.svelte";
+import Features from "./3-Features/index.svelte";
+import Roadmap from "./4-Roadmap/index.svelte";
+import DevProgress from "./5-DevProgress/index.svelte";
+import JoinCTA from "./6-JoinCTA/index.svelte";
 </script>
 
 <div class="game-page">
@@ -33,17 +33,41 @@ import Roadmap from "./Roadmap.svelte";
     --color-dark-700: #161820;
     --color-dark-600: #1e2028;
 
-    /* Film grain overlay */
-    &::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      pointer-events: none;
-      opacity: 0.03;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      background-size: 256px;
+    /* Shared horizontal padding for every section. Components reference these. */
+    --page-padding-x: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .game-page {
+      --page-padding-x: 4rem;
     }
+  }
+
+  /* Film grain overlay */
+  .game-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px;
+  }
+
+  /* Shared utility classes available to all section components inside .game-page */
+  :global(.game-page .page-x) {
+    padding-left: var(--page-padding-x);
+    padding-right: var(--page-padding-x);
+  }
+
+  :global(.game-page .section-eyebrow) {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(184, 134, 11, 0.5);
+    margin-bottom: 1rem;
   }
 </style>

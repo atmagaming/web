@@ -26,3 +26,5 @@ export function t(path: Path): string {
 export function tt(localeTranslations: Record<Locale, string>): string {
   return localeTranslations[locale.value] ?? localeTranslations.en;
 }
+
+export type TranslationKey = Parameters<typeof t>[0];

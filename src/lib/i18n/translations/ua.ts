@@ -329,6 +329,7 @@ export const ua: typeof en = {
       subtitle: "Концепт-арт, скріншоти з гри, UI дизайн та оригінальний саундтрек — все у процесі розробки.",
       visualsTab: "Візуал",
       soundtrackTab: "Музика",
+      soundtrackSubtitle: "Оригінальні композиції — ранні концепти, що досліджують емоційний ландшафт кожного світу.",
       roadmapTab: "Дорожня карта",
       galleryItems: {
         phoenixPolished: "Фенікс — фінальний концепт",
@@ -453,6 +454,7 @@ export const ua: typeof en = {
       wishlist: "Додати у список бажань",
       discord: "Приєднатися до Discord",
       contact: "Зв'язатися",
+      contactButton: "Написати нам",
     },
   },
 };

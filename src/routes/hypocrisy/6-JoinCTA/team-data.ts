@@ -1,12 +1,4 @@
-export interface TeamMemberData {
-  name: string;
-  role: string;
-  image: string | null;
-  link: string | null;
-  linkType: "linkedin" | "artstation" | null;
-}
-
-export const teamMembers: TeamMemberData[] = [
+export const teamMembers = [
   {
     name: "Vladyslav Yazykov",
     role: "Founder, CEO, Creative Lead",
@@ -70,4 +62,12 @@ export const teamMembers: TeamMemberData[] = [
     link: null,
     linkType: null,
   },
-];
+] as const satisfies ReadonlyArray<{
+  name: string;
+  role: string;
+  image: string | null;
+  link: string | null;
+  linkType: "linkedin" | "artstation" | null;
+}>;
+
+export type TeamMember = (typeof teamMembers)[number];

@@ -5,12 +5,12 @@ import { page } from "$app/stores";
 import "../app.css";
 
 let { children } = $props();
-let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
+let isDarkPage = $derived($page.url.pathname.startsWith("/games/") || $page.url.pathname.startsWith("/hypocrisy"));
 </script>
 
 <svelte:head>
   <title>{t("meta.title")}</title>
-  {@html `<style>body{background-color:${isGamePage ? '#03050a' : '#ffffff'}}</style>`}
+  {@html `<style>body{background-color:${isDarkPage ? '#03050a' : '#ffffff'}}</style>`}
   <meta name="description" content={t("meta.description")} />
   <meta property="og:title" content={t("meta.title")} />
   <meta property="og:description" content={t("meta.ogDescription")} />
@@ -23,7 +23,7 @@ let isGamePage = $derived($page.url.pathname.startsWith("/games/"));
   />
 </svelte:head>
 
-<div class="min-h-screen flex flex-col" style="background-color: {isGamePage ? '#03050a' : '#ffffff'}">
+<div class="min-h-screen flex flex-col" style="background-color: {isDarkPage ? '#03050a' : '#ffffff'}">
   <Navbar />
   <main class="flex-1">
     {@render children()}

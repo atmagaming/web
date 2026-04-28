@@ -112,7 +112,7 @@ function handleBackdropClick(e: MouseEvent) {
         title="Email: ceo@atmagaming.com"
       >
         <MailIcon class="w-5 h-5 transition-colors" />
-        <span class="text-xs font-mono tracking-[0.1em] uppercase">Email</span>
+        <span class="text-xs font-mono tracking-widest uppercase">Email</span>
       </a>
 
       <a
@@ -123,7 +123,7 @@ function handleBackdropClick(e: MouseEvent) {
         title="Telegram: @elumixor"
       >
         <SendIcon class="w-5 h-5 transition-colors" />
-        <span class="text-xs font-mono tracking-[0.1em] uppercase">Telegram</span>
+        <span class="text-xs font-mono tracking-widest uppercase">Telegram</span>
       </a>
     </div>
 
