@@ -10,7 +10,7 @@ const letters = $derived(text.split(""));
 let titleEl: HTMLElement;
 
 onMount(() => {
-  const ctx = gsap.context(() => {
+  const context = gsap.context(() => {
     const letterEls = titleEl.querySelectorAll<HTMLElement>(".hero-letter");
 
     for (const el of letterEls) {
@@ -30,7 +30,7 @@ onMount(() => {
     }
   }, titleEl);
 
-  return () => ctx.revert();
+  return () => context.revert();
 });
 </script>
 

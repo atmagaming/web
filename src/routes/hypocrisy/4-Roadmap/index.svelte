@@ -32,14 +32,18 @@ function updateTrackHeight() {
 }
 
 function animatePhase(node: HTMLElement) {
-  const tl = gsap.timeline({
+  const timeline = gsap.timeline({
     scrollTrigger: { trigger: node, start: "top 75%", toggleActions: "play none none none" },
   });
-  tl.from(node.querySelector(".phase-node"), { scale: 0, opacity: 0, duration: 0.5, ease: "back.out(2)" });
-  tl.from(node.querySelector(".phase-glow"), { scale: 0, opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.3");
-  tl.from(node.querySelector(".phase-card"), { x: -60, opacity: 0, duration: 0.7, ease: "power3.out" }, "-=0.4");
-  tl.from(node.querySelector(".duration-fill"), { scaleX: 0, duration: 0.8, ease: "power2.out" }, "-=0.5");
-  tl.from(
+  timeline.from(node.querySelector(".phase-node"), { scale: 0, opacity: 0, duration: 0.5, ease: "back.out(2)" });
+  timeline.from(
+    node.querySelector(".phase-glow"),
+    { scale: 0, opacity: 0, duration: 0.6, ease: "power2.out" },
+    "-=0.3",
+  );
+  timeline.from(node.querySelector(".phase-card"), { x: -60, opacity: 0, duration: 0.7, ease: "power3.out" }, "-=0.4");
+  timeline.from(node.querySelector(".duration-fill"), { scaleX: 0, duration: 0.8, ease: "power2.out" }, "-=0.5");
+  timeline.from(
     node.querySelectorAll(".phase-item"),
     { y: 15, opacity: 0, stagger: 0.08, duration: 0.4, ease: "power2.out" },
     "-=0.4",
@@ -59,7 +63,7 @@ onMount(() => {
   }
   window.addEventListener("resize", onResize);
 
-  const ctx = gsap.context(() => {
+  const context = gsap.context(() => {
     gsap.fromTo(
       timelineLine,
       { scaleY: 0 },
@@ -74,7 +78,7 @@ onMount(() => {
   }, sectionEl);
 
   return () => {
-    ctx.revert();
+    context.revert();
     cancelAnimationFrame(resizeFrame);
     window.removeEventListener("resize", onResize);
   };

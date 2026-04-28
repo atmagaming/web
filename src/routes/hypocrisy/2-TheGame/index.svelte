@@ -16,7 +16,7 @@ let cipherEl: HTMLElement;
 let hairEl: HTMLElement;
 
 onMount(() => {
-  const ctx = gsap.context(() => {
+  const context = gsap.context(() => {
     gsap.from(railEl, {
       scrollTrigger: { trigger: sectionEl, start: "top 80%" },
       scaleY: 0,
@@ -52,7 +52,7 @@ onMount(() => {
     });
   }, sectionEl);
 
-  return () => ctx.revert();
+  return () => context.revert();
 });
 </script>
 
