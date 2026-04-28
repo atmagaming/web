@@ -74,7 +74,7 @@ function initGallery(wrapper: HTMLElement) {
   }
 
   requestAnimationFrame(() => {
-    scrollPos = (rowElements[0]?.scrollWidth ?? 0) / 4;
+    scrollPos = rowElements[0].scrollWidth / 4;
     applyScroll();
   });
 
