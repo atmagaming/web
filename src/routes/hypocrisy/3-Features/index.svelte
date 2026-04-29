@@ -1,18 +1,16 @@
 <script lang="ts">
 import { onMount } from "svelte";
+import SectionHeader from "@/components/SectionHeader.svelte";
 import gsap from "@/lib/gsap";
 import { t } from "@/lib/i18n/t";
-import SectionHeader from "../_shared/SectionHeader.svelte";
 import FeatureRow from "./FeatureRow.svelte";
 
 const featureDefinitions = [
-  { key: "combat", tagKey: "hypocrisy.combat.pillarTagCoreLoop" },
-  { key: "skills", tagKey: "hypocrisy.combat.pillarTagProgression" },
-  { key: "roguelite", tagKey: "hypocrisy.combat.pillarTagLegacy" },
-  { key: "companions", tagKey: "hypocrisy.combat.pillarTagBonds" },
+  { key: "theme", tagKey: "hypocrisy.combat.pillarTagTheme" },
+  { key: "narrative", tagKey: "hypocrisy.combat.pillarTagNarrative" },
+  { key: "world", tagKey: "hypocrisy.combat.pillarTagWorld" },
+  { key: "loop", tagKey: "hypocrisy.combat.pillarTagLoop" },
 ] as const;
-
-const totalPadded = String(featureDefinitions.length).padStart(2, "0");
 
 const features = $derived(
   featureDefinitions.map(({ key, tagKey }) => ({
@@ -65,23 +63,10 @@ onMount(() => {
 <section id="features" bind:this={sectionEl} class="features-section">
   <SectionHeader label={t("hypocrisy.combat.sectionLabel")} title={t("hypocrisy.combat.title")} />
 
-  <div class="lead page-x">
-    <p class="feature-reveal lead-text">{t("hypocrisy.combat.ariaDescription")}</p>
-  </div>
-
-  <div class="meta-row page-x">
-    <div class="feature-reveal meta-bar">
-      <span class="meta-label">{t("hypocrisy.combat.pillarsLabel")}</span>
-      <span class="meta-rule"></span>
-      <span class="meta-label">01 — {totalPadded}</span>
-    </div>
-  </div>
-
   <div class="feature-list">
     {#each features as feature, i (i)}
       <FeatureRow
         index={i}
-        total={featureDefinitions.length}
         tag={feature.tag}
         title={feature.title}
         description={feature.description}
@@ -89,12 +74,6 @@ onMount(() => {
     {/each}
 
     <div class="feature-rule terminal-rule"></div>
-  </div>
-
-  <div class="signoff page-x">
-    <span class="signoff-rule-short"></span>
-    <span class="meta-label">{t("hypocrisy.combat.pillarsEnd")}</span>
-    <span class="signoff-rule"></span>
   </div>
 </section>
 

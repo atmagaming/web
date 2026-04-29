@@ -18,15 +18,18 @@ const { roles }: { roles: { title: string; description: string; type: string; ic
 
 <style>
   .disclaimer {
+    display: inline-block;
     margin-bottom: 2rem;
+    padding: 0.5rem 0.875rem;
     font-family: var(--font-mono);
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: rgba(255, 255, 255, 0.25);
+    color: var(--color-accent-500);
+    border: 1px solid rgba(184, 134, 11, 0.3);
 
     @media (min-width: 768px) {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
     }
   }
 

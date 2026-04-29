@@ -1,9 +1,8 @@
 <script lang="ts">
 import { onMount } from "svelte";
+import SectionHeader from "@/components/SectionHeader.svelte";
 import gsap from "@/lib/gsap";
 import { t } from "@/lib/i18n/t";
-import { localizedAt } from "../_shared/i18n";
-import SectionHeader from "../_shared/SectionHeader.svelte";
 import Phase from "./Phase.svelte";
 
 const phaseDefinitions = [
@@ -13,10 +12,15 @@ const phaseDefinitions = [
 ] as const;
 
 const phases = $derived(
-  phaseDefinitions.map(({ key, status, width }) => ({ ...localizedAt("devProgress", key), status, width })),
+  phaseDefinitions.map(({ key, status, width }) => ({
+    status,
+    width,
+    phase: t(`hypocrisy.devProgress.${key}.phase`),
+    title: t(`hypocrisy.devProgress.${key}.title`),
+    date: t(`hypocrisy.devProgress.${key}.date`),
+    items: t(`hypocrisy.devProgress.${key}.items`),
+  })),
 );
-
-const releasePhase = $derived(localizedAt("devProgress", "phase4"));
 
 let sectionEl: HTMLElement;
 let timelineEl: HTMLElement;
@@ -102,7 +106,6 @@ onMount(() => {
           phase={phase.phase}
           title={phase.title}
           date={phase.date}
-          description={phase.description}
           width={phase.width}
           items={phase.items}
         />
@@ -114,8 +117,8 @@ onMount(() => {
         <div bind:this={releaseNode} class="release-node"></div>
       </div>
       <div>
-        <h3 class="release-title font-display">{releasePhase.title}</h3>
-        <p class="release-date">{releasePhase.date}</p>
+        <h3 class="release-title font-display">{t("hypocrisy.devProgress.phase4.title")}</h3>
+        <p class="release-date">{t("hypocrisy.devProgress.phase4.date")}</p>
       </div>
     </div>
   </div>

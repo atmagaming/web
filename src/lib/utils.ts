@@ -5,6 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export const ROMAN_NUMERALS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"] as const;
+
 /**
  * Svelte action that fits text to its parent width.
  * - `shrink` (default): only shrink if overflow. Pairs with CSS clamp for initial size.

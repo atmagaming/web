@@ -6,7 +6,6 @@ const {
   phase,
   title,
   date,
-  description,
   width,
   items,
 }: {
@@ -14,7 +13,6 @@ const {
   phase: string;
   title: string;
   date: string;
-  description: string;
   width: number;
   items: readonly string[];
 } = $props();
@@ -46,8 +44,6 @@ const {
         <div class="duration-fill"></div>
       </div>
     </div>
-
-    <p class="phase-description">{description}</p>
 
     <ul class="phase-items">
       {#each items as item (item)}

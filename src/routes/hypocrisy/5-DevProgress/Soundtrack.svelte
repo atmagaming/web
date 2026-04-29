@@ -1,8 +1,7 @@
 <script lang="ts">
 import WaveSurfer from "wavesurfer.js";
 import { t } from "@/lib/i18n/t";
-import { localized } from "../_shared/i18n";
-import { ROMAN_NUMERALS } from "../_shared/roman-numerals";
+import { ROMAN_NUMERALS } from "@/lib/utils";
 import TrackCard from "./TrackCard.svelte";
 
 const trackList = [
@@ -21,7 +20,7 @@ const tracks = $derived(
   trackList.map((track, index) => ({
     ...track,
     numeral: ROMAN_NUMERALS[index],
-    conceptLabel: localized("devProgress").trackConcepts[track.concept],
+    conceptLabel: t(`hypocrisy.devProgress.trackConcepts.${track.concept}`),
   })),
 );
 
