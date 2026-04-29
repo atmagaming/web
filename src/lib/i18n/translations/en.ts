@@ -184,7 +184,7 @@ export const en = {
     hero: {
       title: "HYPOCRISY",
       workingTitle: "Working title — subject to change",
-      tagline: "Hope in a heroic fight for freedom — defying oppression and the darkness within.",
+      tagline: "An action-roguelike about toppling tyranny — outside, and within.",
       description: "Action • Roguelike • RPG",
       setting: "Sci-Fantasy",
       schedule: "Early Access: Late 2026",
@@ -194,21 +194,7 @@ export const en = {
       sectionLabel: "The Game",
       title: "A War Outside. A War Within.",
       pitch:
-        "A rebel fighter in a living suit rises through six worlds — each embodying an enemy of the soul — to topple a tyrant who rules by exploiting humanity's darkest impulses. Death strips your progress but not your knowledge. The true battle is internal.",
-      paragraph1:
-        "In a universe of floating islands held aloft by massive crystals, a despotic regime controls humanity by exploiting the darkest impulses of the soul. You are a rebel fighter, wielding ARIA — a futuristic living suit that bonds with its host — rising through six stacked worlds to reach the tyrant at the top.",
-      paragraph2:
-        "But the true battle is internal. Each world embodies an enemy of the soul — wrath, desire, greed, obsession, envy, pride — and confronting them means confronting yourself. Death is not the end: it is the teacher. Every fall strips your progress, but the knowledge you carry forward reshapes the journey.",
-      chapterMarker: "Ch · 00",
-      paragraph1Marker: "§ I · Outside",
-      paragraph2Marker: "§ II · Within",
-      endMarker: "End · Prologue",
-      transmissionLabel: "Transmission",
-      transmissionValue: "Aria · Rebel Frame",
-      coordinatesLabel: "Coordinates",
-      coordinatesValue: "06 Worlds · Vertical",
-      threatLabel: "Threat",
-      threatValue: "Enemies of the Soul",
+        "Six worlds stack vertically — each a study of one inner enemy: wrath, desire, greed, obsession, envy, pride. A tyrant rules from the highest, his power fed by the very impulses that bind humanity. You ascend bonded to Phoenix, a living entity that reshapes its host. Each fall strips your progress — but never your understanding. The hardest battle is internal.",
     },
     world: {
       sectionLabel: "The Universe",
@@ -253,36 +239,31 @@ export const en = {
       },
     },
     combat: {
-      sectionLabel: "Gameplay",
+      sectionLabel: "What Makes It Different",
       title: "The Fight Within",
-      pillarsLabel: "Four Pillars",
-      pillarPrefix: "Pillar",
-      pillarsEnd: "End · Pillars",
-      pillarTagCoreLoop: "Core Loop",
-      pillarTagProgression: "Progression",
-      pillarTagLegacy: "Legacy",
-      pillarTagBonds: "Bonds",
-      ariaDescription:
-        "You control ARIA — a futuristic living suit that bonds with its host. Combat is fast-paced, easy to learn, but demanding to master. Switch between skills, build devastating combos, and adapt to enemies that embody the very flaws you must overcome.",
-      combat: {
-        title: "Fast-Paced Isometric Combat",
+      pillarTagTheme: "Theme",
+      pillarTagNarrative: "Narrative",
+      pillarTagWorld: "World",
+      pillarTagLoop: "Loop",
+      theme: {
+        title: "Six Fetters of the Soul",
         description:
-          "Fluid melee and ranged combat in a 3D isometric world. Chain attacks, dodge, and exploit enemy weaknesses in encounters that reward precision and creativity.",
+          "Each world embodies one inner enemy — wrath, desire, greed, obsession, envy, pride. A tyrant rules them all, fed by the impulses that bind humanity. Combat, environment, and dialogue interlock around a single moral question per realm.",
       },
-      skills: {
-        title: "Deep Skill System",
+      narrative: {
+        title: "Companions That Teach",
         description:
-          "Unlock and master a branching skill tree. Every run lets you experiment with new builds — finding the synergies that match your playstyle.",
+          "Eight allies, each carrying a moral lesson encoded in their abilities. Bond with them and you don't just gain a kit — you absorb their perspective. Dialogue is a first-class system, not a cutscene.",
       },
-      roguelite: {
-        title: "Roguelike Legacy",
+      world: {
+        title: "A Vertical Universe",
         description:
-          "When you die, you lose your level and gold — but not your knowledge. Each run reshapes the path: different routes, different characters, different items. Mastery comes through repetition.",
+          "Six floating worlds held aloft by ancient crystals, each hand-built around a single fetter. Sci-fantasy worldbuilding on a Dune-tier scale, with environmental storytelling at every layer.",
       },
-      companions: {
-        title: "Companions With Depth",
+      loop: {
+        title: "Knowledge Compounds",
         description:
-          "Eight allies with unique abilities and stories. The bonds you build with them reveal the essence of your character — and unlock new possibilities.",
+          "Roguelike loop with branching builds and fluid isometric combat. Death strips your level and gold — never your understanding. The character that grows most is yours.",
       },
     },
     characters: {
@@ -343,9 +324,13 @@ export const en = {
       discoverAtma: "Discover ATMA's Mission",
     },
     devProgress: {
-      sectionLabel: "Current Results",
-      title: "Work in Progress",
-      subtitle: "Concept art, in-game screenshots, UI designs, and original soundtrack — all work in progress.",
+      sectionLabel: "Production Status",
+      title: "What We've Built",
+      subtitle: "Concept art, screenshots, UI, and original score — early but real.",
+      statCollaborators: "collaborators",
+      statOstTracks: "OST tracks",
+      statConceptPieces: "concept pieces",
+      statEarlyAccess: "Steam Early Access",
       visualsTab: "Visuals",
       soundtrackTab: "Music",
       soundtrackSubtitle: "Original compositions — early concepts exploring the emotional landscape of each world.",
@@ -387,29 +372,24 @@ export const en = {
         phase: "Phase 1",
         title: "Prototype",
         date: "2025 — May 2026",
-        description:
-          "Core combat mechanics, first playable world, companion system foundation. Building the soul of the game.",
         items: ["Core combat loop", "First world prototype", "Base companion AI", "Art style exploration"],
       },
       phase2: {
         phase: "Phase 2",
         title: "Early Access Prep",
         date: "Jun 2026 — Nov 2026",
-        description: "Expanding content, polishing systems, and preparing for community feedback.",
         items: ["3 playable worlds", "Full skill tree", "Rogue-lite progression", "Steam Early Access launch"],
       },
       phase3: {
         phase: "Phase 3",
         title: "Full Release Prep",
         date: "Dec 2026 — Nov 2027",
-        description: "Complete vision with all worlds, companions, and the full narrative experience.",
         items: ["All 6 worlds", "8 companions", "Full story campaign", "Original soundtrack"],
       },
       phase4: {
         phase: "Phase 4",
         title: "Release",
         date: "Dec 2027",
-        description: "Full launch on Steam with the complete game experience.",
         items: ["Full release on Steam", "Console ports exploration", "Post-launch content planning"],
       },
     },
@@ -420,16 +400,21 @@ export const en = {
       sectionLabel: "Join Us",
       title: "Build This World With Us",
       description:
-        "We're looking for people who want their work to mean something beyond the product. If you share our vision of games that transform, we want to hear from you.",
+        "A nine-person team in pre-production, looking for collaborators who want their work to mean something beyond the product.",
       missionExcerpt:
-        "Hypocrisy is the first project of ATMA — an organization dedicated to transforming society through cultural products. We believe games, as the most engaging medium of our era, have the power to shift perspectives. Through Hypocrisy, we propagate ideas of morality and universalism — not through lectures, but through lived experience.",
+        "Hypocrisy is the first project of ATMA — a studio building cultural products that propagate ideas of morality and universalism through lived experience, not lectures.",
       readVision: "Read about our vision",
       teamLabel: "The Team",
       contactUs: "Write to Us",
       reachOutLabel: "Reach Out",
       reachOutDescription: "Write your message with details, or simply email us or reach out on Telegram.",
       openRolesLabel: "Open Roles",
-      disclaimer: "The project is currently in pre-production. All positions are remote and on a revenue-share basis.",
+      disclaimer: "Pre-production · Remote · Revenue-share",
+      teamCardEyebrow: "Apply to a Role",
+      teamCardDescription: "Send a portfolio, a CV, or just a note. We read everything.",
+      investorLabel: "Investors & Press",
+      investorDescription: "For funding, partnership, or press inquiries.",
+      investorContact: "Get in touch",
       roleConceptArtist: {
         title: "2D Concept Artist",
         type: "Revenue-share / Remote",

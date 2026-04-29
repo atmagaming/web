@@ -126,18 +126,6 @@
   background: linear-gradient(to right, var(--color-accent-600), var(--color-accent-400));
 }
 
-.phase-description {
-  max-width: 28rem;
-  margin-bottom: 1.25rem;
-  color: rgba(255, 255, 255, 0.25);
-  font-size: 0.875rem;
-  line-height: 1.625;
-}
-
-.phase-current .phase-description {
-  color: rgba(255, 255, 255, 0.5);
-}
-
 .phase-items {
   display: flex;
   flex-direction: column;

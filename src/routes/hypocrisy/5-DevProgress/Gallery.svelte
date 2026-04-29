@@ -1,7 +1,6 @@
 <script lang="ts">
 import { t } from "@/lib/i18n/t";
 import type { translations } from "@/lib/i18n/translations";
-import { localized } from "../_shared/i18n";
 import GalleryItem from "./GalleryItem.svelte";
 import Lightbox from "./Lightbox.svelte";
 
@@ -40,7 +39,7 @@ const autoScrollSpeed = 0.3;
 
 function captionFor(entry: GalleryEntry): string {
   if (entry.type === "video") return entry.label;
-  return localized("devProgress").galleryItems[entry.key];
+  return t(`hypocrisy.devProgress.galleryItems.${entry.key}`);
 }
 
 let lightboxSrc = $state<string | null>(null);
