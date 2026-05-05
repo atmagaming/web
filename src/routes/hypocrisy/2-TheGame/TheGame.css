@@ -5,6 +5,20 @@
   padding: 8rem 0 12rem;
 }
 
+/* Continuation of the hero's bottom darkening — softens the transition
+   from the video-backed hero into the story copy. */
+.story-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12rem;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(3, 5, 10, 0.95) 0%, rgba(3, 5, 10, 0) 100%);
+  z-index: -1;
+}
+
 .story-body {
   position: relative;
   max-width: 60rem;

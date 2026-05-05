@@ -400,7 +400,7 @@ export const en = {
       openRolesLabel: "Open Roles",
       disclaimer: "Pre-production · Remote · Revenue-share",
       teamCardEyebrow: "Apply to a Role",
-      teamCardDescription: "Send a portfolio, a CV, or just a note. We read everything.",
+      teamCardDescription: "Tell us about yourself and the role you're interested in. We read everything.",
       investorLabel: "Investors & Press",
       investorDescription: "For funding, partnership, or press inquiries.",
       investorContact: "Get in touch",

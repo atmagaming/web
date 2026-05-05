@@ -39,8 +39,8 @@ onMount(() => {
 
 const positionClass = $derived(
   position === "bottom-right"
-    ? "absolute bottom-8 right-16 hidden lg:flex"
-    : "absolute bottom-12 left-1/2 -translate-x-1/2 flex",
+    ? "absolute bottom-8 right-16 z-20 hidden lg:flex"
+    : "absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex",
 );
 </script>
 
