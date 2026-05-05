@@ -25,7 +25,7 @@ onMount(() => {
     const tags = overlayEl.querySelectorAll<HTMLElement>(".tags > *");
     const join = overlayEl.querySelector(".join-link");
 
-    gsap.set(words, { opacity: 0, y: 8, filter: "blur(4px)" });
+    gsap.set(words, { opacity: 0, y: 8 });
     gsap.set(tags, { opacity: 0, y: 8 });
     gsap.set(join, { opacity: 0, y: 10 });
 
@@ -34,7 +34,6 @@ onMount(() => {
     timeline.to(words, {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       duration: 0.6,
       stagger: 0.08,
       ease: "power3.out",

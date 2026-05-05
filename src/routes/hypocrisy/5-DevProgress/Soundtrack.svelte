@@ -129,16 +129,29 @@ function waveformAction(node: HTMLElement, file: string) {
   };
 }
 
+let soundtrackEl: HTMLElement;
+
 onMount(() => {
-  // Eagerly initialize each waveform so audio starts loading on mount
-  // rather than waiting for the user's first play interaction.
-  void tick().then(() => {
-    for (const track of trackList) initWaveSurfer(track.file);
-  });
+  // Initialize each WaveSurfer (and start fetching the audio) only when
+  // the soundtrack section scrolls into view. Eager-init on mount caused
+  // mobile browsers to reload the tab from memory pressure (six WebAudio
+  // contexts + six MP3 fetches at once).
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      void tick().then(() => {
+        for (const track of trackList) initWaveSurfer(track.file);
+      });
+    },
+    { rootMargin: "200px 0px" },
+  );
+  observer.observe(soundtrackEl);
+  return () => observer.disconnect();
 });
 </script>
 
-<div class="soundtrack page-x">
+<div bind:this={soundtrackEl} class="soundtrack page-x">
   <div class="grid">
     {#each tracks as track (track.file)}
       <TrackCard
