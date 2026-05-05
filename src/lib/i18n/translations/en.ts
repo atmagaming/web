@@ -184,17 +184,22 @@ export const en = {
     hero: {
       title: "HYPOCRISY",
       workingTitle: "Working title — subject to change",
-      tagline: "An action-roguelike about toppling tyranny — outside, and within.",
+      tagline: "Hunt a tyrant, liberate oppressed worlds, face the monster within — in a sci-fantasy roguelike RPG.",
       description: "Action • Roguelike • RPG",
       setting: "Sci-Fantasy",
       schedule: "Early Access: Late 2026",
-      scrollHint: "Discover the world",
+      scrollHint: "Scroll",
     },
     premise: {
-      sectionLabel: "The Game",
-      title: "A War Outside. A War Within.",
-      pitch:
-        "Six worlds stack vertically — each a study of one inner enemy: wrath, desire, greed, obsession, envy, pride. A tyrant rules from the highest, his power fed by the very impulses that bind humanity. You ascend bonded to Phoenix, a living entity that reshapes its host. Each fall strips your progress — but never your understanding. The hardest battle is internal.",
+      sectionLabel: "The Story",
+      title: "",
+      lines: [
+        "In a world ruled by a despotic regime, you are its next victim.",
+        "Having lost your family, your life, and your dreams, you hunt the tyrant who took it all from you.",
+        "Consumed by vengeance, you claim to fight for justice and save the world.",
+        "You try to deny the monster within, but each step drags you deeper into the darkness.",
+        "Will you shatter the mask of a hero, or lie to yourself to be the one the world needs?",
+      ],
     },
     world: {
       sectionLabel: "The Universe",
@@ -239,32 +244,17 @@ export const en = {
       },
     },
     combat: {
-      sectionLabel: "What Makes It Different",
-      title: "The Fight Within",
-      pillarTagTheme: "Theme",
-      pillarTagNarrative: "Narrative",
-      pillarTagWorld: "World",
-      pillarTagLoop: "Loop",
-      theme: {
-        title: "Six Fetters of the Soul",
-        description:
-          "Each world embodies one inner enemy — wrath, desire, greed, obsession, envy, pride. A tyrant rules them all, fed by the impulses that bind humanity. Combat, environment, and dialogue interlock around a single moral question per realm.",
-      },
-      narrative: {
-        title: "Companions That Teach",
-        description:
-          "Eight allies, each carrying a moral lesson encoded in their abilities. Bond with them and you don't just gain a kit — you absorb their perspective. Dialogue is a first-class system, not a cutscene.",
-      },
-      world: {
-        title: "A Vertical Universe",
-        description:
-          "Six floating worlds held aloft by ancient crystals, each hand-built around a single fetter. Sci-fantasy worldbuilding on a Dune-tier scale, with environmental storytelling at every layer.",
-      },
-      loop: {
-        title: "Knowledge Compounds",
-        description:
-          "Roguelike loop with branching builds and fluid isometric combat. Death strips your level and gold — never your understanding. The character that grows most is yours.",
-      },
+      sectionLabel: "What Sets It Apart",
+      title: "",
+      points: [
+        "Narrative-driven roguelite with character relationships and side quests.",
+        "Deep psychological journey with mature characters in a roguelite.",
+        "Sci-fi/fantasy universe with depth and contrast.",
+        "Exploring social, psychological & spiritual themes in a roguelike.",
+      ],
+      audienceLabel: "Target Audience",
+      audience:
+        "Players aged 16–35 who want a roguelike with the emotional depth of an RPG and a universe that blends sci-fi and fantasy in bold, unexpected ways.",
     },
     characters: {
       sectionLabel: "Characters",
@@ -324,17 +314,17 @@ export const en = {
       discoverAtma: "Discover ATMA's Mission",
     },
     devProgress: {
-      sectionLabel: "Production Status",
-      title: "What We've Built",
-      subtitle: "Concept art, screenshots, UI, and original score — early but real.",
+      sectionLabel: "",
+      title: "Work In Progress",
+      subtitle: "",
       statCollaborators: "collaborators",
       statOstTracks: "OST tracks",
       statConceptPieces: "concept pieces",
       statEarlyAccess: "Steam Early Access",
       visualsTab: "Visuals",
       soundtrackTab: "Music",
-      soundtrackSubtitle: "Original compositions — early concepts exploring the emotional landscape of each world.",
-      roadmapTab: "Roadmap",
+      soundtrackSubtitle: "",
+      roadmapTab: "",
       galleryItems: {
         phoenixPolished: "Phoenix — Polished Concept",
         phoenixShapes: "Phoenix — Shape Studies",
@@ -394,13 +384,12 @@ export const en = {
       },
     },
     roadmap: {
-      title: "Where We're Headed",
+      title: "Roadmap",
     },
     joinCta: {
-      sectionLabel: "Join Us",
-      title: "Build This World With Us",
-      description:
-        "A nine-person team in pre-production, looking for collaborators who want their work to mean something beyond the product.",
+      sectionLabel: "",
+      title: "Join Us",
+      description: "",
       missionExcerpt:
         "Hypocrisy is the first project of ATMA — a studio building cultural products that propagate ideas of morality and universalism through lived experience, not lectures.",
       readVision: "Read about our vision",

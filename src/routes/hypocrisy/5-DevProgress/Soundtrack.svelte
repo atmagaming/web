@@ -1,4 +1,5 @@
 <script lang="ts">
+import { onMount, tick } from "svelte";
 import WaveSurfer from "wavesurfer.js";
 import { t } from "@/lib/i18n/t";
 import { ROMAN_NUMERALS } from "@/lib/utils";
@@ -127,12 +128,17 @@ function waveformAction(node: HTMLElement, file: string) {
     },
   };
 }
+
+onMount(() => {
+  // Eagerly initialize each waveform so audio starts loading on mount
+  // rather than waiting for the user's first play interaction.
+  void tick().then(() => {
+    for (const track of trackList) initWaveSurfer(track.file);
+  });
+});
 </script>
 
 <div class="soundtrack page-x">
-  <h3 class="section-eyebrow">{t("hypocrisy.devProgress.soundtrackTab")}</h3>
-  <p class="lead">{t("hypocrisy.devProgress.soundtrackSubtitle")}</p>
-
   <div class="grid">
     {#each tracks as track (track.file)}
       <TrackCard
@@ -149,13 +155,6 @@ function waveformAction(node: HTMLElement, file: string) {
 </div>
 
 <style>
-  .lead {
-    max-width: 32rem;
-    margin-bottom: 2.5rem;
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.25);
-  }
-
   .grid {
     display: grid;
     grid-template-columns: 1fr;

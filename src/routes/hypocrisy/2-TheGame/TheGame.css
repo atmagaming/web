@@ -2,44 +2,56 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 8rem 0;
+  padding: 8rem 0 12rem;
 }
 
 .story-body {
   position: relative;
-  max-width: 56rem;
+  max-width: 60rem;
 }
 
-.story-hair {
-  position: absolute;
-  top: 0;
-  left: var(--page-padding-x);
-  width: 4rem;
-  height: 1px;
-  background: rgba(184, 134, 11, 0.6);
+.story-lines {
+  margin: 4rem 0 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.story-pitch {
-  margin-top: 2rem;
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 1.5rem;
-  line-height: 1.25;
+.story-line {
+  margin: 0;
+  padding: 4rem 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.45;
+  letter-spacing: 0.005em;
   text-wrap: balance;
+  max-width: 50rem;
+}
+
+.story-line:last-child {
+  color: var(--color-accent-400);
+  font-style: italic;
 }
 
 @media (min-width: 768px) {
-  .story-pitch {
-    font-size: 2rem;
+  .story-line {
+    padding: 6rem 0;
+    font-size: 1.875rem;
   }
 }
 
 @media (min-width: 1024px) {
   .story-section {
-    padding: 12rem 0;
+    padding: 12rem 0 16rem;
   }
 
-  .story-pitch {
-    margin-top: 3rem;
-    font-size: 2.75rem;
+  .story-lines {
+    margin-top: 6rem;
+  }
+
+  .story-line {
+    padding: 8rem 0;
+    font-size: 2.5rem;
+    line-height: 1.35;
   }
 }

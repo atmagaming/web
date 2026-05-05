@@ -8,6 +8,7 @@ import JoinCTA from "./6-JoinCTA/index.svelte";
 </script>
 
 <div class="game-page">
+  <div class="page-pattern" aria-hidden="true"></div>
   <Hero />
   <TheGame />
   <Features />
@@ -41,6 +42,32 @@ import JoinCTA from "./6-JoinCTA/index.svelte";
     .game-page {
       --page-padding-x: 4rem;
     }
+  }
+
+  /* Subtle vertical-strata pattern + soft warm gradients — echoes the
+     six stacked worlds and breaks up the flat black without ever fighting
+     foreground content. */
+  .page-pattern {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      radial-gradient(ellipse 90% 60% at 15% 5%, rgba(184, 134, 11, 0.22), transparent 55%),
+      radial-gradient(ellipse 70% 50% at 85% 95%, rgba(184, 134, 11, 0.16), transparent 60%),
+      radial-gradient(circle at 1px 1px, rgba(212, 160, 23, 0.18) 1px, transparent 1.2px),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 159px,
+        rgba(184, 134, 11, 0.12) 159px,
+        rgba(184, 134, 11, 0.12) 160px
+      );
+    background-size:
+      auto,
+      auto,
+      28px 28px,
+      auto;
   }
 
   /* Film grain overlay */
