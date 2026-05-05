@@ -1,11 +1,23 @@
 <script lang="ts">
+import { onMount } from "svelte";
 import Navbar from "@/components/Navbar.svelte";
+import { capturePageview, initAnalytics } from "@/lib/analytics";
 import { t } from "@/lib/i18n/t";
+import { afterNavigate } from "$app/navigation";
 import { page } from "$app/stores";
 import "../app.css";
 
 let { children } = $props();
 let isDarkPage = $derived($page.url.pathname.startsWith("/games/") || $page.url.pathname.startsWith("/hypocrisy"));
+
+onMount(() => {
+  initAnalytics();
+  capturePageview($page.url);
+});
+
+afterNavigate((navigation) => {
+  if (navigation.to) capturePageview(navigation.to.url);
+});
 </script>
 
 <svelte:head>
