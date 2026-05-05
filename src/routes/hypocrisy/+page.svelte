@@ -20,6 +20,7 @@ import JoinCTA from "./6-JoinCTA/index.svelte";
 <style>
   .game-page {
     position: relative;
+    isolation: isolate;
     color: rgba(255, 255, 255, 0.87);
     background-color: #03050a;
 
@@ -53,15 +54,15 @@ import JoinCTA from "./6-JoinCTA/index.svelte";
     z-index: -1;
     pointer-events: none;
     background-image:
-      radial-gradient(ellipse 90% 60% at 15% 5%, rgba(184, 134, 11, 0.22), transparent 55%),
-      radial-gradient(ellipse 70% 50% at 85% 95%, rgba(184, 134, 11, 0.16), transparent 60%),
-      radial-gradient(circle at 1px 1px, rgba(212, 160, 23, 0.18) 1px, transparent 1.2px),
+      radial-gradient(ellipse 90% 60% at 15% 5%, rgba(184, 134, 11, 0.11), transparent 55%),
+      radial-gradient(ellipse 70% 50% at 85% 95%, rgba(184, 134, 11, 0.08), transparent 60%),
+      radial-gradient(circle at 1px 1px, rgba(212, 160, 23, 0.09) 1px, transparent 1.2px),
       repeating-linear-gradient(
         90deg,
         transparent 0,
         transparent 159px,
-        rgba(184, 134, 11, 0.12) 159px,
-        rgba(184, 134, 11, 0.12) 160px
+        rgba(184, 134, 11, 0.06) 159px,
+        rgba(184, 134, 11, 0.06) 160px
       );
     background-size:
       auto,
