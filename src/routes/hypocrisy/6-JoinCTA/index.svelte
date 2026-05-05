@@ -55,9 +55,7 @@ onMount(() => {
   <div class="join-glow"></div>
 
   <div bind:this={contentEl} class="join-content">
-    <SectionHeader label={t("hypocrisy.joinCta.sectionLabel")} title={t("hypocrisy.joinCta.title")}>
-      <p class="lead">{t("hypocrisy.joinCta.description")}</p>
-    </SectionHeader>
+    <SectionHeader title={t("hypocrisy.joinCta.title")} />
 
     <div class="join-body page-x">
       <Team members={teamMembers} />

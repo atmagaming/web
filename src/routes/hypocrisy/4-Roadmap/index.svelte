@@ -91,7 +91,7 @@ onMount(() => {
 <section id="roadmap" bind:this={sectionEl} class="roadmap-section">
   <div class="roadmap-glow"></div>
 
-  <SectionHeader label={t("hypocrisy.devProgress.roadmapTab")} title={t("hypocrisy.roadmap.title")} />
+  <SectionHeader title={t("hypocrisy.roadmap.title")} />
 
   <div bind:this={timelineEl} class="roadmap-timeline page-x">
     <div bind:this={timelineTrack} class="timeline-track">

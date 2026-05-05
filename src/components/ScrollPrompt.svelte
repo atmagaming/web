@@ -8,9 +8,16 @@ interface Props {
   color?: string;
   position?: "bottom-right" | "bottom-center";
   hidden?: boolean;
+  delay?: number;
 }
 
-let { textKey, color = "rgba(255, 255, 255, 0.4)", position = "bottom-center", hidden = false }: Props = $props();
+let {
+  textKey,
+  color = "rgba(255, 255, 255, 0.4)",
+  position = "bottom-center",
+  hidden = false,
+  delay = 0,
+}: Props = $props();
 
 let el = $state<HTMLElement | undefined>(undefined);
 
@@ -20,15 +27,11 @@ onMount(() => {
   const ctx = gsap.context(() => {
     if (!el) return;
 
-    gsap.from(el, { y: 20, opacity: 0, duration: 0.6, ease: "power3.out" });
+    gsap.set(el, { opacity: 0, y: 20 });
 
-    gsap.to(el, {
-      y: 8,
-      repeat: -1,
-      yoyo: true,
-      duration: 1.5,
-      ease: "sine.inOut",
-    });
+    const timeline = gsap.timeline({ delay });
+    timeline.to(el, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" });
+    timeline.to(el, { y: 8, repeat: -1, yoyo: true, duration: 1.5, ease: "sine.inOut" });
   }, el);
 
   return () => ctx.revert();

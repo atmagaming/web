@@ -34,35 +34,18 @@ onMount(() => {
 });
 </script>
 
-<div class="knockout-mask page-x">
-  <h1
-    bind:this={titleEl}
-    use:fitText={{ mode: "exact" }}
-    style="--chars: {letters.length}"
-    class="animated-title font-display"
-  >
-    {#each letters as letter, i (i)}
-      <span class="hero-letter">{letter}</span>
-    {/each}
-  </h1>
-</div>
+<h1
+  bind:this={titleEl}
+  use:fitText={{ mode: "exact" }}
+  style="--chars: {letters.length}"
+  class="animated-title font-display"
+>
+  {#each letters as letter, i (i)}
+    <span class="hero-letter">{letter}</span>
+  {/each}
+</h1>
 
 <style>
-  .knockout-mask {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    background: #03050a;
-    mix-blend-mode: multiply;
-    container-type: inline-size;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
   .animated-title {
     font-weight: 700;
     line-height: 0.85;
@@ -71,6 +54,7 @@ onMount(() => {
     user-select: none;
     color: white;
     white-space: nowrap;
+    margin: 0;
     font-size: clamp(3rem, calc(100cqi / var(--chars) * 1.55), 20rem);
   }
 

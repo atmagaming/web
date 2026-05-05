@@ -128,10 +128,6 @@ function closeLightbox() {
 </script>
 
 <div class="gallery" use:initGallery>
-  <div class="gallery-heading page-x">
-    <h3 class="section-eyebrow">{t("hypocrisy.devProgress.visualsTab")}</h3>
-  </div>
-
   {#each rows as row, rowIndex (rowIndex)}
     <div class="gallery-row">
       <div class="gallery-track">
