@@ -8,7 +8,6 @@ import JoinCTA from "./6-JoinCTA/index.svelte";
 </script>
 
 <svelte:head>
-  <title>Hypocrisy — ATMA</title>
   <link rel="icon" type="image/webp" href="/assets/images/game-icon.webp" />
 </svelte:head>
 
