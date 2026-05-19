@@ -90,7 +90,7 @@ let { standalone = false }: { standalone?: boolean } = $props();
       </div>
 
       <a
-        href="/games/hypocrisy"
+        href="/hypocrisy"
         class="font-mono text-[0.7rem] lg:text-[0.75rem] tracking-[0.12em] uppercase text-dark-950 bg-white px-6 py-2.5 lg:px-8 lg:py-3.5 hover:bg-gold hover:text-white transition-colors inline-flex items-center gap-2.5 no-underline"
         >{t("home.whatGame.learnMore")} &rarr;</a
       >
