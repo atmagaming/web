@@ -4,6 +4,16 @@ services:
     name: atma-web
     buildCommand: bun install --frozen-lockfile && bun run build
     staticPublishPath: build
+    routes:
+      # Serve the prerendered HTML (with OG/meta) for clean URLs instead of
+      # letting Render's SPA fallback (200.html) swallow them. 200.html has
+      # no static meta, so crawlers must hit the real prerendered files.
+      - type: rewrite
+        source: /hypocrisy
+        destination: /hypocrisy.html
+      - type: rewrite
+        source: /hypocrisy/
+        destination: /hypocrisy.html
     headers:
       - path: /assets/*
         name: Cache-Control
