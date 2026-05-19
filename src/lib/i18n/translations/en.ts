@@ -1,8 +1,10 @@
 export const en = {
   meta: {
-    title: "ATMA",
-    description: "ATMA — Facilitate social moral evolution to promote the welfare of all",
-    ogDescription: "Facilitate social moral evolution to promote the welfare of all",
+    title: "ATMA: Games and Cultural Products for Moral Evolution",
+    description:
+      "ATMA builds games and cultural products that confront the root of modern crises: a flawed grasp of human nature. Moral evolution for the welfare of all.",
+    ogDescription:
+      "ATMA builds games and cultural products that confront the root of modern crises: a flawed grasp of human nature. Moral evolution for the welfare of all.",
   },
   nav: {
     about: "About",
