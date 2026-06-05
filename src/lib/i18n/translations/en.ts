@@ -396,6 +396,7 @@ export const en = {
         "Hypocrisy is the first project of ATMA — a studio building cultural products that propagate ideas of morality and universalism through lived experience, not lectures.",
       readVision: "Read about our vision",
       teamLabel: "The Team",
+      contributorsLabel: "Project Contributors",
       contactUs: "Write to Us",
       reachOutLabel: "Reach Out",
       reachOutDescription: "Write your message with details, or simply email us or reach out on Telegram.",
@@ -406,16 +407,16 @@ export const en = {
       investorLabel: "Investors & Press",
       investorDescription: "For funding, partnership, or press inquiries.",
       investorContact: "Get in touch",
-      roleConceptArtist: {
-        title: "2D Concept Artist",
+      roleArtLead: {
+        title: "Art Lead / Generalist",
         type: "Revenue-share / Remote",
         description:
-          "Design characters, environments, and key visual concepts that define the game's aesthetic direction.",
+          "Turn concepts into visual mockups fast (AI, references, or hand sketches all welcome), own the art pipeline, and keep the whole game's look cohesive.",
       },
-      role3dArtist: {
-        title: "3D Artist",
+      roleUnityDeveloper: {
+        title: "Unity Developer",
         type: "Revenue-share / Remote",
-        description: "Model and texture characters, props, and environments for a stylized sci-fantasy world.",
+        description: "Build gameplay systems, combat, and tools in Unity for a stylized sci-fantasy action RPG.",
       },
       role3dAnimator: {
         title: "3D Animator",
@@ -427,21 +428,6 @@ export const en = {
         type: "Revenue-share / Remote",
         description:
           "Create spell effects, environmental particles, and impact visuals that elevate combat and exploration.",
-      },
-      roleSfx: {
-        title: "SFX Designer",
-        type: "Revenue-share / Remote",
-        description: "Craft immersive sound effects for combat, abilities, UI, and ambient world-building.",
-      },
-      roleNarrative: {
-        title: "Narrative Designer",
-        type: "Revenue-share / Remote",
-        description: "Shape branching storylines, dialogue, and lore that explore moral dilemmas and character depth.",
-      },
-      roleProjectManager: {
-        title: "Project Manager",
-        type: "Revenue-share / Remote",
-        description: "Coordinate the team, manage milestones, and keep pre-production on track across disciplines.",
       },
       applyNow: "Apply Now",
       ctaTitle: "Begin Your Journey",

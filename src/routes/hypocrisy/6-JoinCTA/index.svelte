@@ -9,7 +9,7 @@ import Closing from "../../Closing.svelte";
 import OpenRoles from "./OpenRoles.svelte";
 import { roleIcons, roleKeys } from "./role-icons";
 import Team from "./Team.svelte";
-import { teamMembers } from "./team-data";
+import { contributors, teamMembers } from "./team-data";
 
 let modalOpen = $state(false);
 let sectionEl: HTMLElement;
@@ -58,7 +58,9 @@ onMount(() => {
     <SectionHeader title={t("hypocrisy.joinCta.title")} />
 
     <div class="join-body page-x">
-      <Team members={teamMembers} />
+      <Team members={teamMembers} label={t("hypocrisy.joinCta.teamLabel")} />
+
+      <Team members={contributors} label={t("hypocrisy.joinCta.contributorsLabel")} />
 
       <div class="mission">
         <p class="mission-excerpt">{t("hypocrisy.joinCta.missionExcerpt")}</p>

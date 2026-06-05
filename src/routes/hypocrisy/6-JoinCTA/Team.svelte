@@ -1,13 +1,12 @@
 <script lang="ts">
-import { t } from "@/lib/i18n/t";
 import TeamMember from "./TeamMember.svelte";
 import type { TeamMember as TeamMemberType } from "./team-data";
 
-const { members }: { members: ReadonlyArray<TeamMemberType> } = $props();
+const { members, label }: { members: ReadonlyArray<TeamMemberType>; label: string } = $props();
 </script>
 
 <div class="team">
-  <h3 class="section-eyebrow">{t("hypocrisy.joinCta.teamLabel")}</h3>
+  <h3 class="section-eyebrow">{label}</h3>
   <div class="team-grid">
     {#each members as member (member.name)}
       <TeamMember {...member} />
