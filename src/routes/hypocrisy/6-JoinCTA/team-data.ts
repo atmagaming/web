@@ -46,8 +46,8 @@ export const teamMembers = [
     name: "Conor Jay Peter Dawson",
     role: "Sound Designer (SFX)",
     image: "/assets/images/team/conor-d.webp",
-    link: null,
-    linkType: null,
+    link: "https://www.linkedin.com/in/conor-dawson-85b4b53ab/",
+    linkType: "linkedin",
   },
   {
     name: "Yehor Mir",
