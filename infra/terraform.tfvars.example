@@ -1,0 +1,9 @@
+# Copy to terraform.tfvars and fill in. Do NOT commit.
+
+vercel_api_token = "xxxxxxxxxxxxxxxxxxxxxxxx"
+
+# Override defaults if needed:
+# vercel_team       = "elumixors-projects"
+# github_owner      = "atmagaming"
+# github_repo       = "web"
+# production_domain = "atmagaming.com"
