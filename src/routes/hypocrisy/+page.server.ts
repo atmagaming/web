@@ -30,8 +30,9 @@ function teamOrder(a: TeamMember, b: TeamMember) {
 
 // Prerendered at build time: the roster is baked into the static HTML, so there is no client request,
 // no loading flash, and crawlers see the real team. team-data.ts is the fallback if the API is briefly
-// unavailable during a build.
-export async function load({ fetch }) {
+// unavailable during a build. Server load + native fetch — the universal `fetch` applies a browser-style
+// CORS check during prerender, which the origin-less server request to api.atmagaming.com fails.
+export async function load() {
   try {
     const response = await fetch(PEOPLE_ENDPOINT);
     if (!response.ok) throw new Error(`GET /people responded ${response.status}`);
