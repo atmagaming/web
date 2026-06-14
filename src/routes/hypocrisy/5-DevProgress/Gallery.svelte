@@ -1,4 +1,5 @@
 <script lang="ts">
+import { blob } from "@/lib/assets";
 import { t } from "@/lib/i18n/t";
 import type { translations } from "@/lib/i18n/translations";
 import GalleryItem from "./GalleryItem.svelte";
@@ -10,26 +11,26 @@ type GalleryEntry = { type: "image"; src: string; key: GalleryItemKey } | { type
 const rows: GalleryEntry[][] = [
   [
     { type: "image", src: "/assets/images/concepts/phoenix/polished.webp", key: "phoenixPolished" },
-    { type: "video", src: "/assets/videos/environment.webm", label: "Environment" },
+    { type: "video", src: blob("videos/environment.webm"), label: "Environment" },
     { type: "image", src: "/assets/images/concepts/world/world-1.webp", key: "worldEnvironment" },
     { type: "image", src: "/assets/images/ui/main-menu.webp", key: "mainMenu" },
-    { type: "video", src: "/assets/videos/new character.webm", label: "Character" },
+    { type: "video", src: blob("videos/new%20character.webm"), label: "Character" },
     { type: "image", src: "/assets/images/concepts/world/plants.webp", key: "worldPlants" },
   ],
   [
     { type: "image", src: "/assets/images/concepts/world/buildings.webp", key: "worldBuildings" },
     { type: "image", src: "/assets/images/screenshots/character.webp", key: "character" },
-    { type: "video", src: "/assets/videos/old-fighting-concept.webm", label: "Combat Prototype" },
+    { type: "video", src: blob("videos/old-fighting-concept.webm"), label: "Combat Prototype" },
     { type: "image", src: "/assets/images/concepts/game-early.webp", key: "gameEarly" },
     { type: "image", src: "/assets/images/concepts/phoenix/shapes.webp", key: "phoenixShapes" },
     { type: "image", src: "/assets/images/ui/hud.webp", key: "hud" },
     { type: "image", src: "/assets/images/screenshots/level-design.webp", key: "levelDesign" },
   ],
   [
-    { type: "video", src: "/assets/videos/old-foes.webm", label: "Enemies" },
+    { type: "video", src: blob("videos/old-foes.webm"), label: "Enemies" },
     { type: "image", src: "/assets/images/screenshots/circle-platform.webp", key: "circlePlatform" },
     { type: "image", src: "/assets/images/ui/death.webp", key: "deathScreen" },
-    { type: "video", src: "/assets/videos/old-environment.webm", label: "World Exploration" },
+    { type: "video", src: blob("videos/old-environment.webm"), label: "World Exploration" },
     { type: "image", src: "/assets/images/ui/upgrades.webp", key: "upgrades" },
   ],
 ];

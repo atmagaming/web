@@ -5,6 +5,8 @@ import Features from "./3-Features/index.svelte";
 import Roadmap from "./4-Roadmap/index.svelte";
 import DevProgress from "./5-DevProgress/index.svelte";
 import JoinCTA from "./6-JoinCTA/index.svelte";
+
+const { data } = $props();
 </script>
 
 <svelte:head>
@@ -18,7 +20,7 @@ import JoinCTA from "./6-JoinCTA/index.svelte";
   <Features />
   <Roadmap />
   <DevProgress />
-  <JoinCTA />
+  <JoinCTA team={data.team} contributors={data.contributors} />
 </div>
 
 <style>
