@@ -1,6 +1,7 @@
 <script lang="ts">
 import { onMount } from "svelte";
 import ScrollPrompt from "@/components/ScrollPrompt.svelte";
+import { blob } from "@/lib/assets";
 import gsap from "@/lib/gsap";
 import { t } from "@/lib/i18n/t";
 import AnimatedTitle from "./AnimatedTitle.svelte";
@@ -56,7 +57,7 @@ onMount(() => {
     playsinline
     preload="none"
     poster="/assets/images/environment-poster.webp"
-    src="/assets/videos/environment.webm"
+    src={blob("videos/environment.webm")}
     class="hero-video"
   ></video>
   <div class="hero-darken" aria-hidden="true"></div>

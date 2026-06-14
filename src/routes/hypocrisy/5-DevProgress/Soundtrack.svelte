@@ -1,17 +1,18 @@
 <script lang="ts">
 import { onMount, tick } from "svelte";
 import WaveSurfer from "wavesurfer.js";
+import { blob } from "@/lib/assets";
 import { t } from "@/lib/i18n/t";
 import { ROMAN_NUMERALS } from "@/lib/utils";
 import TrackCard from "./TrackCard.svelte";
 
 const trackList = [
-  { file: "/assets/music/main-mystery.mp3", concept: "concept1" },
-  { file: "/assets/music/krodha-2.mp3", concept: "concept2" },
-  { file: "/assets/music/moha-attachment.mp3", concept: "concept3" },
-  { file: "/assets/music/drf.mp3", concept: "concept4" },
-  { file: "/assets/music/reflection.mp3", concept: "concept5" },
-  { file: "/assets/music/KrodhaS5.mp3", concept: "concept6" },
+  { file: blob("music/main-mystery.mp3"), concept: "concept1" },
+  { file: blob("music/krodha-2.mp3"), concept: "concept2" },
+  { file: blob("music/moha-attachment.mp3"), concept: "concept3" },
+  { file: blob("music/drf.mp3"), concept: "concept4" },
+  { file: blob("music/reflection.mp3"), concept: "concept5" },
+  { file: blob("music/KrodhaS5.mp3"), concept: "concept6" },
 ] as const;
 
 if (trackList.length > ROMAN_NUMERALS.length)

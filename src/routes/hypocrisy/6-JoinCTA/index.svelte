@@ -9,7 +9,9 @@ import Closing from "../../Closing.svelte";
 import OpenRoles from "./OpenRoles.svelte";
 import { roleIcons, roleKeys } from "./role-icons";
 import Team from "./Team.svelte";
-import { contributors, teamMembers } from "./team-data";
+import type { TeamMember } from "./team-data";
+
+const { team, contributors }: { team: ReadonlyArray<TeamMember>; contributors: ReadonlyArray<TeamMember> } = $props();
 
 let modalOpen = $state(false);
 let sectionEl: HTMLElement;
@@ -58,9 +60,11 @@ onMount(() => {
     <SectionHeader title={t("hypocrisy.joinCta.title")} />
 
     <div class="join-body page-x">
-      <Team members={teamMembers} label={t("hypocrisy.joinCta.teamLabel")} />
+      <Team members={team} label={t("hypocrisy.joinCta.teamLabel")} />
 
-      <Team members={contributors} label={t("hypocrisy.joinCta.contributorsLabel")} />
+      {#if contributors.length > 0}
+        <Team members={contributors} label={t("hypocrisy.joinCta.contributorsLabel")} />
+      {/if}
 
       <div class="mission">
         <p class="mission-excerpt">{t("hypocrisy.joinCta.missionExcerpt")}</p>
