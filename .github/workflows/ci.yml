@@ -1,0 +1,38 @@
+name: CI
+
+# Every push runs lint; a green `main` is then deployed to Devkit Cloud through the dk-deploy OIDC role.
+# Vercel never deploys a push on its own (vercel.json).
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+  deployments: write
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  app:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.5"
+      - run: bun install --frozen-lockfile
+      - run: bun run lint
+      - if: github.ref_name == 'main'
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::453953529857:role/dk-deploy
+          aws-region: eu-central-1
+      - name: devkit deploy
+        if: github.ref_name == 'main'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: bunx devkit deploy:aws
