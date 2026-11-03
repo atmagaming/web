@@ -15,6 +15,17 @@ const config = {
     files: {
       assets: "public",
     },
+    // Absolute asset paths: a page is also served at its path without the trailing slash.
+    paths: {
+      relative: false,
+    },
+    prerender: {
+      // Blobs are served by the edge, not by the build, so the crawler can't find them.
+      handleHttpError: ({ path, message }) => {
+        if (path.startsWith("/_blob/")) return;
+        throw new Error(message);
+      },
+    },
   },
 };
 
