@@ -44,6 +44,12 @@
           "webBuildDir": "build",
           "apiPrefixes": [],
           "routing": "pages",
+          "domains": {
+            "production": [
+              "atmagaming.com",
+              "www.atmagaming.com"
+            ]
+          },
           "headers": [
             {
               "source": "/assets/(.*)",
