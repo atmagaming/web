@@ -1,3 +1,4 @@
+import { fromVercelBlob } from "@/lib/assets";
 import {
   contributors as fallbackContributors,
   teamMembers as fallbackTeam,
@@ -19,7 +20,13 @@ const PEOPLE_ENDPOINT = "https://api.atmagaming.com/people";
 
 function toMember(person: ApiPerson): TeamMember {
   const linkType = person.linkedin ? (person.linkedin.includes("artstation") ? "artstation" : "linkedin") : null;
-  return { name: person.name, role: person.role ?? "", image: person.imageUrl, link: person.linkedin, linkType };
+  return {
+    name: person.name,
+    role: person.role ?? "",
+    image: person.imageUrl && fromVercelBlob(person.imageUrl),
+    link: person.linkedin,
+    linkType,
+  };
 }
 
 // Founder/CEO leads the active team; everything else falls back to alphabetical for a stable order.
